@@ -1,0 +1,31 @@
+<div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+   <%= link_to 'New', new_admin_job_path %>
+ </p>
+
+<table width="100%" border="0" class="table table-bordered table-striped">
+
+<tr>
+	<th><%= "Job Model" %></th>
+	<th><%= "job name" %></th>
+	<th><%= "description" %></th>
+	<th><%= "salary" %></th>
+	<th colspan=2>Actions</th>
+</tr>
+<% @jobs.each do |job| %>
+<tr>
+	<td><%= job.job_group.job_model_name rescue nil%></td>
+	<td><%= job.try(:job_name) %></td>
+	<td><%= job.try(:salary) %></td>
+	<td><%= link_to 'Edit', edit_admin_job_path(job) %></td>
+	<td><%= link_to 'Job Post', new_admin_job_post_path(:job_id => job) %></td>
+</tr>
+<% end %>
+</table>
+</div>
+    </div>
+  </div>
+</div>

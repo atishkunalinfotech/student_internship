@@ -1,0 +1,186 @@
+  <div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+ </p>
+  <p>
+    <strong>Student email:</strong>
+    <%= @student.email rescue nil %>
+  </p>
+
+  <p>
+    <strong>student Id:</strong>
+    <%= @student.studentid rescue nil %>
+  </p>
+
+  <p>
+    <strong>student First Name:</strong>
+    <%= @student.student_firstname rescue nil %>
+  </p>
+
+  <p>
+    <strong>student Middle Name:</strong>
+    <%= @student.student_middlename rescue nil %>
+  </p>
+
+  <p>
+    <strong>student Lastname:</strong>
+    <%= @student.student_lastname rescue nil %>
+  </p>
+
+  <p>
+    <strong>Telephone:</strong>
+    <%= @student.telephone rescue nil %>
+  </p>
+  <p>
+    <strong>Gender:</strong>
+    <%= @student.gender rescue nil %>
+  </p>
+  <p>
+    <strong>status:</strong>
+    <%= @student.status rescue nil %>
+  </p>
+  <!-- <p>
+    <strong>Paid Status:</strong>
+    <%= @student.paid_status rescue nil %>
+  </p> -->
+  <!-- <p>
+    <strong>Salary:</strong>
+    <%= @student.internship_status_id rescue nil %>
+  </p> -->
+  <p>
+    <strong>country:</strong>
+    <%= ISO3166::Country[@student.country] rescue nil %>
+  </p>
+
+  <p>
+    <strong>degree_type:</strong>
+    <%= @education.degree_type rescue nil %>
+  </p>
+
+  <p>
+    <strong>major:</strong>
+    <%= @education.major rescue nil %>
+  </p>
+
+  <p>
+    <strong>degree_gpa:</strong>
+    <%= @education.degree_gpa rescue nil %>
+  </p>
+
+  <p>
+    <strong>degree_university:</strong>
+    <%= @education.degree_university rescue nil %>
+  </p>
+
+  <p>
+    <strong>degree_university_loc:</strong>
+    <%= @education.degree_university_loc rescue nil %>
+  </p>
+
+  <p>
+    <strong>certifications:</strong>
+    <%= @education.certifications rescue nil %>
+  </p>
+
+  <p>
+    <strong>degree_type:</strong>
+    <%= @education1.degree_type rescue nil %>
+  </p>
+
+  <p>
+    <strong>major:</strong>
+    <%= @education1.major rescue nil %>
+  </p>
+  <p>
+    <strong>degree_gpa:</strong>
+    <%= @education1.degree_gpa rescue nil %>
+  </p>
+  <p>
+    <strong>degree_university:</strong>
+    <%= @education1.degree_university rescue nil %>
+  </p>
+  <p>
+    <strong>degree_university_loc:</strong>
+    <%= @education1.degree_university_loc rescue nil %>
+  </p>
+  <p>
+    <strong>certifications:</strong>
+    <%= @education1.certifications rescue nil %>
+  </p>
+  <p>
+    <strong>certification_body:</strong>
+    <%= @education1.certification_body rescue nil %>
+  </p>
+
+  <h3>Work Experience</h3>
+
+  <p>
+    <strong>company:</strong>
+    <%= @student_work_exp.company rescue nil %>
+  </p>
+  <p>
+    <strong>company_location:</strong>
+    <%= @student_work_exp.company_location rescue nil %>
+  </p>
+  <p>
+    <strong>dates_start:</strong>
+    <%= @student_work_exp.dates_start rescue nil %>
+  </p>
+  <p>
+    <strong>date_end:</strong>
+    <%= @student_work_exp.date_end rescue nil %>
+  </p>
+  <p>
+    <strong>position:</strong>
+    <%= @student_work_exp.position rescue nil %>
+  </p>
+
+
+  <p>
+    <strong>company:</strong>
+    <%= @student_work_exp1.company rescue nil %>
+  </p>
+  <p>
+    <strong>company_location:</strong>
+    <%= @student_work_exp1.company_location rescue nil %>
+  </p>
+  <p>
+    <strong>dates_start:</strong>
+    <%= @student_work_exp1.dates_start rescue nil %>
+  </p>
+  <p>
+    <strong>date_end:</strong>
+    <%= @student_work_exp1.date_end rescue nil %>
+  </p>
+  <p>
+    <strong>position:</strong>
+    <%= @student_work_exp1.position rescue nil %>
+  </p>
+  <p>
+    <% @skill_groups.each do |skillgrp| %>
+      <strong><%= skillgrp.skill rescue nil%></strong> <br/>
+      <%skillgrp.skills.each do |skill|%>
+         <%@skill_level = UserSkill.where('student_id = ? and skill_id = ?',@student.id,skill.id).first rescue nil%>
+         <%@skill = Skill.find(@skill_level.skill_id) rescue nil%>
+         <%= @skill.skill_name rescue nil%> -> <%= @skill_level.skill_level rescue nil%><br/>
+      <%end%>
+    <%end%>
+  </p>
+
+
+  </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

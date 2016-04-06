@@ -1,0 +1,62 @@
+<%= form_for [:admin,@student] do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+	  <ul>
+	   <%  @student.errors.full_messages.each do |msg| %>
+	     <li><%= msg %></li>
+	   <% end %>
+	  </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :studentid %>
+    <%= f.text_field :studentid,required: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :student_firstname %>
+    <%= f.text_field :student_firstname,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :student_middlename %>
+    <%= f.text_field :student_middlename,required: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :student_lastname  %>
+    <%= f.text_field :student_lastname,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :student_email  %>
+    <%= f.text_field :student_email,required: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone  %>
+    <%= f.text_field :telephone,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender  %>
+    <%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One"},:style=>" width: 255px;" ,:required =>true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :status  %>
+    <%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One"},:style=>" width: 255px;" ,:required =>true%>
+  </div>
+
+  
+
+  <!-- <div class="field">
+    <%= f.label :paid_status  %>
+    <%= f.text_field :paid_status,required: true %>
+  </div> -->
+  
+  <div class="actions">
+    <%= f.submit %><br>
+  </div>
+
+<% end %>

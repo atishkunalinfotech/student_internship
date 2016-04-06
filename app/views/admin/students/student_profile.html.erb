@@ -1,0 +1,125 @@
+<%= javascript_include_tag "application" %>
+<div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+ </p>
+<div class="form">
+<% if params[:student_id].present?%>
+  <%= form_for [:admin,@student], html: {method: :post} do |f| %>
+    <% if @student.errors.any? %>
+      <div id="error_explanation">
+  	  <ul>
+  	   <%  @student.errors.full_messages.each do |msg| %>
+  	     <li><%= msg %></li>
+  	   <% end %>
+  	  </ul>
+      </div>
+    <% end %>
+
+    <%= f.hidden_field :student_profile , :value => "student_profile"%>
+    <%= f.hidden_field :student_id , :value => params[:student_id]%>
+    <!-- <div class="field">
+      <%= f.label :studentid %>
+      <%= f.text_field :studentid,required: true %>
+    </div> -->
+    <div class="field">
+      <%= f.label :student_firstname %>
+      <%= f.text_field :student_firstname,required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :student_middlename %>
+      <%= f.text_field :student_middlename,required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :student_lastname  %>
+      <%= f.text_field :student_lastname,required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :student_email  %>
+      <%= f.text_field :student_email,required: true%>
+    </div>
+
+    <div class="field">
+      <%= f.label :telephone  %>
+      <%= f.text_field :telephone,required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :gender  %>
+      <%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One"} ,:required =>true%>
+    </div>
+
+    <div class="field">
+      <%= f.label :status  %>
+      <%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One"} ,:required =>true%>
+    </div>
+
+    <div class="field">
+      <%= label_tag :semester  %>
+      <%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => "Fall", :include_blank => true)) %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :year  %>
+      <%= date_field_tag :year%>
+    </div>
+
+    <div class="field">
+      <%= f.label :country  %>
+      <%= f.country_select(:country) %>
+    </div>
+      <h2>EDUCATION</h2>
+      <%= render  "admin/students/education_fields" %>
+      <h2>WORK EXPERIENCE</h2>
+      <%= render  "admin/students/student_work_exp" %>
+    <h2>SKILLS</h2>
+    <% @skill_groups.each do |skillgrp| %>
+      <%= skillgrp.skill rescue nil%> <br/>
+      <%skillgrp.skills.each do |skill|%>
+         <%= skill.skill_name rescue nil%>&nbsp;&nbsp;&nbsp;<%="Not at all competent"%>&nbsp;&nbsp;&nbsp;<%= radio_button_tag :"#{skill.id}", "Not at all competent", true %>&nbsp;&nbsp;&nbsp;<%="Little competent"%><%= radio_button_tag :"#{skill.id}", "Little competent" %>&nbsp;&nbsp;&nbsp;<%="Moderately competent"%><%= radio_button_tag :"#{skill.id}", "Moderately competent" %>&nbsp;&nbsp;&nbsp;<%="Extremely competent"%><%= radio_button_tag :"#{skill.id}", "Extremely competent" %><br/>
+      <%end%>
+    <%end%>
+    
+    <div class="actions">
+      <%= f.submit %><br>
+    </div>
+
+  <% end %>
+
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+  <script type="text/javascript">
+      jQuery.noConflict();
+      jQuery(function($){
+        jQuery("#year").datepicker({
+          changeYear: true,
+          showButtonPanel: true,
+          dateFormat: 'yy',
+          beforeShowDay: jQuery.datepicker.nodates,
+          onClose: function(dateText, inst) { 
+              var year = jQuery("#ui-datepicker-div .ui-datepicker-year :selected").val();
+              jQuery(this).datepicker('setDate', new Date(year, 1));
+          }
+      });
+
+      jQuery("#year").focus(function () {
+          jQuery(".ui-datepicker-month").hide();
+          jQuery(".ui-datepicker-calendar").hide();
+          jQuery(".ui-datepicker-current").hide();
+      });
+
+      });
+  </script>
+<%else%>
+  <h1>No Student Present</h1>
+<%end%>

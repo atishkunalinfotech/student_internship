@@ -1,0 +1,1023 @@
+/*
+ * FullCalendar v1.5.4 Stylesheet
+ *
+ * Copyright (c) 2011 Adam Shaw
+ * Dual licensed under the MIT and GPL licenses, located in
+ * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
+ *
+ * Date: Tue Sep 4 23:38:33 2012 -0700
+ *
+ */
+
+
+.fc {
+	direction: ltr;
+	text-align: left;
+	}
+	
+.fc table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	}
+	
+html .fc,
+.fc table {
+	font-size: 1em;
+	}
+	
+.fc td,
+.fc th {
+	padding: 0;
+	vertical-align: top;
+	}
+
+
+
+/* Header
+------------------------------------------------------------------------*/
+
+
+
+
+.fc-header td {
+	white-space: nowrap;
+	}
+
+.fc-header-left {
+	width: 25%;
+	text-align: left;
+	}
+	
+	.fc-header-left2 {
+	width: 25%;
+	text-align: left; margin:0 0 0 100px; float:left
+	}
+	
+	
+.fc-header-center {
+	text-align: center;
+	}
+	
+.fc-header-right {
+	width: 25%;
+	text-align: right;
+	}
+	
+.fc-header-title {
+	display: inline-block;
+	vertical-align: top;
+	}
+.fc-header-title h2 p{
+	margin:0;
+	padding:0;
+	color:#fff;
+	font-size:13px;
+
+	 text-shadow: none;
+}
+.fc-header-title h2 {
+color: #fff;
+    font-family: Myriad Pro;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0 45px;
+    white-space: nowrap;
+  
+  text-shadow:
+    0px 0px 2px #333,
+    /* Simulated effect for Firefox and Opera
+       and nice enhancement for WebKit */
+   -1px -1px 0 #939393,  
+    1px -1px 0 #939393,
+   -1px  1px 0 #939393,
+    1px  1px 0 #939393;
+	}
+	
+.fc .fc-header-space {
+	padding-left: 50px;
+	}
+	
+.fc-button-prev {
+	background:none !important;
+	border:none !important;
+}
+.fc-button-prev .fc-button-inner{
+ background: url("/assets/calendars/prev.png") no-repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    font-size: 0;
+    height: 38px;
+    width: 42px;	
+}
+.fc-button-prev:hover .fc-button-inner{
+ background: url("/assets/calendars/prev-ovr.png") no-repeat scroll -6px -6px transparent !important;
+
+}
+
+}
+.fc-button-prev:hover .fc-button-inner{
+ background: url("/assets/calendars/prev-ovr.png") no-repeat scroll -6px -6px transparent !important;
+
+}
+
+.fc-button-add  .fc-button-inner{
+   background: url("/assets/calendars/add.png") no-repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    font-size: 0;
+    height: 48px;
+    margin-right: 5px;
+    margin-top: -4px;
+    width: 52px;}
+.fc-button-add {
+    background: none repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+}
+.fc-button-add .fc-button-effect{
+	display:none;
+	
+}
+
+.fc-button-colors  .fc-button-inner{
+ background: url("/assets/calendars/colors.png") no-repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    color: #7B7B7B !important;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    height: 35px;
+    padding-left: 28px;
+    padding-top: 5px;
+    text-transform: capitalize;
+    width: 87px; margin-left:55px!important}
+.fc-button-colors {
+    background: none repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+}
+.fc-button-colors .fc-button-effect{
+	display:none;
+	
+}
+
+
+
+
+
+.fc-button-prev .fc-button-effect{
+	display:none;
+	
+}
+
+.fc-button-next {
+	background:none !important;
+	border:none !important;
+}
+.fc-button-next .fc-button-inner{
+ background: url("/assets/calendars/next.png") no-repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    font-size: 0;
+    height: 38px;
+    width: 42px;	
+}
+.fc-button-next:hover .fc-button-inner{
+ background: url("/assets/calendars/next-ovr.png") no-repeat scroll -8px -6px transparent !important;
+}
+.fc-button-next .fc-button-effect{
+	display:none;
+	
+}
+
+
+.fc-button-list,.fc-button-basicDay, .fc-button-basicWeek, .fc-button-month {
+	background:none !important;
+	border:none !important;
+}
+
+.fc-button-list .fc-button-inner{
+ background: url("/assets/calendars/list.png") no-repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    font-size: 0;
+    height: 39px;
+    width: 55px;	
+}
+.fc-button-list .activetab{
+	 background: url("/assets/calendars/list-ovr.png") no-repeat scroll 0 0 transparent !important;
+
+}
+.fc-button-list .fc-button-effect{
+	display:none;
+	
+}
+
+.fc-button-agendaDay .fc-button-inner{
+ background: url("/assets/calendars/day.png") no-repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    font-size: 0;
+    height: 39px;
+    width: 61px;	
+}
+.fc-button-agendaDay .activetab{
+	 background: url("/assets/calendars/day-ovr.png") no-repeat scroll 0 0 transparent !important;
+
+}
+.fc-button-agendaDay .fc-button-effect{
+	display:none;
+	
+}
+
+
+.fc-button-agendaWeek .fc-button-inner{
+ background: url("/assets/calendars/week.png") no-repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    font-size: 0;
+    height: 39px;
+    width: 65px;	
+}
+.fc-button-agendaWeek .activetab{
+	 background: url("/assets/calendars/week-ovr.png") no-repeat scroll 0 0 transparent !important;
+
+}
+.fc-button-agendaWeek .fc-button-effect{
+	display:none;
+	
+}
+
+
+.fc-button-month .fc-button-inner{
+ background: url("/assets/calendars/month.png") no-repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    font-size: 0;
+    height: 39px;
+    width: 52px;	
+}
+.fc-button-month .activetab{
+	 background: url("/assets/calendars/month-ovr.png") no-repeat scroll 0 0 transparent !important;
+
+}
+.fc-button-month .fc-button-effect{
+	display:none;
+	
+}
+
+.add_button {
+    background: url("/assets/calendars/add_button.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 47px;
+    width: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fc-header .fc-button {
+	margin-bottom: 10px;
+	vertical-align: top;
+	}
+	
+/* buttons edges butting together */
+
+.fc-header .fc-button {
+	margin-right: -1px;
+	}
+	
+.fc-header .fc-corner-right {
+	margin-right: 1px; /* back to normal */
+	}
+	
+.fc-header .ui-corner-right {
+	margin-right: 0; /* back to normal */
+	}
+	
+/* button layering (for border precedence) */
+	
+.fc-header .fc-state-hover,
+.fc-header .ui-state-hover {
+	z-index: 2;
+	}
+	
+.fc-header .fc-state-down {
+	z-index: 3;
+	}
+
+.fc-header .fc-state-active,
+.fc-header .ui-state-active {
+	z-index: 4;
+	}
+	
+	
+	
+/* Content
+------------------------------------------------------------------------*/
+	.fc-widget-content {
+			background:#eaeaea;
+			 border-radius: 3px 3px 3px 3px;
+	}
+	
+.fc-widget-content:hover {
+				background:#aac5d2;
+
+}
+table.fc-border-separate thead{
+	display:none;
+	
+}
+.fc-content {
+background: none repeat scroll 0 0 #C8C8C8;
+    border: 2px solid #969696;
+    border-radius: 10px 10px 10px 10px;
+    clear: both;
+    padding: 8px;	}
+	
+.fc-view {
+	width: 100%; /* needed for view switching (when view is absolute) */
+	overflow: hidden;
+	}
+	
+	.fc-other-month{
+		background:#d5d4d4;
+		
+	}
+	.fc-other-month:hover{
+		background:#d5d4d4;
+		
+	}
+	
+
+/* Cell Styles
+------------------------------------------------------------------------*/
+
+.fc-widget-header,    /* <th>, usually */
+.fc-widget-content {  /* <td>, usually */
+	border: 1px solid #ccc;
+	}
+	
+.fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
+ background: none repeat scroll 0 0 #538096;
+    box-shadow: 0 0 0 5px #DDE6EA inset;	
+	}
+.fc-cell-overlay { /* semi-transparent rectangle while dragging */
+	background: #9cf;
+	opacity: .2;
+	filter: alpha(opacity=20); /* for IE */
+	}
+	
+
+
+/* Buttons
+------------------------------------------------------------------------*/
+
+.fc-button {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	}
+	
+.fc-state-default { /* non-theme */
+	border-style: solid;
+	border-width: 0;
+	}
+	
+.fc-button-inner {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	}
+	
+.fc-state-default .fc-button-inner { /* non-theme */
+	border-style: solid;
+	border-width: 0 1px;
+	}
+	
+.fc-button-content {
+	position: relative;
+	float: left;
+	height: 1.9em;
+	line-height: 1.9em;
+	padding: 0 .6em;
+	white-space: nowrap;
+	}
+	
+/* icon (for jquery ui) */
+	
+.fc-button-content .fc-icon-wrap {
+	position: relative;
+	float: left;
+	top: 50%;
+	}
+	
+.fc-button-content .ui-icon {
+	position: relative;
+	float: left;
+	margin-top: -50%;
+	*margin-top: 0;
+	*top: -50%;
+	}
+	
+/* gloss effect */
+	
+.fc-state-default .fc-button-effect {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	}
+	
+.fc-state-default .fc-button-effect span {
+	position: absolute;
+	top: -100px;
+	left: 0;
+	width: 500px;
+	height: 100px;
+	border-width: 100px 0 0 1px;
+	border-style: solid;
+	border-color: #fff;
+	background: #444;
+	opacity: .09;
+	filter: alpha(opacity=9);
+	}
+	
+/* button states (determines colors)  */
+	
+.fc-state-default,
+.fc-state-default .fc-button-inner {
+	border-style: solid;
+	color: #000;
+	}
+	
+.fc-state-hover,
+.fc-state-hover .fc-button-inner {
+	border-color: #999;
+	}
+	
+.fc-state-down,
+.fc-state-down .fc-button-inner {
+	border-color: #555;
+	
+	}
+	
+.fc-state-active,
+.fc-state-active .fc-button-inner {
+	border-color: #555;
+	
+	color: #fff;
+	}
+	
+.fc-state-disabled,
+.fc-state-disabled .fc-button-inner {
+	color: #999;
+	border-color: #ddd;
+	}
+	
+.fc-state-disabled {
+	cursor: default;
+	}
+	
+.fc-state-disabled .fc-button-effect {
+	display: none;
+	}
+	
+	
+
+/* Global Event Styles
+------------------------------------------------------------------------*/
+	 
+.fc-event {
+	border-style: solid;
+	border-width: 0;
+	font-size: .65em;
+	cursor: default;
+	}
+	
+a.fc-event,
+.fc-event-draggable {
+	cursor: pointer;
+	}
+	
+a.fc-event {
+	text-decoration: none;
+	}
+	
+.fc-rtl .fc-event {
+	text-align: right;
+	}
+	
+.fc-event-skin {
+	border-color: #36c;     /* default BORDER color */
+	background-color: #36c; /* default BACKGROUND color */
+	color: #000;            /* default TEXT color */
+	}
+	
+.fc-event-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-style: solid;
+	border-width: 0;
+	overflow: hidden;
+	}
+	
+.fc-event-time,
+.fc-event-title {
+	padding: 0 1px;
+	}
+	
+.fc .ui-resizable-handle { /*** TODO: don't use ui-resizable anymore, change class ***/
+	display: block;
+	position: absolute;
+	z-index: 99999;
+	overflow: hidden; /* hacky spaces (IE6/7) */
+	font-size: 300%;  /* */
+	line-height: 50%; /* */
+	}
+	
+	
+	
+/* Horizontal Events
+------------------------------------------------------------------------*/
+
+.fc-event-hori {
+	border-width: 1px 0;
+	margin-bottom: 1px;
+	}
+	
+/* resizable */
+	
+.fc-event-hori .ui-resizable-e {
+	top: 0           !important; /* importants override pre jquery ui 1.7 styles */
+	right: -3px      !important;
+	width: 7px       !important;
+	height: 100%     !important;
+	cursor: e-resize;
+	}
+	
+.fc-event-hori .ui-resizable-w {
+	top: 0           !important;
+	left: -3px       !important;
+	width: 7px       !important;
+	height: 100%     !important;
+	cursor: w-resize;
+	}
+	
+.fc-event-hori .ui-resizable-handle {
+	_padding-bottom: 14px; /* IE6 had 0 height */
+	}
+	
+	
+	
+/* Fake Rounded Corners (for buttons and events)
+------------------------------------------------------------*/
+	
+.fc-corner-left {
+	margin-left: 1px;
+	}
+	
+.fc-corner-left .fc-button-inner,
+.fc-corner-left .fc-event-inner {
+	margin-left: -1px;
+	}
+	
+.fc-corner-right {
+	margin-right: 1px;
+	}
+	
+.fc-corner-right .fc-button-inner,
+.fc-corner-right .fc-event-inner {
+	margin-right: -1px;
+	}
+	
+.fc-corner-top {
+	margin-top: 1px;
+	}
+	
+.fc-corner-top .fc-event-inner {
+	margin-top: -1px;
+	}
+	
+.fc-corner-bottom {
+	margin-bottom: 1px;
+	}
+	
+.fc-corner-bottom .fc-event-inner {
+	margin-bottom: -1px;
+	}
+	
+	
+	
+/* Fake Rounded Corners SPECIFICALLY FOR EVENTS
+-----------------------------------------------------------------*/
+	
+.fc-corner-left .fc-event-inner {
+	border-left-width: 1px;
+	}
+	
+.fc-corner-right .fc-event-inner {
+	border-right-width: 1px;
+	}
+	
+.fc-corner-top .fc-event-inner {
+	border-top-width: 1px;
+	}
+	
+.fc-corner-bottom .fc-event-inner {
+	border-bottom-width: 1px;
+	}
+	
+	
+	
+/* Reusable Separate-border Table
+------------------------------------------------------------*/
+
+table.fc-border-separate {
+	border-collapse: separate;
+	}
+	
+.fc-border-separate th,
+.fc-border-separate td {
+	border-width: 1px 0 0 1px; height:111px
+	}
+	
+.fc-border-separate th.fc-last,
+.fc-border-separate td.fc-last {
+	border-right-width: 1px;
+	}
+	
+.fc-border-separate tr.fc-last th,
+.fc-border-separate tr.fc-last td {
+	border-bottom-width: 1px;
+	}
+	
+.fc-border-separate tbody tr.fc-first td,
+.fc-border-separate tbody tr.fc-first th {
+	border-top-width: 0;
+	}
+	
+	
+
+/* Month View, Basic Week View, Basic Day View
+------------------------------------------------------------------------*/
+
+.fc-grid th {
+	text-align: center;
+	}
+	
+.fc-grid .fc-day-number {
+  color: #222222;
+    float: right;
+    font-family: arial;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px;	}
+	
+	
+.fc-grid .fc-state-highlight .fc-day-number {
+	color:#fff;
+	
+}
+.fc-grid .fc-other-month .fc-day-number {
+	opacity: 0.3;
+	filter: alpha(opacity=30); /* for IE */
+	/* opacity with small font can sometimes look too faded
+	   might want to set the 'color' property instead
+	   making day-numbers bold also fixes the problem */
+	}
+	
+.fc-grid .fc-day-content {
+	clear: both;
+	padding: 2px 2px 1px; /* distance between events and day edges */
+	}
+	
+/* event styles */
+	
+.fc-grid .fc-event-time {
+	font-weight: bold;
+	}
+	
+/* right-to-left */
+	
+.fc-rtl .fc-grid .fc-day-number {
+	float: left;
+	}
+	
+.fc-rtl .fc-grid .fc-event-time {
+	float: right;
+	}
+	
+	
+
+/* Agenda Week View, Agenda Day View
+------------------------------------------------------------------------*/
+
+.fc-agenda table {
+	border-collapse: separate;
+	}
+	
+.fc-agenda-days th {
+	text-align: center;
+	}
+	
+.fc-agenda .fc-agenda-axis {
+	width: 50px;
+	padding: 0 4px;
+	vertical-align: middle;
+	text-align: right;
+	white-space: nowrap;
+	font-weight: normal;
+	}
+	
+.fc-agenda .fc-day-content {
+	padding: 2px 2px 1px;
+	}
+	
+/* make axis border take precedence */
+	
+.fc-agenda-days .fc-agenda-axis {
+	border-right-width: 1px;
+	}
+	
+.fc-agenda-days .fc-col0 {
+	border-left-width: 0;
+	}
+	
+/* all-day area */
+	
+.fc-agenda-allday th {
+	border-width: 0 1px;
+	}
+	
+.fc-agenda-allday .fc-day-content {
+	min-height: 34px; /* TODO: doesnt work well in quirksmode */
+	_height: 34px;
+	}
+	
+/* divider (between all-day and slots) */
+	
+.fc-agenda-divider-inner {
+	height: 2px;
+	overflow: hidden;
+	}
+	
+.fc-widget-header .fc-agenda-divider-inner {
+	background: #eee;
+	}
+	
+/* slot rows */
+	
+.fc-agenda-slots th {
+	border-width: 1px 1px 0;
+	}
+	
+.fc-agenda-slots td {
+	border-width: 1px 0 0;
+	background: none;
+	}
+	
+.fc-agenda-slots td div {
+	height: 20px;
+	}
+	
+.fc-agenda-slots tr.fc-slot0 th,
+.fc-agenda-slots tr.fc-slot0 td {
+	border-top-width: 0;
+	}
+
+.fc-agenda-slots tr.fc-minor th,
+.fc-agenda-slots tr.fc-minor td {
+	border-top-style: dotted;
+	}
+	
+.fc-agenda-slots tr.fc-minor th.ui-widget-header {
+	*border-top-style: solid; /* doesn't work with background in IE6/7 */
+	}
+	
+
+
+/* Vertical Events
+------------------------------------------------------------------------*/
+
+.fc-event-vert {
+	border-width: 0 1px;
+	}
+	
+.fc-event-vert .fc-event-head,
+.fc-event-vert .fc-event-content {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	overflow: hidden;
+	}
+	
+.fc-event-vert .fc-event-time {
+	white-space: nowrap;
+	font-size: 10px;
+	}
+	
+.fc-event-vert .fc-event-bg { /* makes the event lighter w/ a semi-transparent overlay  */
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	opacity: .3;
+	filter: alpha(opacity=30);
+	}
+	
+.fc .ui-draggable-dragging .fc-event-bg, /* TODO: something nicer like .fc-opacity */
+.fc-select-helper .fc-event-bg {
+	display: none\9; /* for IE6/7/8. nested opacity filters while dragging don't work */
+	}
+	
+/* resizable */
+	
+.fc-event-vert .ui-resizable-s {
+	bottom: 0        !important; /* importants override pre jquery ui 1.7 styles */
+	width: 100%      !important;
+	height: 8px      !important;
+	overflow: hidden !important;
+	line-height: 8px !important;
+	font-size: 11px  !important;
+	font-family: monospace;
+	text-align: center;
+	cursor: s-resize;
+	}
+	
+.fc-agenda .ui-resizable-resizing { /* TODO: better selector */
+	_overflow: hidden;
+	}
+	
+.colors-div ul{
+	margin:0;
+	padding:0;
+	margin-left:15px;
+	
+}
+.colors-div ul li{
+	list-style:none;
+	line-height:24px;
+	font-size:13px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	cursor:pointer;
+	padding-left:20px;
+	margin:3px 0;
+	color:#979797;
+
+}
+.colors-div ul li.eng{ background:url(/assets/eng.png) 0 center no-repeat;}
+.colors-div ul li.sci{ background:url(/assets/sci.png) 0 center  no-repeat;}
+.colors-div ul li.mat{ background:url(/assets/mat.png) 0 center  no-repeat;}
+.colors-div ul li.his{ background:url(/assets/his.png) 0 center  no-repeat;}
+.colors-div ul li.spa{ background:url(/assets/spa.png) 0 center  no-repeat;}
+.colors-div ul li.active{ background:url(/assets/list_active.png) 0 center no-repeat;}
+
+.colors-div{
+  background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: -2px 2px 5px #666666;
+    margin-left: 55px;
+    padding: 10px;
+    position: absolute;
+    top: 218px;
+    width: 245px;
+	display:none; z-index: 10
+}
+
+.colors-div-innner{
+	border:1px solid #7f7f7f;
+	border-radius: 10px 10px 10px 10px;
+	padding:15px;
+}
+
+
+/* Event Hover Function */
+
+.cal_hov{
+	position:absolute;
+	box-shadow: 8px 8px 58px rgba(0, 0, 0, 0.80);
+    -moz-box-shadow: 8px 8px 58px rgba(0, 0, 0, 0.80);
+    -webkit-box-shadow: 8px 8px 58px rgba(0, 0, 0, 0.80);
+    border-radius:10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    background:#FFF;
+    padding:0px;
+    font-size:14px;
+    width:250px;
+    z-index:200;
+}
+.cal_hol{
+	width:220px;
+	padding:15px;
+	float:left ;
+}
+.cal_title{
+	width:100%;
+	margin:0 auto;
+	background:#4c829e;
+	border:1px solid #a5c0ce;
+	text-align:center;
+	color:#FFF;
+	padding:7px 0;
+	border-radius:8px;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+}
+.cal_mid{
+	width:100%;
+	float:left;
+	margin:10px 0;
+}
+.cal_icon{
+	width:80px;
+	float:left;
+	text-align:right;
+	text-align:center;
+	color:#8f8f8f;
+	padding-top:5px;
+}
+.cal_time{
+	width:140px;
+	float:right;
+	color:#da7373;
+	text-align:left;
+	margin:4px 0;
+}
+.cal_location{
+	width:140px;
+	float:right;
+	color:#8f8f8f;
+	text-align:left;
+	margin:4px 0;
+}
+.cal_row{
+	width:100%;
+	float:left;
+	margin:5px 0;
+}
+.cal_tit{
+	width:80px;
+	float:left;
+	color:#adadad;
+}
+.cal_val{
+	float:left;
+	float:right;
+	color:#adadad;
+	width:140px;
+}
+.cal_rem a{
+	color:#adadad;
+	text-decoration:none;
+}
+.cal_rem a:hover{
+	color:#8b8b8b;
+}
+.cal_rem a.active{
+	color:#da7373;
+}
+.cal_poi{
+	width:45%;
+	float:left;
+	text-align:right;
+	color:#da7373;
+}
+.cal_per{
+	width:45%;
+	float:right;
+	text-align:left;
+	color:#da7373;
+}

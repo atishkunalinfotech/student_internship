@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  company: MyString
+  company_location: MyString
+  dates_start: 2016-03-23
+  date_end: 2016-03-23
+  position: MyString
+
+two:
+  student_id: 1
+  company: MyString
+  company_location: MyString
+  dates_start: 2016-03-23
+  date_end: 2016-03-23
+  position: MyString

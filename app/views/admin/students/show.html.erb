@@ -1,0 +1,250 @@
+  <div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+ </p>
+
+  <h3>Student Profile</h3>
+  <p>
+    <strong>Student email:</strong>
+    <%= @student.email rescue nil %>
+  </p>
+
+  <p>
+    <strong>Student Id:</strong>
+    <%= @student.studentid rescue nil %>
+  </p>
+
+  <p>
+    <strong>First Name:</strong>
+    <%= @student.student_firstname rescue nil %>
+  </p>
+
+  <p>
+    <strong>Middle Name:</strong>
+    <%= @student.student_middlename rescue nil %>
+  </p>
+
+  <p>
+    <strong>Lastname:</strong>
+    <%= @student.student_lastname rescue nil %>
+  </p>
+
+  <p>
+    <strong>Telephone:</strong>
+    <%= @student.telephone rescue nil %>
+  </p>
+  <p>
+    <strong>Gender:</strong>
+    <%= @student.gender rescue nil %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <%= @student.status rescue nil %>
+  </p>
+  <!-- <p>
+    <strong>Paid Status:</strong>
+    <%= @student.paid_status rescue nil %>
+  </p> -->
+  <!-- <p>
+    <strong>Salary:</strong>
+    <%= @student.internship_status_id rescue nil %>
+  </p> -->
+  <p>
+    <strong>country:</strong>
+    <%= ISO3166::Country[@student.country] rescue nil %>
+  </p>
+
+  <h3>Education</h3>
+  <%if @education.present?%>
+  <%if @education.degree_type.present?%>
+  <p>
+    <strong>Degree Type:</strong>
+    <%= @education.degree_type rescue nil %>
+  </p>
+  <%end%>
+  <%if @education.major.present?%>
+   <p>
+    <strong>Major:</strong>
+    <%= @education.major rescue nil %>
+  </p>
+  <%end%>
+  <%if @education.degree_gpa.present?%>
+   <p>
+    <strong>Degree GPA:</strong>
+    <%= @education.degree_gpa rescue nil %>
+  </p>
+  <%end%>
+  <%if @education.degree_university.present?%>
+   <p>
+    <strong>Degree University:</strong>
+    <%= @education.degree_university rescue nil %>
+  </p>
+  <%end%>
+
+  <%if @education.degree_university_loc.present?%>
+   <p>
+    <strong>Degree University Location:</strong>
+    <%= @education.degree_university_loc rescue nil %>
+  </p>
+  <%end%>
+  <%end%>
+
+  <%if @education.certifications.present?%>
+   <p>
+    <strong>Certifications:</strong>
+    <%= @education.certifications rescue nil %>
+  </p>
+  <%end%>
+
+  <%if @education.certification_body.present?%>
+   <p>
+    <strong>Certification Body:</strong>
+    <%= @education.certification_body rescue nil %>
+  </p>
+  <%end%>
+  
+  <%if @education1.present?%>  
+  <%if @education1.degree_type.present?%>
+  <p>
+    <strong>Degree Type:</strong>
+    <%= @education1.degree_type rescue nil %>
+  </p>
+  <%end%>
+  <%if @education1.major.present?%>
+  <p>
+    <strong>Major:</strong>
+    <%= @education1.major rescue nil %>
+  </p>
+  <%end%>
+  <%if @education1.degree_gpa.present?%>
+  <p>
+    <strong>Degree GPA:</strong>
+    <%= @education1.degree_gpa rescue nil %>
+  </p>
+  <%end%>
+  <%if @education1.degree_university.present?%>
+  <p>
+    <strong>Degree University:</strong>
+    <%= @education1.degree_university rescue nil %>
+  </p>
+  <%end%>
+  
+  <%if @education1.degree_university_loc.present?%>
+  <p>
+    <strong>Degree University Location:</strong>
+    <%= @education1.degree_university_loc rescue nil %>
+  </p>
+  <%end%>
+  <%if @education1.certifications.present?%>
+  <p>
+    <strong>Certifications:</strong>
+    <%= @education1.certifications rescue nil %>
+  </p>
+  <%end%>
+  <%if @education1.certification_body.present?%>
+  <p>
+    <strong>Certification Body:</strong>
+    <%= @education1.certification_body rescue nil %>
+  </p>
+  <%end%>
+  <%end%>
+
+  <h3>Work Experience</h3>
+  <%if @student_work_exp.present?%>
+  <%if @student_work_exp.company.present?%>
+  <p>
+    <strong>Company:</strong>
+    <%= @student_work_exp.company rescue nil %>
+  </p>
+  <%end%>
+  <%if @student_work_exp.company_location.present?%>
+   <p>
+    <strong>Company Location:</strong>
+    <%= @student_work_exp.company_location rescue nil %>
+  </p>
+  <%end%>
+  <%if @student_work_exp.dates_start.present?%>
+   <p>
+    <strong>Date start:</strong>
+    <%= @student_work_exp.dates_start rescue nil %>
+  </p>
+  <%end%>
+  <%if @student_work_exp.date_end.present?%>
+   <p>
+    <strong>Date End:</strong>
+    <%= @student_work_exp.date_end rescue nil %>
+  </p>
+  <%end%>
+ 
+  <%if @student_work_exp.position.present?%>
+   <p>
+    <strong>Position:</strong>
+    <%= @student_work_exp.position rescue nil %>
+  </p>
+  <%end%>
+  <%end%>
+
+
+
+  <%if @student_work_exp1.present?%>
+
+  <%if @student_work_exp1.company.present?%>
+    <p>
+      <strong>Company:</strong>
+      <%= @student_work_exp1.company rescue nil %>
+    </p>
+  <%end%>
+  <%if @student_work_exp1.company_location.present?%>
+  <p>
+    <strong>Company Location:</strong>
+    <%= @student_work_exp1.company_location rescue nil %>
+  </p>
+  <%end%>
+  <%if @student_work_exp1.dates_start.present?%>
+    <p>
+    <strong>Date start:</strong>
+    <%= @student_work_exp1.dates_start rescue nil %>
+  </p>
+  <%end%>
+  <%if @student_work_exp1.date_end.present?%>
+    <p>
+    <strong>Date End:</strong>
+    <%= @student_work_exp1.date_end rescue nil %>
+  </p>
+  <%end%>
+  <%if @student_work_exp1.position.present?%>
+    <p>
+    <strong>Position:</strong>
+    <%= @student_work_exp1.position rescue nil %>
+  </p>
+  <%end%>
+  <%end%>
+  
+  
+  <p>
+    <% @skill_groups.each do |skillgrp| %>
+      <strong><%= skillgrp.skill rescue nil%></strong> <br/>
+      <%skillgrp.skills.each do |skill|%>
+         <%@skill_level = UserSkill.where('student_id = ? and skill_id = ?',@student.id,skill.id).first rescue nil%>
+         <%@skill = Skill.find(@skill_level.skill_id) rescue nil%>
+         <%= @skill.skill_name rescue nil%> -> <%= @skill_level.skill_level rescue nil%><br/>
+      <%end%>
+    <%end%>
+  </p>
+
+  </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

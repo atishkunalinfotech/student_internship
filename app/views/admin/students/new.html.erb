@@ -1,0 +1,62 @@
+<%#= form_for :user, url: admin_users_path(:user), html: {method: :post} do |f| %>
+<div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+ </p>
+<div class="form">
+<%= form_for([:admin,@student],:html =>{ :multipart => true,:onsubmit => "return validateEmail(this.form)"}) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :studentid,"Student Id" %>
+    <%= f.text_field :studentid,required: true %>
+  </div>
+  <%= f.hidden_field :internship_status_id , :value => @internship.id%>
+  <%= f.hidden_field :student_profile , :value => "student_profile"%>
+
+  <div class="field">
+    <%= f.label :email,:class=>"field-lable" %>
+    <%= f.email_field :email,required: true,:class=>"field-in" %>
+  </div>
+
+  <div><%= t "devise.password",:class=>"field-lable" %><% if @validatable %><i>(<%= @minimum_password_length %> <%= t "devise.characters_minimum"%>)</i><% end %><br />
+  </div>
+    <%= f.password_field :password, autocomplete: "off",:class=>"field-in",:required => true ,:id=>"password1"%>
+  <div><%= t "devise.password_confirmation",:class=>"field-lable" %><br />
+    <%= f.password_field :password_confirmation,autocomplete: "off",:class=>"field-in" ,required: true,:id=>"password2", :oninput=>"check(this)"%>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "edit-btn", :confirm => "Please check all information before save."%>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+function check(input) {
+  if (input.value != document.getElementById('password1').value) {
+    input.setCustomValidity('Password should match confirm password.');
+  } else {
+  input.setCustomValidity('');
+ }
+}
+</script>
+
+
+
+

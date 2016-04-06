@@ -1,0 +1,33 @@
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+       <p>
+          <%= link_to 'New', new_admin_skill_path %>
+       </p>
+
+<table width="100%" border="0" class="table table-bordered table-striped">
+
+  <thead>
+    <tr>
+      <th><%= "Skill group" %></th>
+      <th><%= "Skill name" %></th>
+      <th><%= "Action" %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @skills.each do |skill| %>
+      <tr>
+        <td><%= skill.skill_group.skill rescue nil %></td>
+        <td><%= skill.skill_name rescue nil %></td>
+        <td><%= link_to 'Edit', edit_admin_skill_path(skill) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+ </div>
+    </div>
+  </div>
+</div>

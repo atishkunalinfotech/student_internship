@@ -1,0 +1,69 @@
+rails g devise student
+rails g devise:views
+rake db:migrate
+company attributes:
+rails g model company company internship_type:string company_name:string address:text city:string postal:string country:string contact_person_first:string contact_person_last:string contact_person_position:string telephone:string email:string company_website:string notes:text 
+job group: 
+rails g model job_group job_model_name:string
+job table:
+rails g model job job_model_id:integer job_name:string
+rails g migration add_description_to_jobs description:text responsibilities:text requirements:text salary:string
+student fields:
+rails g migration add_student_field_to_students student_id:string student_firstname:string student_middlename:string student_lastname:string email:string telephone:string gender:string status:string
+semester model
+rails g model semester_registered semester:string student_year:date student_id:integer
+rake db:migrate
+education:
+rails g model education student_id:integer degree_type:string major:string degree_gpa:float degree_university:string degree_university_loc:string certifications:string certification_body:string
+rake db:migrate
+student work experience:
+rails g model student_work_exp student_id:integer company:string company_location:string dates_start:date date_end:date position:string
+rake db:migrate
+skill attributes:
+rails g model skill_group skill:string
+rails g model skill skill_group_id:integer skill_name:string
+skill level of student:
+rails g model user_skill student_id:integer skill_id:integer skill_level:string
+rake db:migrate
+internship 
+rails g model internship_status internship_status_name:string
+rake db:migrate
+paid status of student
+rails g migration add_paid_to_students paid_status:string
+rake db:migrate
+rails g controller admin/dashboard index
+user role
+rails g migration add_role_to_users role:string
+
+rails g controller admin/job_groups
+rails g controller admin/jobs
+rails g controller admin/student
+rails g controller admin/educations
+rails g controller admin/student_work_exps
+rails g controller admin/internship_statuses
+rails g controller admin/skill_groups
+rails g controller admin/skills
+
+rails g migration add_internship_status_to_students internship_status_id:integer
+rake db:migrate
+rails g migration add_fields_to_jobs description:text responsibilities:text requirements:text salary:string
+migrate
+rails g model job_post job_id:integer company_id:integer status:integer
+rake db:migrate
+rails g controller admin/job_posts
+rails g controller student_dashboard
+rails g controller students
+rails g model student_job_interest student_id:integer company_id:integer job_id:integer
+rake db:migrate
+rails g controller student_job_interests
+rails g controller job_posts
+rails g controller admin/student_job_interests
+rails g migration add_select_profile_status_to_student_job_interests select_profile_status:boolean
+rake db:migrate
+rails g migration add_reject_profile_to_student_job_interests reject_profile:boolean
+rake db:migrate
+rails g migration add_paid_status_to_student_job_interests paid_status:string
+rake db:migrate
+rails g controller admin/reports
+ rails g scaffold city city:string
+ rake db:migrate

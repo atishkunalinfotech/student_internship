@@ -1,0 +1,94 @@
+<div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+ </p>
+<h1>Edit Company Profile</h1>
+
+<%= form_for [:admin,@company] do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+	  <ul>
+	   <%  @company.errors.full_messages.each do |msg| %>
+	     <li><%= msg %></li>
+	   <% end %>
+	  </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :internship_type %>
+    <%= f.select :internship_type, [ ["Company", "Company"],["Startup Company", "Startup Company"],["Research Project", "Research Project"],["MAC Project", "MAC Project"],["Other", "Other"] ],{:include_blank=>"Select One"},:style=>" width: 255px;" ,:required =>true%>
+  </div>
+  
+  <div class="field">
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_area :address,required: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :city  %>
+    <%= f.collection_select :city, Admin::City.all,:city_name, :city_name,:style=>"width:98%; width: 255px;" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal  %>
+    <%= f.text_field :postal,required: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :country  %>
+    <%= f.country_select :country,selected: "CA",required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_person_first  %>
+    <%= f.text_field :contact_person_first,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_person_last  %>
+    <%= f.text_field :contact_person_last,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_person_position  %>
+    <%= f.text_field :contact_person_position,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone  %>
+    <%= f.text_field :telephone,required: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :email  %>
+    <%= f.text_field :email,required: true  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company_website  %>
+    <%= f.text_field :company_website,required: true  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :notes  %>
+    <%= f.text_field :notes,required: true%>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %><br>
+  </div>
+
+<% end %>
+
+</div>
+    </div>
+  </div>
+</div>

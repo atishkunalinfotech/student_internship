@@ -1,0 +1,79 @@
+<div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+ </p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Internship type:</strong>
+  <%= @company.internship_type %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @company.company_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @company.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @company.city %>
+</p>
+
+<p>
+  <strong>Postal:</strong>
+  <%= @company.postal %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= ISO3166::Country[@company.country] rescue nil %>
+</p>
+
+<p>
+  <strong>Contact First Person:</strong>
+  <%= @company.contact_person_first %>
+</p>
+
+<p>
+  <strong>Contact Last Person:</strong>
+  <%= @company.contact_person_last %>
+</p>
+
+<p>
+  <strong>Contact person position:</strong>
+  <%= @company.contact_person_position %>
+</p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @company.telephone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= auto_link(@company.email)%>
+</p>
+
+<p>
+  <strong>Company website:</strong>
+  <%= auto_link("#{@company.company_website}") %>
+</p>
+
+<p>
+  <strong>notes:</strong>
+  <%= @company.notes %>
+</p>
+
+</div>
+    </div>
+  </div>
+</div>

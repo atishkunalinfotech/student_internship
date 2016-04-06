@@ -1,0 +1,29 @@
+<%#= link_to 'New', new_admin_internship_status_path %>
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+       <p>
+          <%#= link_to 'New', new_admin_job_group_path %>
+       </p>
+<table width="100%" border="0" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= "Internship Status" %></th>
+      <!-- <th><%= "Action" %></th> -->
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @internship_statuses.each do |internship_status| %>
+      <tr>
+        <td><%= internship_status.internship_status_name rescue nil %></td>
+        <td><%#= link_to 'Edit', edit_admin_internship_status_path(internship_status) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+       <p>
+          <%#= link_to 'New', new_admin_job_group_path %>
+       </p>
+<table width="100%" border="0" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= "Company Name" %></th>
+      <th><%= "Job Position" %></th>
+      <th><%= "Job Status" %></th>
+      <th><%= "Action" %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_posts.each do |job_post| %>
+      <tr>
+        <td><%= job_post.company.company_name rescue nil%></td>
+        <td><%= job_post.job.job_name rescue nil%></td>
+        <% if job_post.status ==  1%>
+          <td><%= "Open" %></td>
+        <%else%>
+          <td><%= "Closed"%></td>
+        <%end%>
+        <td><%= link_to 'Edit', edit_admin_job_post_path(job_post) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+    </div>
+  </div>
+</div>

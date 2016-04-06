@@ -1,0 +1,50 @@
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+       
+<table width="100%" border="0" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= "Company" %></th>
+      <th><%= "Job" %></th>
+      <th><%= "Student Id" %></th>
+      <th><%= "Student Name" %></th>
+      <th><%= "Session"%></th>
+      <th><%= "Action" %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @student_job_interests.each do |student_job_interest| %>
+      <tr>
+        <td><%= student_job_interest.company.company_name rescue nil %></td>
+        <td><%= student_job_interest.job.job_name rescue nil %></td>
+        <td><%= student_job_interest.student.studentid rescue nil %></td>
+        <td><%= student_job_interest.student.student_firstname rescue nil %> <%= student_job_interest.student.student_lastname rescue nil %></td>
+        <%@sem = SemesterRegistered.where('student_id = ?',student_job_interest.student.id)   %>
+        <td><%= @sem[0].semester rescue nil   %></td>
+        <td><%= link_to 'Show Profile',admin_student_path(student_job_interest.student.id) %></td>
+        <%if student_job_interest.is_hire == 0%>
+          <td><%= link_to 'Hire Student',admin_hire_student_path(:student_job_interest =>student_job_interest.id,:student_id =>student_job_interest.student.id) %></td>
+        <%elsif student_job_interest.is_hire == 2%>
+         <td><%#="Hired"%></td>
+        <%elsif student_job_interest.is_hire == 1%>
+          <td><%="Hired"%></td>
+        <%end%>
+        <%if student_job_interest.is_hire == 0 %>
+        <td><%= link_to 'Not Hired',admin_not_hired_student_path(:student_job_interest =>student_job_interest.id,:student_id =>student_job_interest.student.id) %></td>
+        <%elsif student_job_interest.is_hire == 1%>
+         <td><%#= "Not Hired"%></td>
+        <%elsif student_job_interest.is_hire == 2%>
+          <td><%= "Not Hired"%></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+ </div>
+    </div>
+  </div>
+</div>

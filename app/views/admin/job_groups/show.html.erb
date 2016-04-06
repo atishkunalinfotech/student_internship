@@ -1,0 +1,19 @@
+<div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %> | <%= link_to 'Edit', edit_admin_job_group_path(@job_group) %>
+ </p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>job group name:</strong>
+  <%= @job_group.job_model_name %>
+</p>
+
+</div>
+    </div>
+  </div>
+</div>
+

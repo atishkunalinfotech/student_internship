@@ -1,0 +1,21 @@
+<%= form_for [:admin,@job_group] do |f| %>
+  <% if @job_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_group.errors.count, "error") %> prohibited this job group from being saved:</h2>
+
+      <ul>
+      <% @job_group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :job_model_name%><br>
+    <%= f.text_field :job_model_name,required: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+<% end %>

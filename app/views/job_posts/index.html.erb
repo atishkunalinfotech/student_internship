@@ -1,0 +1,39 @@
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+<table width="100%" border="0" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= "Company Name" %></th>
+      <th><%= "Job Position" %></th>
+      <th><%= "Job Status" %></th>
+      <th><%= "Action" %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_posts.each do |job_post| %>
+      <tr>
+        <td><%= job_post.company.company_name rescue nil%></td>
+        <td><%= job_post.job.job_name rescue nil%></td>
+        <% if job_post.status ==  1%>
+          <td><%= "Open" %></td>
+        <%else%>
+          <td><%= "Closed"%></td>
+        <%end%>
+        <td><%= link_to 'Show', job_post_path(job_post) %></td>
+        <% @apply = JobPost.applied_post(job_post,current_student.id)%>
+        <%unless @apply.present?%>
+          <td><%= link_to "Apply For Post",job_interest_post_path(:job_id => job_post.job_id)%></td>
+        <%else%>
+          <td><%= "Applied"%></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+    </div>
+  </div>
+</div>

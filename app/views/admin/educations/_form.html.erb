@@ -1,0 +1,50 @@
+<%= form_for [:admin,@education] do |f| %>
+  <% if @education.errors.any? %>
+    <div id="error_explanation">
+	  <ul>
+	   <%  @education.errors.full_messages.each do |msg| %>
+	     <li><%= msg %></li>
+	   <% end %>
+	  </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%#= f.hidden_field :student_id , :value => %>
+  </div>
+
+  <div class="field">
+    <%= f.label :degree_type %>
+    <%= f.text_field :degree_type,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :major %>
+    <%= f.text_field :major,required: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :degree_gpa  %>
+    <%= f.text_field :degree_gpa,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :degree_university  %>
+    <%= f.text_field :degree_university,required: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :degree_university_loc  %>
+    <%= f.text_field :degree_university_loc,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :certifications  %>
+    <%= f.text_field :certifications,required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :certification_body  %>
+    <%= f.text_field :certification_body,required: true %>
+  </div>
+  <%= link_to_remove_fields "remove", f %>
+<% end %>

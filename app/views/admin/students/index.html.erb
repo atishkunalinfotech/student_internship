@@ -1,0 +1,55 @@
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+       <p>
+          <%= link_to 'New Student', new_admin_student_path %>
+       </p>
+        <h1>Students</h1>
+
+        <table width="100%" border="0" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= "Student Id" %></th>
+      <th><%= "First Name" %></th>
+      <th><%= "Middle Name" %></th>
+      <th><%= "Last Name" %></th>
+      <th><%= "gender" %></th>
+      <th><%= "country" %></th>
+      <th><%= "status" %></th>
+      <th><%= "Telephone" %></th>
+      <th><%= "Semester" %></th>
+      <th><%= "Year" %></th>
+      <th><%= "Email" %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.studentid rescue nil %></td>
+        <td><%= student.student_firstname rescue nil %></td>
+        <td><%= student.student_middlename rescue nil %></td>
+        <td><%= student.student_lastname rescue nil %></td>
+        <td><%= student.gender rescue nil %></td>
+        <td><%= ISO3166::Country[student.country] rescue nil %></td>
+        <td><%= student.status rescue nil %></td>
+        <td><%= student.telephone rescue nil %></td>
+        <td><%= student.semester_registereds.where('student_id = ?', student.id).first.semester rescue nil%></td>
+        <td><%= student.semester_registereds.where('student_id = ?', student.id).first.student_year rescue nil %></td>
+        <td><%= student.email rescue nil %></td>
+        <td><%= link_to 'Show', admin_student_path(student) %></td>
+        <td><%= link_to 'Edit', edit_admin_student_path(student) %></td>
+        <td><%= link_to 'Destroy', admin_student_path(student), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>

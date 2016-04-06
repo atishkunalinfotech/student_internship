@@ -1,0 +1,86 @@
+-------------------------------------------------------------------------------
+  <div class="field">
+    <%= label_tag :company  %>
+    <%= text_field_tag :company %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :company_location  %>
+    <%= text_field_tag :company_location%>
+  </div>
+
+  <div class="field">
+    <%= label_tag :dates_start  %>
+    <%= date_field_tag(:dates_start)%>
+    <%#= date_field_tag :dates_start%>
+  </div>
+
+  <div class="field">
+    <%= label_tag :date_end  %>
+    <%= date_field_tag :date_end%>
+  </div>
+
+  <div class="field">
+    <%= label_tag :position  %>
+    <%= text_field_tag :position%>
+  </div>
+
+-----------------------------------------------------------------------------------
+<div class="field">
+    <%= label_tag :company  %>
+    <%= text_field_tag :company1 %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :company_location  %>
+    <%= text_field_tag :company_location1%>
+  </div>
+
+  <div class="field">
+    <%= label_tag :dates_start  %>
+    <%= date_field_tag :dates_start1%>
+  </div>
+
+  <div class="field">
+    <%= label_tag :date_end  %>
+    <%= date_field_tag :date_end1%>
+  </div>
+
+  <div class="field">
+    <%= label_tag :position  %>
+    <%= text_field_tag :position1%>
+  </div>
+
+  <script type="text/javascript">
+    jQuery.noConflict();
+    jQuery(function($){
+      jQuery("#dates_start").datepicker({dateFormat: 'dd-mm-yy',changeMonth: true,
+    changeYear: true})
+
+    });
+    jQuery.noConflict();
+    jQuery(function($){
+      jQuery("#date_end").datepicker({dateFormat: 'dd-mm-yy ',changeMonth: true,
+    changeYear: true})
+    });
+</script>
+
+<script type="text/javascript">
+    jQuery.noConflict();
+    jQuery(function($){
+      jQuery("#dates_start1").datepicker({dateFormat: 'dd-mm-yy',changeMonth: true,
+    changeYear: true})
+
+    });
+    jQuery.noConflict();
+    jQuery(function($){
+      jQuery("#date_end1").datepicker({dateFormat: 'dd-mm-yy ',changeMonth: true,
+    changeYear: true})
+    });
+</script>
+
+
+
+
+
+

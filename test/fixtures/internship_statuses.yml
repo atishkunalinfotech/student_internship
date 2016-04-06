@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  internship_status_name: MyString
+
+two:
+  internship_status_name: MyString

@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  internship_type: MyString
+  company_name: MyString
+  address: MyText
+  city: MyString
+  postal: MyString
+  country: MyString
+  contact_person_first: MyString
+  contact_person_last: MyString
+  contact_person_position: MyString
+  telephone: MyString
+  email: MyString
+  company_website: MyString
+  notes: MyText
+
+two:
+  internship_type: MyString
+  company_name: MyString
+  address: MyText
+  city: MyString
+  postal: MyString
+  country: MyString
+  contact_person_first: MyString
+  contact_person_last: MyString
+  contact_person_position: MyString
+  telephone: MyString
+  email: MyString
+  company_website: MyString
+  notes: MyText

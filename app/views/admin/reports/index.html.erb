@@ -1,0 +1,63 @@
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+       
+  <script type="text/javascript">
+      jQuery.noConflict();
+      jQuery(function($){
+        jQuery("#year").datepicker({
+          changeYear: true,
+          showButtonPanel: true,
+          dateFormat: 'yy',
+          beforeShowDay: jQuery.datepicker.nodates,
+          onClose: function(dateText, inst) { 
+              var year = jQuery("#ui-datepicker-div .ui-datepicker-year :selected").val();
+              jQuery(this).datepicker('setDate', new Date(year, 1));
+          }
+      });
+
+      jQuery("#year").focus(function () {
+          jQuery(".ui-datepicker-month").hide();
+          jQuery(".ui-datepicker-calendar").hide();
+          jQuery(".ui-datepicker-current").hide();
+      });
+
+      });
+  </script>
+  <h4>Student Search</h4>
+<%= form_tag :admin_student_reports, :url => admin_student_reports_path, :method => 'get' do%>    
+              <table class="grid-search-box">
+                <tr>
+                <td>
+                  <%= select 'student_type',:student_type, [ ["All Students", "All Students"] ],{:include_blank=>"Select One"}%>
+                  <%= text_field_tag :student_type_field,"",:placeholder => "Student ID" %>
+                  <%= select_tag 'company', options_for_select(Company.all.collect{ |u| [u.company_name, u.id] }),{:include_blank=>"Select Company"}%>
+                  <%= country_select 'students',:country, {:include_blank=>"Select Country"}%>
+                  <%= select 'students',:with_job, [ ["Hired", "Hired"], ["Available", "Available"] ],{:include_blank=>"Select Hired/Available"} %>
+                  <%= select 'students',:paid_status, [ ["Paid", "Paid"], ["Unpaid", "Unpaid"] ],{:include_blank=>"Select Paid/Unpaid"} %>
+                  <%= select 'students',:gpa, [ ["Avg Current GPA", "Avg Current GPA"], ["Avg Previous GPA", "Avg Previous GPA"] ],{:include_blank=>"Select GPA"} %>
+                  <%= select 'students',:semester, [ ["Fall", "Fall"], ["Winter", "Winter"] ],{:include_blank=>"Select FALL/WINTER"} %>
+                  <%= date_field_tag :year,"",:placeholder => "Year"%>
+                  <%= submit_tag "Submit",name: "subaction",value: "Find",:class=>"search-btn"%>
+                </td>
+                </tr>
+                </table>
+            <%end%>
+<h4>Company Search</h4>
+<%= form_tag :admin_company_reports, :url => admin_company_reports_path, :method => 'get' do%> 
+    <td width="20%">
+      <%= select 'students',:start_up, [ ["Startup", "Startup"] ],{:include_blank=>"Select Startup"} %>
+      <%= select 'students',:employers, [ ["All Employers", "All Employers"] ],{:include_blank=>"Select All Employers"} %>
+      <%= select_tag 'company_city', options_for_select(Admin::City.all.collect{ |u| [u.city_name, u.city_name] }),{:include_blank=>"Select City"}%>
+      <%= select 'students',:all_position, [ ["All positions", "All positions"] ],{:include_blank=>"Select Position"} %>
+
+    </td>
+  <%= submit_tag "Submit",name: "companyaction",value: "Find",:class=>"search-btn"%>
+<%end%>
+
+</div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,45 @@
+<div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+<%= link_to 'Edit', edit_admin_job_path(@job) %> |
+<%= link_to 'Back', admin_jobs_path %>
+ </p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job Model:</strong>
+  <%= @job.job_model_id %>
+</p>
+
+<p>
+  <strong>job name:</strong>
+  <%= @job.job_name %>
+</p>
+
+<p>
+  <strong>description:</strong>
+  <%= @job.description %>
+</p>
+
+<p>
+  <strong>responsibilities:</strong>
+  <%= @job.responsibilities %>
+</p>
+
+<p>
+  <strong>requirements:</strong>
+  <%= @job.requirements %>
+</p>
+
+<p>
+  <strong>salary:</strong>
+  <%= @job.salary %>
+</p>
+
+</div>
+    </div>
+  </div>
+</div>
+

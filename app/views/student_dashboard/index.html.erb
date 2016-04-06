@@ -1,0 +1,29 @@
+<div id="faq">
+    <div class="container" style="margin-top:150px">
+        <div class="section_header">
+            <h3>Dashboard</h3>
+        </div>
+
+        <div class="row">
+            <div class="span6 block">
+              <div class="box">
+                    <p class="title">Welcome to Dashboard</p>
+                   
+              </div>
+            </div>
+
+            <div class="span6 block">
+              <div class="box">
+			    <ul>
+			      <li><%= link_to "Edit profile", edit_student_path(current_student)%></li>
+                  <li><%= link_to "Job Posting", job_posts_path%></li>
+                  <li><%= link_to "Show Profile", student_path(current_student)%></li>        
+                </ul>
+                
+              </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  degree_type: MyString
+  major: MyString
+  degree_gpa: 1.5
+  degree_university: MyString
+  degree_university_loc: MyString
+  certifications: MyString
+  certification_body: MyString
+
+two:
+  student_id: 1
+  degree_type: MyString
+  major: MyString
+  degree_gpa: 1.5
+  degree_university: MyString
+  degree_university_loc: MyString
+  certifications: MyString
+  certification_body: MyString
