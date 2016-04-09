@@ -18,7 +18,7 @@
     <%= f.collection_select :job_group_id,JobGroup.all,:id, :job_model_name, :include_blank=> 'Select One',:style=>"width:98%; width: 255px;" %>
   </div>
   <div class="field">
-    <%= f.label :job_name%>
+    <%= f.label :position%>
     <%= f.text_field :job_name,required: true %>
   </div>
   <div class="field">

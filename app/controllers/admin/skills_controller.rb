@@ -29,7 +29,7 @@ class Admin::SkillsController < ApplicationController
     	redirect_to admin_skills_path
 	end
 
-	def delete
+	def destroy
 	   @skill.destroy
        flash[:notice] = "Deleted successfully."
        redirect_to admin_skills_path

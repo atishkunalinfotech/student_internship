@@ -12,7 +12,7 @@ class JobPostsController < ApplicationController
 	end
     
     def job_interest_post
-    	@job = JobPost.find(params[:job_id]) rescue nil
+    	@job = JobPost.where('job_id = ?',params[:job_id]).first rescue nil
 		@student_interest = StudentJobInterest.create(:job_id => params[:job_id],:student_id => current_student.id, :company_id => @job.company_id)
 	    flash[:notice] = "Successfully Applied."
 	    redirect_to student_dashboard_path

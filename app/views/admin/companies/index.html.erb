@@ -9,11 +9,10 @@
 <!-- <table border cellspacing=0 cellpadding=10> -->
 <table width="100%" border="0" class="table table-bordered table-striped">
 <tr>
-	<th><%= "internship_type" %></th>
-	<th><%= "company_name" %></th>
-	<th><%= "email" %></th>
-	<th><%= "company_website" %></th>
-	<th><%= "notes" %></th>
+	<th><%= "Internship Type" %></th>
+	<th><%= "Company Name" %></th>
+	<th><%= "Email" %></th>
+	<th><%= "Company Website" %></th>
 	<th colspan=2>Actions</th>
 </tr>
 <% @company.each do |company| %>
@@ -22,9 +21,9 @@
 	<td><%= company.try(:company_name) %></td>
 	<td><%= auto_link(company.try(:email)) %></td>
 	<td><%= auto_link(company.try(:company_website)) %></td>
-    <td><%= company.try(:notes) %></td>
 	<td><%= link_to 'Edit', edit_admin_company_path(company) %></td>
 	<td><%= link_to 'Show Company', admin_company_path(company) %></td>
+	<td><%= link_to 'Destroy', admin_company_path(company), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
 <% end %>
 </table>

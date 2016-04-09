@@ -22,6 +22,7 @@
         <td><%= skill.skill_group.skill rescue nil %></td>
         <td><%= skill.skill_name rescue nil %></td>
         <td><%= link_to 'Edit', edit_admin_skill_path(skill) %></td>
+        <td><%= link_to 'Destroy', admin_skill_path(skill), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

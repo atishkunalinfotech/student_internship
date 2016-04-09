@@ -1,0 +1,49 @@
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+        <p>
+		   <%= link_to_function("Print this Page", "javascript:print()")%> |
+		   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+		</p>
+      	<%unless params[:students][:all_position].present? %>
+	        <table width="100%" border="0" class="table table-bordered table-striped">
+				<tr>
+					<th><%= "Internship Type" %></th>
+					<th><%= "Company Name" %></th>
+					<th><%= "Email" %></th>
+					<th><%= "Company Website" %></th>
+					<th><%= "City"%></th>
+					<th><%= "Country" %></th>
+				</tr>
+				<% @company.each do |company| %>
+				<tr>
+					<td><%= company.try(:internship_type) %></td>
+					<td><%= company.try(:company_name) %></td>
+					<td><%= company.try(:email) %></td>
+					<td><%= company.try(:company_website) %></td>
+					<td><%= company.city rescue nil%></td>
+					<td><%= ISO3166::Country[company.try(:country)] %></td>
+				</tr>
+				<% end %>
+			</table>
+		<%else%>
+		    <table width="100%" border="0" class="table table-bordered table-striped">
+				<tr>
+					<th><%= "Job Model" %></th>
+					<th><%= "Position" %></th>
+					<th><%= "Salary" %></th>
+				</tr>
+				<% @jobs.each do |job| %>
+				<tr>
+					<td><%= job.job_group.job_model_name rescue nil%></td>
+					<td><%= job.try(:job_name) %></td>
+					<td><%= job.try(:salary) %></td>
+				</tr>
+				<% end %>
+			</table>
+		<%end%>
+      </div>
+    </div>
+  </div>
+</div>

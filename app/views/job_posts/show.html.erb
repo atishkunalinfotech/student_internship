@@ -1,3 +1,10 @@
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+        <p>
+   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+ </p>
   <p>
     <strong>Company Name:</strong>
     <%= @job_post.company.company_name rescue nil %>
@@ -25,9 +32,19 @@
 
   <p>
     <strong>Salary:</strong>
-    <%= @job.salary rescue nil %>
+    <%if @job.salary.present?%>
+      <%= @job.salary rescue nil %>
+    <%else%>
+    <%= "Unpaid"%>
+    <%end%>
   </p>
 <% @apply = JobPost.applied_post(@job_post,current_student.id)%>
 <%unless @apply.present?%>
   <%= link_to "Apply For Post",job_interest_post_path(:job_id => @job.id)%>
 <%end%>
+
+</div>
+    </div>
+  </div>
+</div>
+

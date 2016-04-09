@@ -1,55 +1,52 @@
--------------------------------------------------------------------------------
-  <div class="field">
-    <%= label_tag :company  %>
-    <%= text_field_tag :company %>
-  </div>
 
-  <div class="field">
-    <%= label_tag :company_location  %>
-    <%= text_field_tag :company_location%>
-  </div>
+ <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong><%= label_tag :company  %></strong></td>
+        <td><%= text_field_tag :company %></td>
+        <td><strong><%= label_tag :company_location  %></strong></td>
+        <td><%= text_field_tag :company_location%></td><br/>
+        </tr>
+        <tr>
+           <td><strong><%= label_tag :dates_start  %></strong></td>
+           <td><%= date_field_tag(:dates_start)%></td>
+           <td><strong><%= label_tag :date_end%></strong></td>
+           <td><%= date_field_tag :date_end%></td>
+        </tr>
+        <tr>
+          <td><strong><%= label_tag :position %></strong></td>
+          <td><%= text_field_tag :position%></td>
+          <td></td>
+          <td></td>
+        </tr>  
+      </tbody>
+    </table> 
 
-  <div class="field">
-    <%= label_tag :dates_start  %>
-    <%= date_field_tag(:dates_start)%>
-    <%#= date_field_tag :dates_start%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :date_end  %>
-    <%= date_field_tag :date_end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :position  %>
-    <%= text_field_tag :position%>
-  </div>
-
------------------------------------------------------------------------------------
-<div class="field">
-    <%= label_tag :company  %>
-    <%= text_field_tag :company1 %>
-  </div>
-
-  <div class="field">
-    <%= label_tag :company_location  %>
-    <%= text_field_tag :company_location1%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :dates_start  %>
-    <%= date_field_tag :dates_start1%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :date_end  %>
-    <%= date_field_tag :date_end1%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :position  %>
-    <%= text_field_tag :position1%>
-  </div>
+<table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong><%= label_tag :company %></strong></td>
+        <td><%= text_field_tag :company1 %></td>
+        <td><strong><%= label_tag :company_location  %></strong></td>
+        <td><%= text_field_tag :company_location1%></td><br/>
+        </tr>
+        <tr>
+           <td><strong><%= label_tag :dates_start  %></strong></td>
+           <td><%= date_field_tag :dates_start1 %></td>
+           <td><strong><%= label_tag :date_end%></strong></td>
+           <td><%= date_field_tag :date_end1%></td>
+        </tr>
+        <tr>
+          <td><strong><%= label_tag :position %></strong></td>
+          <td><%= text_field_tag :position1%></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table> 
 
   <script type="text/javascript">
     jQuery.noConflict();

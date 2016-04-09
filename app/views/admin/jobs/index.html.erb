@@ -10,9 +10,8 @@
 
 <tr>
 	<th><%= "Job Model" %></th>
-	<th><%= "job name" %></th>
-	<th><%= "description" %></th>
-	<th><%= "salary" %></th>
+	<th><%= "Position" %></th>
+	<th><%= "Salary" %></th>
 	<th colspan=2>Actions</th>
 </tr>
 <% @jobs.each do |job| %>
@@ -22,6 +21,7 @@
 	<td><%= job.try(:salary) %></td>
 	<td><%= link_to 'Edit', edit_admin_job_path(job) %></td>
 	<td><%= link_to 'Job Post', new_admin_job_post_path(:job_id => job) %></td>
+	<td><%= link_to 'Destroy', admin_job_path(job), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
 <% end %>
 </table>

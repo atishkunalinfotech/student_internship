@@ -5,167 +5,182 @@
  <p>
    <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
  </p>
-  <p>
-    <strong>Student email:</strong>
-    <%= @student.email rescue nil %>
-  </p>
+ <h3>PROFILE</h3>
+ <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong>Student email:</strong></td>
+        <td><%= @student.email rescue nil %></td>
+        <td><strong>Student Id:</strong></td>
+        <td><%= @student.studentid rescue nil %></td><br/>
+        </tr>
+        <tr>
+           <td><strong>First Name:</strong></td>
+           <td><%= @student.student_firstname rescue nil %></td>
+           <td><strong>Middle Name:</strong></td>
+           <td><%= @student.student_middlename rescue nil %></td>
+        </tr>
+        <tr>
+          <td><strong>Lastname:</strong></td>
+          <td><%= @student.student_lastname rescue nil %></td>
+          <td><strong>Telephone:</strong></td>
+          <td><%= @student.telephone rescue nil %></td>
 
-  <p>
-    <strong>student Id:</strong>
-    <%= @student.studentid rescue nil %>
-  </p>
+        </tr>
+        <tr>
+          <td><strong>Gender:</strong></td>
+          <td><%= @student.gender rescue nil %></td>
+          <td><strong>Status:</strong></td>
+          <td><%= @student.status rescue nil %></td>
+        </tr>
+        <tr>
+          <td><strong>Country:</strong></td>
+          <td><%= ISO3166::Country[@student.country] rescue nil %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table> 
+    <h3>EDUCATION</h3>
+    <%if @education.present?%>
+    <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong>Degree Type:</strong></td>
+        <td><%= @education.degree_type rescue nil %></td>
+        <td><strong>Major:</strong></td>
+        <td><%= @education.major rescue nil %></td><br/>
+        </tr>
+        <tr>
+           <td><strong>Degree GPA:</strong></td>
+           <td><%= @education.degree_gpa rescue nil %></td>
+           <td><strong>Degree University:</strong></td>
+           <td><%= @education.degree_university rescue nil %></td>
+        </tr>
+        <tr>
+          <td><strong>Degree University Location:</strong></td>
+          <td><%= @education.degree_university_loc rescue nil %></td>
+          <td><strong>Certifications:</strong></td>
+          <td><%= @education.certifications rescue nil %></td>
 
-  <p>
-    <strong>student First Name:</strong>
-    <%= @student.student_firstname rescue nil %>
-  </p>
+        </tr>
+        <tr>
+          <td><strong>Certification Body:</strong></td>
+          <td><%= @education.certification_body rescue nil %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table> 
+    <%end%>
 
-  <p>
-    <strong>student Middle Name:</strong>
-    <%= @student.student_middlename rescue nil %>
-  </p>
+    <%if @education1.present? %>
+    <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong>Degree Type:</strong></td>
+        <td><%= @education1.degree_type rescue nil %></td>
+        <td><strong>Major:</strong></td>
+        <td><%= @education1.major rescue nil %></td><br/>
+        </tr>
+        <tr>
+           <td><strong>Degree GPA:</strong></td>
+           <td><%= @education1.degree_gpa rescue nil %></td>
+           <td><strong>Degree University:</strong></td>
+           <td><%= @education1.degree_university rescue nil %></td>
+        </tr>
+        <tr>
+          <td><strong>Degree University Location:</strong></td>
+          <td><%= @education1.degree_university_loc rescue nil %></td>
+          <td><strong>Certifications:</strong></td>
+          <td><%= @education1.certifications rescue nil %></td>
 
-  <p>
-    <strong>student Lastname:</strong>
-    <%= @student.student_lastname rescue nil %>
-  </p>
+        </tr>
+        <tr>
+          <td><strong>Certification Body:</strong></td>
+          <td><%= @education1.certification_body rescue nil %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table> 
+    <%end%>
+    <h3>Work Experience</h3>
+    <%if @student_work_exp.present?%>
+    <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong>Company:</strong></td>
+        <td><%= @student_work_exp.company rescue nil %></td>
+        <td><strong>Company Location:</strong></td>
+        <td><%= @student_work_exp.company_location rescue nil %></td><br/>
+        </tr>
+        <tr>
+           <td><strong>Dates Start:</strong></td>
+           <td><%= @student_work_exp.dates_start rescue nil %></td>
+           <td><strong>Date End:</strong></td>
+           <td><%= @student_work_exp.date_end rescue nil %></td>
+        </tr>
+        <tr>
+          <td><strong>Position:</strong></td>
+          <td><%= @student_work_exp.position rescue nil %></td>
+          <td></td>
+          <td></td>
 
-  <p>
-    <strong>Telephone:</strong>
-    <%= @student.telephone rescue nil %>
-  </p>
-  <p>
-    <strong>Gender:</strong>
-    <%= @student.gender rescue nil %>
-  </p>
-  <p>
-    <strong>status:</strong>
-    <%= @student.status rescue nil %>
-  </p>
-  <!-- <p>
-    <strong>Paid Status:</strong>
-    <%= @student.paid_status rescue nil %>
-  </p> -->
-  <!-- <p>
-    <strong>Salary:</strong>
-    <%= @student.internship_status_id rescue nil %>
-  </p> -->
-  <p>
-    <strong>country:</strong>
-    <%= ISO3166::Country[@student.country] rescue nil %>
-  </p>
+        </tr>
+      </tbody>
+    </table> 
+    <%end%>
 
-  <p>
-    <strong>degree_type:</strong>
-    <%= @education.degree_type rescue nil %>
-  </p>
+    <%if @student_work_exp1.present?%>
+    <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong>Company:</strong></td>
+        <td><%= @student_work_exp1.company rescue nil %></td>
+        <td><strong>Company Location:</strong></td>
+        <td><%= @student_work_exp1.company_location rescue nil %></td><br/>
+        </tr>
+        <tr>
+           <td><strong>Dates Start:</strong></td>
+           <td><%= @student_work_exp1.dates_start rescue nil %></td>
+           <td><strong>Date End:</strong></td>
+           <td><%= @student_work_exp1.date_end rescue nil %></td>
+        </tr>
+        <tr>
+          <td><strong>Position:</strong></td>
+          <td><%= @student_work_exp1.position rescue nil %></td>
+          <td></td>
+          <td></td>
 
-  <p>
-    <strong>major:</strong>
-    <%= @education.major rescue nil %>
-  </p>
-
-  <p>
-    <strong>degree_gpa:</strong>
-    <%= @education.degree_gpa rescue nil %>
-  </p>
-
-  <p>
-    <strong>degree_university:</strong>
-    <%= @education.degree_university rescue nil %>
-  </p>
-
-  <p>
-    <strong>degree_university_loc:</strong>
-    <%= @education.degree_university_loc rescue nil %>
-  </p>
-
-  <p>
-    <strong>certifications:</strong>
-    <%= @education.certifications rescue nil %>
-  </p>
-
-  <p>
-    <strong>degree_type:</strong>
-    <%= @education1.degree_type rescue nil %>
-  </p>
-
-  <p>
-    <strong>major:</strong>
-    <%= @education1.major rescue nil %>
-  </p>
-  <p>
-    <strong>degree_gpa:</strong>
-    <%= @education1.degree_gpa rescue nil %>
-  </p>
-  <p>
-    <strong>degree_university:</strong>
-    <%= @education1.degree_university rescue nil %>
-  </p>
-  <p>
-    <strong>degree_university_loc:</strong>
-    <%= @education1.degree_university_loc rescue nil %>
-  </p>
-  <p>
-    <strong>certifications:</strong>
-    <%= @education1.certifications rescue nil %>
-  </p>
-  <p>
-    <strong>certification_body:</strong>
-    <%= @education1.certification_body rescue nil %>
-  </p>
-
-  <h3>Work Experience</h3>
-
-  <p>
-    <strong>company:</strong>
-    <%= @student_work_exp.company rescue nil %>
-  </p>
-  <p>
-    <strong>company_location:</strong>
-    <%= @student_work_exp.company_location rescue nil %>
-  </p>
-  <p>
-    <strong>dates_start:</strong>
-    <%= @student_work_exp.dates_start rescue nil %>
-  </p>
-  <p>
-    <strong>date_end:</strong>
-    <%= @student_work_exp.date_end rescue nil %>
-  </p>
-  <p>
-    <strong>position:</strong>
-    <%= @student_work_exp.position rescue nil %>
-  </p>
-
-
-  <p>
-    <strong>company:</strong>
-    <%= @student_work_exp1.company rescue nil %>
-  </p>
-  <p>
-    <strong>company_location:</strong>
-    <%= @student_work_exp1.company_location rescue nil %>
-  </p>
-  <p>
-    <strong>dates_start:</strong>
-    <%= @student_work_exp1.dates_start rescue nil %>
-  </p>
-  <p>
-    <strong>date_end:</strong>
-    <%= @student_work_exp1.date_end rescue nil %>
-  </p>
-  <p>
-    <strong>position:</strong>
-    <%= @student_work_exp1.position rescue nil %>
-  </p>
+        </tr>
+      </tbody>
+    </table> 
+    <%end%>
   <p>
     <% @skill_groups.each do |skillgrp| %>
       <strong><%= skillgrp.skill rescue nil%></strong> <br/>
       <%skillgrp.skills.each do |skill|%>
-         <%@skill_level = UserSkill.where('student_id = ? and skill_id = ?',@student.id,skill.id).first rescue nil%>
+         <table width="100%" border="0" class="table table-bordered table-striped">
+          <%@skill_level = UserSkill.where('student_id = ? and skill_id = ?',@student.id,skill.id).first rescue nil%>
          <%@skill = Skill.find(@skill_level.skill_id) rescue nil%>
-         <%= @skill.skill_name rescue nil%> -> <%= @skill_level.skill_level rescue nil%><br/>
+          <thead>
+            <th><strong><%= @skill.skill_name rescue nil%></strong></th>
+          </thead>
+         <tbody>
+         <tr>
+         <td><%= @skill_level.skill_level rescue nil%></td>
+         </tr>
+         </tbody> 
+         </table>
       <%end%>
     <%end%>
   </p>

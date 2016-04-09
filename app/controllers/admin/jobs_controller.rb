@@ -29,7 +29,7 @@ class Admin::JobsController < ApplicationController
     	redirect_to admin_jobs_path
 	end
 
-	def delete
+	def destroy
 	   @job.destroy
        flash[:notice] = "Deleted successfully."
        redirect_to admin_jobs_path

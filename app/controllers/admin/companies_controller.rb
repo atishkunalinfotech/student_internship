@@ -39,6 +39,12 @@ class Admin::CompaniesController < ApplicationController
 		
 	end
 
+	def destroy
+	   @company.destroy
+       flash[:notice] = "Deleted successfully."
+       redirect_to admin_companies_path
+	end
+
 	private
 		def company_params
 	      params.require(:company).permit(:internship_type, :company_name, :address, :city, :postal,:country,:contact_person_first,

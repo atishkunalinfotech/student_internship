@@ -18,289 +18,256 @@
   	  </ul>
       </div>
     <% end %>
+    <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong><%= f.label :student_firstname %></strong></td>
+        <td><%= f.text_field :student_firstname,required: true %></td>
+        <td><strong><%= f.label :student_middlename %></strong></td>
+        <td><%= f.text_field :student_middlename,required: true %></td><br/>
+        </tr>
+        <tr>
+           <td><strong><%= f.label :student_lastname  %></strong></td>
+           <td><%= f.text_field :student_lastname,required: true %></td>
+           <td><strong><%= f.label :student_email  %></strong></td>
+           <td><%= f.text_field :student_email,required: true%></td>
+        </tr>
+        <tr>
+          <td><strong><%= f.label :telephone  %></strong></td>
+          <td><%= f.text_field :telephone,required: true %></td>
+          <td><strong><%= f.label :gender  %></strong></td>
+          <td><%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
+        </tr> 
 
-    <%= f.hidden_field :student_profile , :value => "student_profile"%>
+        <tr>
+          <td><strong><%= f.label :status  %></strong></td>
+          <td><%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
+          <td><strong><%= label_tag :semester  %></strong></td>
+          <td><%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => @semester[0].semester,  :include_blank => true) ) %></td>
+        </tr> 
+
+        <tr>
+          <td><strong><%= label_tag :year  %></strong></td>
+          <td><%= date_field_tag :year, "", :value => @semester[0].student_year %></td>
+          <td><strong><%= f.label :country  %></strong></td>
+          <td><%= f.country_select(:country) %></td>
+        </tr>  
+      </tbody>
+    </table>
+
+    <%#= f.hidden_field :student_profile , :value => "student_profile"%>
     <%= f.hidden_field :student_id , :value => params[:student_id]%>
-    <div class="field">
-      <%= f.label :student_firstname %>
-      <%= f.text_field :student_firstname,required: true %>
-    </div>
 
-    <div class="field">
-      <%= f.label :student_middlename %>
-      <%= f.text_field :student_middlename,required: true %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :student_lastname  %>
-      <%= f.text_field :student_lastname,required: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :student_email  %>
-      <%= f.text_field :student_email,required: true%>
-    </div>
-
-    <div class="field">
-      <%= f.label :telephone  %>
-      <%= f.text_field :telephone,required: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :gender  %>
-      <%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One"},:required =>true%>
-    </div>
-
-    <div class="field">
-      <%= f.label :status  %>
-      <%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One"} ,:required =>true%>
-    </div>
-
-    <div class="field">
-      <%= label_tag :semester  %>
-      <%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => @semester[0].semester,  :include_blank => true) ) %>
-    </div>
-
-    <div class="field">
-      <%= label_tag :year  %>
-      <%= date_field_tag :year, "", :value => @semester[0].student_year %>
-    </div>
-
-    <div class="field">
-      <%= f.label :country  %>
-      <%= f.country_select :country %>
-    </div>
-
-    <!-- <div class="field">
-      <%= f.label :internship_status  %>
-      <%= f.collection_select :internship_status_id,InternshipStatus.all,:id, :internship_status_name, :include_blank=> 'Select One',:style=>"width:98%; width: 255px;" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :paid_status  %>
-      <%= f.select :paid_status, [ ["Paid", "Paid"],["Unpaid", "Unpaid"] ],{:include_blank=>"Select One"},:style=>" width: 255px;" ,:required =>true%>
-    </div> -->
-        --------------------------------------------------------------------------------------
-  <div class="field">
-    <%= label_tag :degree_type %>
-    <%if @education[0].present?%>
+    <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong><%= label_tag :degree_type %></strong></td>
+        <td><%if @education[0].present?%>
        <%#raise @education[0].inspect%>
        <%= text_field_tag :degree_type,"",:value => @education[0][:degree_type] if @education[0][:position] == 1%>
     <%else%>
        <%= text_field_tag :degree_type %>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :major %>
-    <%if @education[0].present?%>
+    <%end%></td>
+        <td><strong><%= label_tag :major %></strong></td>
+        <td><%if @education[0].present?%>
        <%= text_field_tag :major,"",:value => @education[0][:major] if @education[0][:position] == 1%>
     <%else%>
        <%= text_field_tag :major %>
-    <%end%>
-  </div>
-  
-  <div class="field">
-    <%= label_tag :degree_gpa  %>
-    <%if @education[0].present?%>
+    <%end%></td><br/>
+        </tr>
+        <tr>
+           <td><strong><%= label_tag :degree_gpa  %></strong></td>
+           <td><%if @education[0].present?%>
        <%= text_field_tag :degree_gpa,"" ,:value => @education[0][:degree_gpa] if @education[0][:position] == 1%>
     <%else%>
        <%= text_field_tag :degree_gpa%>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :degree_university  %>
-    <%if @education[0].present?%>
+    <%end%></td>
+           <td><strong><%= label_tag :degree_university  %></strong></td>
+           <td><%if @education[0].present?%>
        <%= text_field_tag :degree_university,"",:value => @education[0][:degree_university] if @education[0][:position] == 1%>
     <%else%>
        <%= text_field_tag :degree_university%>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :degree_university_loc  %>
-    <%if @education[0].present?%>
+    <%end%></td>
+        </tr>
+        <tr>
+          <td><strong><%= label_tag :degree_university_loc  %></strong></td>
+          <td><%if @education[0].present?%>
        <%= text_field_tag :degree_university_loc,"",:value => @education[0][:degree_university_loc] if @education[0][:position] == 1%>
     <%else%>
        <%= text_field_tag :degree_university_loc %>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :certifications  %>
-    <%if @education[0].present?%> 
+    <%end%></td>
+          <td><strong><%= label_tag :certifications  %></strong></td>
+          <td><%if @education[0].present?%> 
        <%= text_field_tag :certifications,"",:value => @education[0][:certifications] if @education[0][:position] == 1%>
     <%else%>
        <%= text_field_tag :certifications%>
-    <%end%>
-  </div>
+    <%end%></td>
 
-  <div class="field">
-    <%= label_tag :certification_body  %>
-    <%if @education[0].present?%> 
+        </tr>
+        <tr>
+          <td><strong><%= label_tag :certification_body  %></strong></td>
+          <td><%if @education[0].present?%> 
       <%= text_field_tag :certification_body,"",:value => @education[0][:certification_body] if @education[0][:position] == 1%>
     <%else%>
       <%= text_field_tag :certification_body%>
-    <%end%>
-  </div>
--------------------------------------------------------------------------------------------
- 
-  <div class="field">
-    <%= label_tag :degree_type %>
-    <%if @education1[0].present?%>
+    <%end%></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>   
+
+  <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong><%= label_tag :degree_type %></strong></td>
+        <td><%if @education1[0].present?%>
        <%= text_field_tag :degree_type1,"",:value => @education1[0][:degree_type] if @education1[0][:position] == 2%>
     <%else%>
        <%= text_field_tag :degree_type1 %>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :major %>
-    <%if @education1[0].present?%>
+    <%end%></td>
+        <td><strong><%= label_tag :major %></strong></td>
+        <td><%if @education1[0].present?%>
        <%= text_field_tag :major1,"",:value => @education1[0][:major] if @education1[0][:position] == 2%>
     <%else%>
        <%= text_field_tag :major1 %>
-    <%end%>
-  </div>
-  
-  <div class="field">
-    <%= label_tag :degree_gpa  %>
-    <%if @education1[0].present?%>
+    <%end%></td><br/>
+        </tr>
+        <tr>
+           <td><strong><%= label_tag :degree_gpa  %></strong></td>
+           <td><%if @education1[0].present?%>
        <%= text_field_tag :degree_gpa1,"",:value => @education1[0][:degree_gpa] if @education1[0][:position] == 2 %>
     <%else%>
        <%= text_field_tag :degree_gpa1 %>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :degree_university  %>
-    <%if @education1[0].present?%>
+    <%end%></td>
+           <td><strong><%= label_tag :degree_university  %></strong></td>
+           <td><%if @education1[0].present?%>
       <%= text_field_tag :degree_university1,"",:value => @education1[0][:degree_university] if @education1[0][:position] == 2%>
     <%else%>
       <%= text_field_tag :degree_university1 %>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :degree_university_loc  %>
-    <%if @education1[0].present?%>
+    <%end%></td>
+        </tr>
+        <tr>
+          <td><strong><%= label_tag :degree_university_loc  %></strong></td>
+          <td><%if @education1[0].present?%>
        <%= text_field_tag :degree_university_loc1,"",:value => @education1[0][:degree_university_loc] if @education1[0][:position] == 2 %>
     <%else%>
        <%= text_field_tag :degree_university_loc1 %>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :certifications  %>
-    <%if @education1[0].present?%>
+    <%end%></td>
+          <td><strong><%= label_tag :certifications  %></strong></td>
+          <td><%if @education1[0].present?%>
        <%= text_field_tag :certifications1,"",:value => @education1[0][:certifications] if @education1[0][:position] == 2%>
     <%else%>
        <%= text_field_tag :certifications1 %>
-    <%end%>
-  </div>
+    <%end%></td>
 
-  <div class="field">
-    <%= label_tag :certification_body  %>
-    <%if @education1[0].present?%>
+        </tr>
+        <tr>
+          <td><strong><%= label_tag :certification_body  %></strong></td>
+          <td><%if @education1[0].present?%>
        <%= text_field_tag :certification_body1,"",:value => @education1[0][:certification_body] if @education1[0][:position] == 2 %>
     <%else%>
        <%= text_field_tag :certification_body1 %>
-    <%end%>
-  </div>
+    <%end%></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>  
 
-      -------------------------------------------------------------------------------
-  <div class="field">
-    <%= label_tag :company  %>
-    <%if @student_work_exp[0].present?%>
+    <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong><%= label_tag :company  %></strong></td>
+        <td><%if @student_work_exp[0].present?%>
        <%= text_field_tag :company, "",:value => @student_work_exp[0][:company] if @student_work_exp[0][:wposition] == 1 %>
     <%else%>
       <%= text_field_tag :company%>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :company_location  %>
-    <%if @student_work_exp[0].present?%>
+    <%end%></td>
+        <td><strong><%= label_tag :company_location  %></strong></td>
+        <td><%if @student_work_exp[0].present?%>
        <%= text_field_tag :company_location, "",:value => @student_work_exp[0][:company_location] if @student_work_exp[0][:wposition] == 1%>
     <%else%>
        <%= text_field_tag :company_location%>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :dates_start  %>
-    <%if @student_work_exp[0].present?%>
+    <%end%></td><br/>
+        </tr>
+        <tr>
+           <td><strong><%= label_tag :dates_start  %></strong></td>
+           <td><%if @student_work_exp[0].present?%>
        <%= date_field_tag :dates_start, "",:value => @student_work_exp[0][:dates_start] if @student_work_exp[0][:wposition] == 1%>
     <%else%>
       <%= date_field_tag :dates_start%>
-    <%end%>
-    <%#= date_field_tag :dates_start%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :date_end  %>
-    <%if @student_work_exp[0].present?%>
+    <%end%></td>
+           <td><strong><%= label_tag :date_end%></strong></td>
+           <td><%if @student_work_exp[0].present?%>
        <%= date_field_tag :date_end, "",:value => @student_work_exp[0][:date_end] if @student_work_exp[0][:wposition] == 1%>
     <%else%>
        <%= date_field_tag :date_end%>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :position  %>
-    <%if @student_work_exp[0].present?%>
+    <%end%></td>
+        </tr>
+        <tr>
+          <td><strong><%= label_tag :position %></strong></td>
+          <td><%if @student_work_exp[0].present?%>
        <%= text_field_tag :position, "",:value => @student_work_exp[0][:position] if @student_work_exp[0][:wposition] == 1%>
     <%else%>
        <%= text_field_tag :position%>
-    <%end%>
-  </div>
+    <%end%></td>
+          <td></td>
+          <td></td>
+        </tr>  
+      </tbody>
+    </table> 
 
------------------------------------------------------------------------------------
-<div class="field">
-    <%= label_tag :company  %>
-    <% if @student_work_exp1[0].present? %>
+  <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong><%= label_tag :company %></strong></td>
+        <td><% if @student_work_exp1[0].present? %>
        <%= text_field_tag :company1, "",:value => @student_work_exp1[0][:company] if @student_work_exp1[0][:wposition] == 2 %>
     <%else%>
        <%= text_field_tag :company1 %>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :company_location  %>
-    <% if @student_work_exp1[0].present? %>
+    <%end%></td>
+        <td><strong><%= label_tag :company_location  %></strong></td>
+        <td><% if @student_work_exp1[0].present? %>
        <%= text_field_tag :company_location1, "",:value => @student_work_exp1[0][:company_location] if @student_work_exp1[0][:wposition] == 2%>
     <%else%>
        <%= text_field_tag :company_location1 %>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :dates_start  %>
-    <% if @student_work_exp1[0].present? %>
+    <%end%></td><br/>
+        </tr>
+        <tr>
+           <td><strong><%= label_tag :dates_start  %></strong></td>
+           <td><% if @student_work_exp1[0].present? %>
        <%= date_field_tag :dates_start1, "",:value => @student_work_exp1[0][:dates_start] if @student_work_exp1[0][:wposition] == 2%>
     <%else%>
        <%= date_field_tag :dates_start1 %>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :date_end  %>
-    <% if @student_work_exp1[0].present? %> 
+    <%end%></td>
+           <td><strong><%= label_tag :date_end%></strong></td>
+           <td><% if @student_work_exp1[0].present? %> 
        <%= date_field_tag :date_end1, "",:value => @student_work_exp1[0][:date_end] if @student_work_exp1[0][:wposition] == 2%>
     <%else%>
        <%= date_field_tag :date_end1 %>
-    <%end%>
-  </div>
-
-  <div class="field">
-    <%= label_tag :position  %>
-    <% if @student_work_exp1[0].present? %> 
+    <%end%></td>
+        </tr>
+        <tr>
+          <td><strong><%= label_tag :position %></strong></td>
+          <td><% if @student_work_exp1[0].present? %> 
        <%= text_field_tag :position1, "",:value => @student_work_exp1[0][:position] if @student_work_exp1[0][:wposition] == 2%>
     <%else%>
        <%= text_field_tag :position1 %>
-    <%end%>
-  </div>
+    <%end%></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table> 
 
   <script type="text/javascript">
     jQuery.noConflict();
@@ -334,16 +301,17 @@
     <div ><%#= link_to_add_fields "Add Education",f, :educations %></div><br>
 
     <% @skill_groups.each do |skillgrp| %>
-      <%= skillgrp.skill rescue nil%> <br/>
+      <strong><%= skillgrp.skill rescue nil%></strong> <br/><br/>
       <%skillgrp.skills.each do |skill|%>
-	         <%= skill.skill_name rescue nil%>&nbsp;&nbsp;&nbsp;
-	         <%="Not at all competent"%>&nbsp;&nbsp;&nbsp;
-	         <%= radio_button_tag :"#{skill.id}", "Not at all competent" %>&nbsp;&nbsp;&nbsp;
-	         <%="Little competent"%>
-	         <%= radio_button_tag :"#{skill.id}", "Little competent" %>&nbsp;&nbsp;&nbsp;
-	         <%="Moderately competent"%>
-	         <%= radio_button_tag :"#{skill.id}", "Moderately competent" %>&nbsp;&nbsp;&nbsp;
-	         <%="Extremely competent"%><%= radio_button_tag :"#{skill.id}", "Extremely competent" %><br/>
+         <table width="100%" border="0" class="table table-bordered table-striped">
+          <thead><strong><%= skill.skill_name rescue nil%></strong></thead>
+          <tbody>
+             <td><%="Not at all competent"%> <%= radio_button_tag :"#{skill.id}","Not at all competent" %></td>
+         <td><%="Little competent"%><%= radio_button_tag :"#{skill.id}", "Little competent" %></td>
+         <td><%="Moderately competent"%><%= radio_button_tag :"#{skill.id}", "Moderately competent"%></td><td><%="Extremely competent"%><%= radio_button_tag :"#{skill.id}", "Extremely competent" %></td>
+          </tbody>
+         </table>
+         
       <%end%>
     <%end%>
     

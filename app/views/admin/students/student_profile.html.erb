@@ -19,70 +19,67 @@
       </div>
     <% end %>
 
-    <%= f.hidden_field :student_profile , :value => "student_profile"%>
+    <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+        <td><strong><%= f.label :student_firstname %></strong></td>
+        <td><%= f.text_field :student_firstname,required: true %></td>
+        <td><strong><%= f.label :student_middlename %></strong></td>
+        <td><%= f.text_field :student_middlename,required: true %></td><br/>
+        </tr>
+        <tr>
+           <td><strong><%= f.label :student_lastname  %></strong></td>
+           <td><%= f.text_field :student_lastname,required: true %></td>
+           <td><strong><%= f.label :student_email  %></strong></td>
+           <td><%= f.text_field :student_email,required: true%></td>
+        </tr>
+        <tr>
+          <td><strong><%= f.label :telephone  %></strong></td>
+          <td><%= f.text_field :telephone,required: true %></td>
+          <td><strong><%= f.label :gender  %></strong></td>
+          <td><%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
+        </tr> 
+
+        <tr>
+          <td><strong><%= f.label :status  %></strong></td>
+          <td><%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
+          <td><strong><%= label_tag :semester  %></strong></td>
+          <td><%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => "Fall", :include_blank => true)) %></td>
+        </tr> 
+
+        <tr>
+          <td><strong><%= label_tag :year  %></strong></td>
+          <td><%= date_field_tag :year%></td>
+          <td><strong><%= f.label :country  %></strong></td>
+          <td><%= f.country_select(:country) %></td>
+        </tr>  
+      </tbody>
+    </table> 
+
+    <%#= f.hidden_field :student_profile , :value => "student_profile"%>
     <%= f.hidden_field :student_id , :value => params[:student_id]%>
     <!-- <div class="field">
       <%= f.label :studentid %>
       <%= f.text_field :studentid,required: true %>
     </div> -->
-    <div class="field">
-      <%= f.label :student_firstname %>
-      <%= f.text_field :student_firstname,required: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :student_middlename %>
-      <%= f.text_field :student_middlename,required: true %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :student_lastname  %>
-      <%= f.text_field :student_lastname,required: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :student_email  %>
-      <%= f.text_field :student_email,required: true%>
-    </div>
-
-    <div class="field">
-      <%= f.label :telephone  %>
-      <%= f.text_field :telephone,required: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :gender  %>
-      <%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One"} ,:required =>true%>
-    </div>
-
-    <div class="field">
-      <%= f.label :status  %>
-      <%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One"} ,:required =>true%>
-    </div>
-
-    <div class="field">
-      <%= label_tag :semester  %>
-      <%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => "Fall", :include_blank => true)) %>
-    </div>
-
-    <div class="field">
-      <%= label_tag :year  %>
-      <%= date_field_tag :year%>
-    </div>
-
-    <div class="field">
-      <%= f.label :country  %>
-      <%= f.country_select(:country) %>
-    </div>
       <h2>EDUCATION</h2>
       <%= render  "admin/students/education_fields" %>
       <h2>WORK EXPERIENCE</h2>
       <%= render  "admin/students/student_work_exp" %>
     <h2>SKILLS</h2>
     <% @skill_groups.each do |skillgrp| %>
-      <%= skillgrp.skill rescue nil%> <br/>
+      <strong><%= skillgrp.skill rescue nil%></strong> <br/><br/>
       <%skillgrp.skills.each do |skill|%>
-         <%= skill.skill_name rescue nil%>&nbsp;&nbsp;&nbsp;<%="Not at all competent"%>&nbsp;&nbsp;&nbsp;<%= radio_button_tag :"#{skill.id}", "Not at all competent", true %>&nbsp;&nbsp;&nbsp;<%="Little competent"%><%= radio_button_tag :"#{skill.id}", "Little competent" %>&nbsp;&nbsp;&nbsp;<%="Moderately competent"%><%= radio_button_tag :"#{skill.id}", "Moderately competent" %>&nbsp;&nbsp;&nbsp;<%="Extremely competent"%><%= radio_button_tag :"#{skill.id}", "Extremely competent" %><br/>
+         <table width="100%" border="0" class="table table-bordered table-striped">
+          <thead><strong><%= skill.skill_name rescue nil%></strong></thead>
+          <tbody>
+             <td><%="Not at all competent"%> <%= radio_button_tag :"#{skill.id}","Not at all competent", true %></td>
+         <td><%="Little competent"%><%= radio_button_tag :"#{skill.id}", "Little competent" %></td>
+         <td><%="Moderately competent"%><%= radio_button_tag :"#{skill.id}", "Moderately competent"%></td><td><%="Extremely competent"%><%= radio_button_tag :"#{skill.id}", "Extremely competent" %></td>
+          </tbody>
+         </table>
+         
       <%end%>
     <%end%>
     

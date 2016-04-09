@@ -145,7 +145,23 @@ class Admin::ReportsController < ApplicationController
   end
 
   def company_reports
-    raise "hi"
+    start_up = params[:students][:start_up] rescue nil
+    employers = params[:students][:employers] rescue nil
+    all_position = params[:students][:all_position] rescue nil
+    company_city = params[:company_city] rescue nil
+    @company = Company.all rescue nil
+    if start_up.present?
+      @company = @company.where('internship_type = ?',"Startup Company") rescue nil
+    end
+    if employers.present?
+      @company
+    end
+    if company_city.present?
+      @company = @company.where('city = ?',company_city) rescue nil
+    end
+    if all_position.present?
+      @jobs = Job.all
+    end
   end
 
   private
