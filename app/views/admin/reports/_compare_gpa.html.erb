@@ -1,27 +1,6 @@
-<div class="faq">
-<div class="container">
-<div class="row" style="margin-top:150px;">
-<div class="span12">
- <p>
-   <%= link_to_function("Print this Page", "javascript:print()")%>
-   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
- </p>
-
-<% if params[:students][:gpa].present?%>
-  <%if params[:students][:gpa] == "Compare GPAs"%>
-     <%= render 'admin/reports/compare_gpa'%>
-  <%else%>
-    <%if @array.present? %>
-      <% if params[:students][:gpa] == "Avg Current GPA"%>
-        <h1>Students Average Current GPA <%= @array rescue nil%></h1>
-      <%else%>
-        <h1>Students Average Previous GPA <%= @array rescue nil%></h1>
-      <%end%>
-    <%else%>
-        <h1>No results to show</h1>
-    <%end%>
-  <%end%>
-<%else%>
+<%if params[:student_university].present?%>
+<h2>GPA Comparison From University: <%= params[:student_university] rescue nil%></h2> 
+<%end%>
 <table width="100%" border="0" class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -32,10 +11,11 @@
       <th><%= "gender" %></th>
       <th><%= "country" %></th>
       <th><%= "status" %></th>
-      <th><%= "Telephone" %></th>
       <th><%= "Semester" %></th>
       <th><%= "Year" %></th>
       <th><%= "Email" %></th>
+      <th><%= "Previous GPA"%></th>
+      <th><%= "Current GPA"%></th>
     </tr>
   </thead>
 
@@ -49,18 +29,18 @@
         <td><%= student.gender rescue nil %></td>
         <td><%= ISO3166::Country[student.country] rescue nil %></td>
         <td><%= student.status rescue nil %></td>
-        <td><%= student.telephone rescue nil %></td>
         <td><%= student.semester_registereds.where('student_id = ?', student.id).first.semester rescue nil%></td>
         <td><%= student.semester_registereds.where('student_id = ?', student.id).first.student_year rescue nil %></td>
         <td><%= student.student_email rescue nil %></td>
-        <td><%#= link_to 'Edit', edit_admin_student_path(student) %></td>
+        <% @stu = student.educations rescue nil%>
+          <%if @stu.first.degree_gpa > @stu.second.degree_gpa %>
+            <td style="color:red;"><%= @stu.first.degree_gpa rescue nil%></td>
+            <td style="color:red;"><%= @stu.second.degree_gpa rescue nil%></td>
+        <%else%>
+          <td><%= @stu.first.degree_gpa rescue nil%></td>
+          <td><%= @stu.second.degree_gpa rescue nil%></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%end%>
-
- </div>
-    </div>
-  </div>
-</div>

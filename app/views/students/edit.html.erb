@@ -76,13 +76,13 @@
        <%#raise @education[0].inspect%>
        <%= text_field_tag :degree_type,"",:value => @education[0][:degree_type] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :degree_type %>
+       <%= text_field_tag :degree_type ,"",required: true%>
     <%end%></td>
         <td><strong><%= label_tag :major %></strong></td>
         <td><%if @education[0].present?%>
        <%= text_field_tag :major,"",:value => @education[0][:major] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :major %>
+       <%= text_field_tag :major,"",required: true %>
     <%end%></td><br/>
         </tr>
         <tr>
@@ -90,13 +90,13 @@
            <td><%if @education[0].present?%>
        <%= text_field_tag :degree_gpa,"" ,:value => @education[0][:degree_gpa] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :degree_gpa%>
+       <%= text_field_tag :degree_gpa,"",required: true%>
     <%end%></td>
            <td><strong><%= label_tag :degree_university  %></strong></td>
            <td><%if @education[0].present?%>
        <%= text_field_tag :degree_university,"",:value => @education[0][:degree_university] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :degree_university%>
+       <%= text_field_tag :degree_university,"",required: true%>
     <%end%></td>
         </tr>
         <tr>
@@ -104,13 +104,13 @@
           <td><%if @education[0].present?%>
        <%= text_field_tag :degree_university_loc,"",:value => @education[0][:degree_university_loc] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :degree_university_loc %>
+       <%= text_field_tag :degree_university_loc,"",required: true %>
     <%end%></td>
           <td><strong><%= label_tag :certifications  %></strong></td>
           <td><%if @education[0].present?%> 
        <%= text_field_tag :certifications,"",:value => @education[0][:certifications] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :certifications%>
+       <%= text_field_tag :certifications,"",required: true%>
     <%end%></td>
 
         </tr>
@@ -119,7 +119,7 @@
           <td><%if @education[0].present?%> 
       <%= text_field_tag :certification_body,"",:value => @education[0][:certification_body] if @education[0][:position] == 1%>
     <%else%>
-      <%= text_field_tag :certification_body%>
+      <%= text_field_tag :certification_body,"",required: true%>
     <%end%></td>
           <td></td>
           <td></td>

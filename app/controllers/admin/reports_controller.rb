@@ -26,6 +26,7 @@ class Admin::ReportsController < ApplicationController
           redirect_to admin_reports_path
         end
       end
+      
       country = params[:students][:country] rescue ""
       if country.present?
         @students = @students.where('country = ?',country) rescue nil
@@ -109,33 +110,53 @@ class Admin::ReportsController < ApplicationController
          @students = @a.uniq
       end
 
+      student_university = params[:student_university] rescue ""
+      if student_university.present?
+        @education = Education.where('degree_university = ?',student_university) rescue nil
+        @a = []
+         @education.each do |stu|
+           @students.each do |student|
+            if student.present?
+             if student.id == stu.student_id
+                @a << student rescue nil
+             end
+            end
+           end
+         end
+         @students = @a
+      end
+
       gpa = params[:students][:gpa] rescue ""
       if gpa.present?
-        if gpa == "Avg Current GPA"
-            @a = []
-            @b = []
-           @students.each do |stu|
-             @a << Education.select(:degree_gpa).where('student_id = ? and position = ?',stu.id,2)
-             @a.each do |a|
-              if a.present?
+        unless gpa == "Compare GPAs"
+          if gpa == "Avg Current GPA"
+              @a = []
+              @b = []
+             @students.each do |stu|
+               @a << Education.select(:degree_gpa).where('student_id = ? and position = ?',stu.id,2)
+               @a.each do |a|
+                if a.present?
+                  @b << a.first.degree_gpa
+                end
+               end
+             end
+          else
+             @a = []
+             @b = []
+             @students.each do |stu|
+               @a << Education.select(:degree_gpa).where('student_id = ? and position = ?',stu.id,1)
+               @a.each do |a|
                 @b << a.first.degree_gpa
-              end
+               end
              end
-           end
+          end
+          if @b.present?
+            @array = @b.inject{ |sum, el| sum + el }.to_f / @b.size
+          else
+            @array = []
+          end
         else
-           @a = []
-           @b = []
-           @students.each do |stu|
-             @a << Education.select(:degree_gpa).where('student_id = ? and position = ?',stu.id,1)
-             @a.each do |a|
-              @b << a.first.degree_gpa
-             end
-           end
-        end
-        if @b.present?
-          @array = @b.inject{ |sum, el| sum + el }.to_f / @b.size
-        else
-          @array = []
+          @students
         end
       end
 

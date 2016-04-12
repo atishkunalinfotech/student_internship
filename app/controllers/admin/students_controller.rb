@@ -24,6 +24,7 @@ class Admin::StudentsController < ApplicationController
 		@internship = InternshipStatus.where('internship_status_name = ?',"Available").first rescue nil
 		if params[:student][:student_profile] == "student_profile"
 			if @student.save
+				SemesterRegistered.create(:student_id => @student.id)
 				flash[:notice] = "Successfully created Student login."
 				redirect_to admin_student_profile_path(:student_id => @student.id)
 		    else

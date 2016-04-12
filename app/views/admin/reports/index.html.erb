@@ -1,3 +1,4 @@
+<%= javascript_include_tag "application" %>
 <div class="faq">
   <div class="container">
     <div class="row" style="margin-top:150px;">
@@ -32,11 +33,12 @@
                 <td>
                   <%= select 'student_type',:student_type, [ ["All Students", "All Students"] ],{:include_blank=>"Select One"}%>
                   <%= text_field_tag :student_type_field,"",:placeholder => "Student ID" %>
+                  <%= select_tag 'student_university', options_for_select(Education.select(:degree_university).where('position = ?',1).uniq.collect{ |u| [u.degree_university, u.degree_university] }),{:include_blank=>"Select University"}%>
                   <%= select_tag 'company', options_for_select(Company.all.collect{ |u| [u.company_name, u.id] }),{:include_blank=>"Select Company"}%>
                   <%= country_select 'students',:country, {:include_blank=>"Select Country"}%>
                   <%= select 'students',:with_job, [ ["Hired", "Hired"], ["Available", "Available"] ],{:include_blank=>"Select Hired/Available"} %>
                   <%= select 'students',:paid_status, [ ["Paid", "Paid"], ["Unpaid", "Unpaid"] ],{:include_blank=>"Select Paid/Unpaid"} %>
-                  <%= select 'students',:gpa, [ ["Avg Current GPA", "Avg Current GPA"], ["Avg Previous GPA", "Avg Previous GPA"] ],{:include_blank=>"Select GPA"} %>
+                  <%= select 'students',:gpa, [ ["Avg Current GPA", "Avg Current GPA"], ["Avg Previous GPA", "Avg Previous GPA"], ["Compare GPAs","Compare GPAs"] ],{:include_blank=>"Select GPA"} %>
                   <%= select 'students',:semester, [ ["Fall", "Fall"], ["Winter", "Winter"] ],{:include_blank=>"Select FALL/WINTER"} %>
                   <%= date_field_tag :year,"",:placeholder => "Year"%>
                   <%= submit_tag "Submit",name: "subaction",value: "Find",:class=>"search-btn"%>
