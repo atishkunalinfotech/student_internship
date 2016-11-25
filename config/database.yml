@@ -33,7 +33,7 @@ development:
 production:
   adapter: postgresql
   encoding: unicode
-  database: studentintern1
+  database: studentintern2
   host: localhost
   pool: 5
   username: postgres
