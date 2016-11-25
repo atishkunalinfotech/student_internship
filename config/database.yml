@@ -31,8 +31,10 @@ development:
   password: atish123
 
 production:
-  adapter: mysql2
+  adapter: postgresql
+  encoding: unicode
   database: studentintern1
   host: localhost
-  username: root
-  password: atish123
+  pool: 5
+  username: postgres
+  password: root
