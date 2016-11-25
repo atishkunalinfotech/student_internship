@@ -30,7 +30,7 @@ development:
   username: root
   password: atish123
 
-  production:
+production:
   adapter: mysql2
   database: studentintern1
   host: localhost
