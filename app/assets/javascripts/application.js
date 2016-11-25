@@ -21,22 +21,3 @@
 // $(link).closest("#character").hide();
 // }
 
-
-
-function remove_fields(link) {
-      var $link = $(link.currentTarget),
-          assoc = $link.datfunction remove_fields(link)
-      var hiddenField = $link.prev('input[type=hidden]');
-      hiddenField.val('1');
-      
-      var field = $link.closest('.fields');
-      field.hide();
-      
-      field
-        .trigger({ type: 'nested:fieldRemoved', field: field })
-        .trigger({ type: 'nested:fieldRemoved:' + assoc, field: field });
-      return false;
-    }
-  };
-
- 
