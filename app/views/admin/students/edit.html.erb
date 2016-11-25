@@ -23,35 +23,35 @@
       <thead></thead>
       <tbody>
         <tr>
-        <td><strong><%= "First Name" %></strong></td>
+        <td><strong><span style="color: Red;">* </span><%= "First Name" %></strong></td>
         <td><%= f.text_field :student_firstname,required: true %></td>
-        <td><strong><%= "Middle Name" %></strong></td>
+        <td><strong><span style="color: Red;">* </span><%= "Middle Name" %></strong></td>
         <td><%= f.text_field :student_middlename,required: true %></td><br/>
         </tr>
         <tr>
-           <td><strong><%= "Last Name"  %></strong></td>
+           <td><strong><span style="color: Red;">* </span><%= "Last Name"  %></strong></td>
            <td><%= f.text_field :student_lastname,required: true %></td>
-           <td><strong><%= "Email"  %></strong></td>
+           <td><strong><span style="color: Red;">* </span><%= "Email"  %></strong></td>
            <td><%= f.text_field :student_email,required: true%></td>
         </tr>
         <tr>
-          <td><strong><%= "Telephone"  %></strong></td>
+          <td><strong><span style="color: Red;">* </span><%= "Telephone"  %></strong></td>
           <td><%= f.text_field :telephone,required: true %></td>
-          <td><strong><%= "Gender"  %></strong></td>
+          <td><strong><span style="color: Red;">* </span><%= "Gender"  %></strong></td>
           <td><%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
         </tr> 
 
         <tr>
-          <td><strong><%= "Status"  %></strong></td>
+          <td><strong><span style="color: Red;">* </span><%= "Status"  %></strong></td>
           <td><%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
-          <td><strong><%= "Semester"  %></strong></td>
+          <td><strong><span style="color: Red;">* </span><%= "Semester"  %></strong></td>
           <td><%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => @semester[0].semester,  :include_blank => true) ) %></td>
         </tr> 
 
         <tr>
-          <td><strong><%= "Year"  %></strong></td>
+          <td><strong><span style="color: Red;">* </span><%= "Year"  %></strong></td>
           <td><%= date_field_tag :year, "", :value => @semester[0].student_year %></td>
-          <td><strong><%= "Country"  %></strong></td>
+          <td><strong><span style="color: Red;">* </span><%= "Country"  %></strong></td>
           <td><%= f.country_select(:country) %></td>
         </tr>  
       </tbody>

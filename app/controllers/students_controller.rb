@@ -41,6 +41,7 @@ class StudentsController < ApplicationController
     def set_student
       @student = Student.find(current_student.id)
     end
+    
     def correct_student
         user = current_student
         unless user

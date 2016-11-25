@@ -71,6 +71,7 @@ class Admin::ReportsController < ApplicationController
           end
          end
          @students = @b
+         #raise @students.inspect
       end
 
       year = params[:year] rescue ""

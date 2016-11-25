@@ -13,9 +13,9 @@
   <%else%>
     <%if @array.present? %>
       <% if params[:students][:gpa] == "Avg Current GPA"%>
-        <h1>Students Average Current GPA <%= @array rescue nil%></h1>
+        <h1>Students Average Current GPA :<%= (@array).round%></h1>
       <%else%>
-        <h1>Students Average Previous GPA <%= @array rescue nil%></h1>
+        <h1>Students Average Previous GPA :<%= (@array).round%></h1>
       <%end%>
     <%else%>
         <h1>No results to show</h1>
