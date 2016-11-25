@@ -23,12 +23,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role,:email, :password, :password_confirmation, 
+      :remember_me,:sign_in_count,:studentid,:student_firstname,:student_middlename,:student_lastname,:telephone,:gender,:status,:paid_status])
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |student| u.permit(:email, :password, :password_confirmation, 
-    	:remember_me,:sign_in_count,:studentid,:student_firstname,:student_middlename,:student_lastname,:telephone,:gender,:status,:paid_status) }
-  end
 
 end
