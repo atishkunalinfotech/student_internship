@@ -14,12 +14,14 @@ class Admin::StudentsController < ApplicationController
 	end
 
 	def student_profile
-		@student = Student.new
+		#@student = Student.new
+		@student = Student.find(params[:student_id])
 		@skill_groups = SkillGroup.all
 	end
 # 
 	def create
 		@student = Student.new(student_params)
+		#raise @student.inspect
 		@student_present = Student.find(params[:student][:student_id]) rescue nil
 		@internship = InternshipStatus.where('internship_status_name = ?',"Available").first rescue nil
 		if params[:student][:student_profile] == "student_profile"

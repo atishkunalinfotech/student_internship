@@ -1,3 +1,4 @@
+<%= javascript_include_tag "jquery.min.js" %>
 <div class="faq">
 <div class="container">
 <div class="row" style="margin-top:150px;">
@@ -7,7 +8,7 @@
  </p>
 <h1>Edit Company Profile</h1>
 
-<%= form_for [:admin,@company] do |f| %>
+<%= form_for [:admin,@company], :html =>{ :multipart => true,:onsubmit => "return validateEmail(this.form)"} do |f| %>
   <% if @company.errors.any? %>
     <div id="error_explanation">
 	  <ul>
@@ -49,37 +50,37 @@
 
   <div class="field">
     <%= f.label :contact_person_first  %>
-    <%= f.text_field :contact_person_first,required: true %>
+    <%= f.text_field :contact_person_first %>
   </div>
 
   <div class="field">
     <%= f.label :contact_person_last  %>
-    <%= f.text_field :contact_person_last,required: true %>
+    <%= f.text_field :contact_person_last %>
   </div>
 
   <div class="field">
     <%= f.label :contact_person_position  %>
-    <%= f.text_field :contact_person_position,required: true %>
+    <%= f.text_field :contact_person_position %>
   </div>
 
   <div class="field">
     <%= f.label :telephone  %>
-    <%= f.text_field :telephone,required: true%>
+    <%= f.text_field :telephone%>
   </div>
 
   <div class="field">
     <%= f.label :email  %>
-    <%= f.text_field :email,required: true  %>
+    <%= f.text_field :email  %>
   </div>
 
   <div class="field">
     <%= f.label :company_website  %>
-    <%= f.text_field :company_website,required: true  %>
+    <%= f.text_field :company_website  %>
   </div>
 
   <div class="field">
     <%= f.label :notes  %>
-    <%= f.text_field :notes,required: true%>
+    <%= f.text_field :notes%>
   </div>
   
   <div class="actions">
@@ -92,3 +93,25 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+
+  function validateEmail($) {
+   if (jQuery('#company_email').val() != "" || jQuery('#company_email').val() != null) 
+        {
+            
+            jQuery('span.error-keyup-7').remove();
+            var inputVal = jQuery('#company_email').val();
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            if (!emailReg.test(inputVal)) {
+                jQuery('#company_email').after('<span class="error error-keyup-7" style="color:red;">Invalid Email Format.</span>');
+                jQuery('#company_email').focus();
+                return false;
+            }
+            
+        }
+    };
+
+
+</script>

@@ -8,7 +8,7 @@
  </p>
 <div class="form">
 <% if params[:student_id].present?%>
-  <%= form_for [:admin,@student], html: {method: :post} do |f| %>
+  <%= form_for [:admin,@student] do |f| %>
     <% if @student.errors.any? %>
       <div id="error_explanation">
   	  <ul>
@@ -25,34 +25,39 @@
         <tr>
         <td><strong><span style="color: Red;">*</span><%= "First Name" %></strong></td>
         <td><%= f.text_field :student_firstname,required: true %></td>
-        <td><strong><span style="color: Red;">*</span><%= "Middle Name" %></strong></td>
-        <td><%= f.text_field :student_middlename,required: true %></td><br/>
-        </tr>
-        <tr>
-           <td><strong><span style="color: Red;">*</span><%= "Last Name"  %></strong></td>
+        <td><strong><span style="color: Red;">*</span><%= "Last Name"  %></strong></td>
            <td><%= f.text_field :student_lastname,required: true %></td>
-           <td><strong><span style="color: Red;">*</span><%= "Email"  %></strong></td>
-           <td><%= f.text_field :student_email,required: true%></td>
+        <!-- <td><strong><span style="color: Red;">*</span><%= "Middle Name" %></strong></td>
+        <td><%= f.text_field :student_middlename,required: true %></td><br/> -->
         </tr>
         <tr>
-          <td><strong><span style="color: Red;">*</span><%= "Telephone"  %></strong></td>
+           <td><strong><span style="color: Red;">*</span><%= "Telephone"  %></strong></td>
           <td><%= f.text_field :telephone,required: true %></td>
+           <td><strong><span style="color: Red;">*</span><%= "Email"  %></strong></td>
+           <td><%= f.text_field :student_email,:value => @student.email,required: true%></td>
+        </tr>
+        <tr>
+          <td><strong><span style="color: Red;">*</span><%= "Status"  %></strong></td>
+          <td><%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One",:selected => "International"} ,:required =>true%></td>
+           
           <td><strong><span style="color: Red;">*</span><%= "Gender"  %></strong></td>
-          <td><%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
+          <td><%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One",:selected => "Male"} ,:required =>true%></td>
         </tr> 
 
         <tr>
-          <td><strong><span style="color: Red;">*</span><%= "Status"  %></strong></td>
-          <td><%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
           <td><strong><span style="color: Red;">*</span><%= "Semester"  %></strong></td>
           <td><%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => "Fall", :include_blank => true)) %></td>
+          <%#raise @student.country.inspect%>
+          <td><strong><span style="color: Red;">*</span><%= "Country"  %></strong></td>
+          <td><%= f.country_select :country, selected: @student.country %></td>
         </tr> 
 
         <tr>
           <td><strong><span style="color: Red;">*</span><%= "Year"  %></strong></td>
           <td><%= date_field_tag :year%></td>
-          <td><strong><span style="color: Red;">*</span><%= "Country"  %></strong></td>
-          <td><%= f.country_select(:country) %></td>
+          <td></td>
+          <td></td>
+         
         </tr>  
       </tbody>
     </table> 
@@ -67,21 +72,7 @@
       <%= render  "admin/students/education_fields" %>
       <h2>WORK EXPERIENCE</h2>
       <%= render  "admin/students/student_work_exp" %>
-    <h2>SKILLS</h2>
-    <% @skill_groups.each do |skillgrp| %>
-      <strong><%= skillgrp.skill rescue nil%></strong> <br/><br/>
-      <%skillgrp.skills.each do |skill|%>
-         <table width="100%" border="0" class="table table-bordered table-striped">
-          <thead><strong><%= skill.skill_name rescue nil%></strong></thead>
-          <tbody>
-             <td><%="Not at all competent"%> <%= radio_button_tag :"#{skill.id}","Not at all competent", true %></td>
-         <td><%="Little competent"%><%= radio_button_tag :"#{skill.id}", "Little competent" %></td>
-         <td><%="Moderately competent"%><%= radio_button_tag :"#{skill.id}", "Moderately competent"%></td><td><%="Extremely competent"%><%= radio_button_tag :"#{skill.id}", "Extremely competent" %></td>
-          </tbody>
-         </table>
-         
-      <%end%>
-    <%end%>
+    
     
     <div class="actions">
       <%= f.submit %><br>

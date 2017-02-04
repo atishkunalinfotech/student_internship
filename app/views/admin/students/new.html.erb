@@ -30,6 +30,11 @@
     <%= f.email_field :email,required: true,:class=>"field-in" %>
   </div>
 
+  <div class="field">
+    <%= f.label :country,:class=>"field-lable" %>
+    <%= f.country_select :country,required: true,:class=>"field-in" %>
+  </div>
+  <h3>Please set the password for student</h3>
   <div><%= t "devise.password",:class=>"field-lable" %><% if @validatable %><i>(<%= @minimum_password_length %> <%= t "devise.characters_minimum"%>)</i><% end %><br />
   </div>
     <%= f.password_field :password, autocomplete: "off",:class=>"field-in",:required => true ,:id=>"password1"%>

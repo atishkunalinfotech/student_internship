@@ -6,7 +6,8 @@
         <td><strong><%= label_tag :company  %></strong></td>
         <td><%= text_field_tag :company %></td>
         <td><strong><%= label_tag :company_location  %></strong></td>
-        <td><%= text_field_tag :company_location%></td><br/>
+        <td><%= country_select :company_location, nil, {:selected => @student.country, :include_blank => 'Select one'}, {:class=>'form-control'}  %></td><br/>
+        
         </tr>
         <tr>
            <td><strong><%= label_tag :dates_start  %></strong></td>
@@ -30,7 +31,7 @@
         <td><strong><%= label_tag :company %></strong></td>
         <td><%= text_field_tag :company1 %></td>
         <td><strong><%= label_tag :company_location  %></strong></td>
-        <td><%= text_field_tag :company_location1%></td><br/>
+        <td><%= country_select :company_location1, nil, {:selected => @student.country, :include_blank => 'Select one'}, {:class=>'form-control'}  %></td><br/>
         </tr>
         <tr>
            <td><strong><%= label_tag :dates_start  %></strong></td>
