@@ -23,36 +23,39 @@
       <thead></thead>
       <tbody>
         <tr>
-        <td><strong><span style="color: Red;">* </span><%= "First Name" %></strong></td>
-        <td><%= f.text_field :student_firstname,required: true %></td>
-        <td><strong><span style="color: Red;">* </span><%= "Middle Name" %></strong></td>
-        <td><%= f.text_field :student_middlename,required: true %></td><br/>
+          <td><strong><span style="color: Red;">*</span><%= "First Name" %></strong></td>
+          <td><%= f.text_field :student_firstname,required: true %></td>
+          <td><strong><span style="color: Red;">*</span><%= "Last Name"  %></strong></td>
+          <td><%= f.text_field :student_lastname,required: true %></td>
         </tr>
+
         <tr>
-           <td><strong><span style="color: Red;">* </span><%= "Last Name"  %></strong></td>
-           <td><%= f.text_field :student_lastname,required: true %></td>
-           <td><strong><span style="color: Red;">* </span><%= "Email"  %></strong></td>
-           <td><%= f.text_field :student_email,required: true%></td>
-        </tr>
-        <tr>
-          <td><strong><span style="color: Red;">* </span><%= "Telephone"  %></strong></td>
+          <td><strong><span style="color: Red;">*</span><%= "Telephone"  %></strong></td>
           <td><%= f.text_field :telephone,required: true %></td>
-          <td><strong><span style="color: Red;">* </span><%= "Gender"  %></strong></td>
-          <td><%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
+          <td><strong><span style="color: Red;">*</span><%= "Email"  %></strong></td>
+          <td><%= f.text_field :student_email,required: true%></td>
+        </tr>
+        <tr>
+
+          <td><strong><span style="color: Red;">*</span><%= "Status"  %></strong></td>
+          <td><%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One",:selected => "#{@student.status rescue nil}"} ,:required =>true%></td>
+           
+          <td><strong><span style="color: Red;">*</span><%= "Gender"  %></strong></td>
+          <td><%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One",:selected => "#{@student.gender rescue nil}"} ,:required =>true%></td>
         </tr> 
 
         <tr>
-          <td><strong><span style="color: Red;">* </span><%= "Status"  %></strong></td>
-          <td><%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
-          <td><strong><span style="color: Red;">* </span><%= "Semester"  %></strong></td>
-          <td><%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => @semester[0].semester,  :include_blank => true) ) %></td>
+          <td><strong><span style="color: Red;">*</span><%= "Semester"  %></strong></td>
+          <td><%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => "#{@student.semester_registereds.where('student_id = ?', @student.id).first.semester}", :include_blank => true)) %></td>
+          <%#raise @student.semester_registereds.where('student_id = ?', @student.id).first.semester.inspect%>
+          <td><strong><span style="color: Red;">*</span><%= "Country"  %></strong></td>
+          <td><%= f.country_select :country, selected: @student.country %></td>
         </tr> 
 
         <tr>
           <td><strong><span style="color: Red;">* </span><%= "Year"  %></strong></td>
           <td><%= date_field_tag :year, "", :value => @semester[0].student_year %></td>
-          <td><strong><span style="color: Red;">* </span><%= "Country"  %></strong></td>
-          <td><%= f.country_select(:country) %></td>
+          
         </tr>  
       </tbody>
     </table>
@@ -193,8 +196,9 @@
     <%end%></td>
         <td><strong><%= label_tag :company_location  %></strong></td>
         <td><%if @student_work_exp[0].present?%>
-       <%= text_field_tag :company_location, "",:value => @student_work_exp[0][:company_location] if @student_work_exp[0][:wposition] == 1%>
-    <%else%>
+       <%  country = @student_work_exp[0][:company_location].gsub!('"', '')%>
+       <%= country_select :company_location, nil, {:selected => country.delete('[]') } %>
+    <%else%> 
        <%= text_field_tag :company_location%>
     <%end%></td><br/>
         </tr>
@@ -237,7 +241,8 @@
     <%end%></td>
         <td><strong><%= label_tag :company_location  %></strong></td>
         <td><% if @student_work_exp1[0].present? %>
-       <%= text_field_tag :company_location1, "",:value => @student_work_exp1[0][:company_location] if @student_work_exp1[0][:wposition] == 2%>
+       <%  country = @student_work_exp1[0][:company_location].gsub!('"', '')%>
+       <%= country_select :company_location, nil, {:selected => country.delete('[]') } %>
     <%else%>
        <%= text_field_tag :company_location1 %>
     <%end%></td><br/>
