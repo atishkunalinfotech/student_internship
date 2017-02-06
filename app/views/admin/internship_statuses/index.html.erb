@@ -17,7 +17,7 @@
   <tbody>
     <% @internship_statuses.each do |internship_status| %>
       <tr>
-        <td><%= internship_status.internship_status_name rescue nil %></td>
+        <td><%= link_to "#{internship_status.internship_status_name}" ,admin_student_internship_statuses_path(param1: internship_status), method: :get %></td>
         <td><%#= link_to 'Edit', edit_admin_internship_status_path(internship_status) %></td>
       </tr>
     <% end %>

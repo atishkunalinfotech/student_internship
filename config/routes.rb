@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get 'not_hired_student' => 'student_job_interests#not_hired_student', as: :not_hired_student
     get 'student_reports' => 'reports#student_reports', as: :student_reports
     get 'company_reports' => 'reports#company_reports', as: :company_reports
+    get 'student_internship_statuses' => 'internship_statuses#student_internship_statuses', as: :student_internship_statuses
   end
   
   devise_for :students

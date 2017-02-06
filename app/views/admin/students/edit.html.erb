@@ -55,7 +55,8 @@
         <tr>
           <td><strong><span style="color: Red;">* </span><%= "Year"  %></strong></td>
           <td><%= date_field_tag :year, "", :value => @semester[0].student_year %></td>
-          
+          <td><strong><span style="color: Red;">*</span><%= "Resume"  %></strong></td>
+          <td><%= f.file_field :attachment%><%= link_to "#{@student.attachment.file.filename}", @student.attachment_url %><%= %></td>
         </tr>  
       </tbody>
     </table>

@@ -18,31 +18,41 @@
         <tr>
            <td><strong>First Name:</strong></td>
            <td><%= @student.student_firstname rescue nil %></td>
-           <td><strong>Middle Name:</strong></td>
-           <td><%= @student.student_middlename rescue nil %></td>
+           <td><strong>Lastname:</strong></td>
+          <td><%= @student.student_lastname rescue nil %></td>
         </tr>
         <tr>
-          <td><strong>Lastname:</strong></td>
-          <td><%= @student.student_lastname rescue nil %></td>
+          <td><strong>Gender:</strong></td>
+          <td><%= @student.gender rescue nil %></td>
+          
           <td><strong>Telephone:</strong></td>
           <td><%= @student.telephone rescue nil %></td>
 
         </tr>
         <tr>
-          <td><strong>Gender:</strong></td>
-          <td><%= @student.gender rescue nil %></td>
+          <td><strong>Country:</strong></td>
+          <td><%= ISO3166::Country[@student.country] rescue nil %></td>
           <td><strong>Status:</strong></td>
           <td><%= @student.status rescue nil %></td>
         </tr>
         <tr>
-          <td><strong>Country:</strong></td>
-          <td><%= ISO3166::Country[@student.country] rescue nil %></td>
-          <td></td>
-          <td></td>
+          <td><strong>Semester:</strong></td>
+          <td><%= @student.semester_registereds.where('student_id = ?', @student.id).first.semester rescue nil %></td>
+          <td>Year:</td>
+          <td><%= @student.semester_registereds.where('student_id = ?', @student.id).first.student_year rescue nil %></td>
         </tr>
         
       </tbody>
     </table> 
+    <h3>RESUME</h3>
+    <table width="100%" border="0" class="table table-bordered table-striped">
+      <thead></thead>
+      <tbody>
+        <tr>
+          <%= link_to (image_tag(@student.attachment_url(:web_thumb, style:"height: 500; width: 500;"))), @student.attachment_url  %>
+        </tr>
+      </tbody>
+    </table>
     <h3>EDUCATION</h3>
     <%if @education.present?%>
     <table width="100%" border="0" class="table table-bordered table-striped">

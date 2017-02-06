@@ -12,7 +12,7 @@ class Student < ActiveRecord::Base
 
          accepts_nested_attributes_for :educations, :allow_destroy => true
          accepts_nested_attributes_for :student_work_exps, :allow_destroy => true
-
+         mount_uploader :attachment, AttachmentUploader
          validates :studentid, presence: true, :uniqueness => true
          
          def self.country_name(name)

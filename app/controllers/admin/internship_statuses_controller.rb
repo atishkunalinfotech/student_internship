@@ -39,6 +39,11 @@ class Admin::InternshipStatusesController < ApplicationController
 		
 	end
 
+	def student_internship_statuses
+		@internship_statuses = InternshipStatus.order('created_at desc') rescue nil
+		@students = Student.where('internship_status_id = ?', params[:param1])
+	end
+
 	private
 		def internship_status_params
 	      params.require(:internship_status).permit(:internship_status_name)

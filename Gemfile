@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'country_select'
+gem 'carrierwave' 
+gem 'rmagick'
+gem 'mini_magick'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'rails_autolink'
 gem 'rails_12factor', group: :production

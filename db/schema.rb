@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123153227) do
+ActiveRecord::Schema.define(version: 20170205230654) do
 
   create_table "admin_cities", force: :cascade do |t|
     t.string   "city_name",  limit: 255
@@ -152,6 +152,7 @@ ActiveRecord::Schema.define(version: 20170123153227) do
     t.string   "paid_status",            limit: 255
     t.integer  "internship_status_id",   limit: 4
     t.string   "country",                limit: 255
+    t.string   "attachment",             limit: 255
   end
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree

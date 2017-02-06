@@ -25,45 +25,45 @@
       <thead></thead>
       <tbody>
         <tr>
-          <td><strong><%= "Student Id" %></strong></td>
-          <td><%= f.text_field :studentid,:value => @student.studentid , :disabled => true,required: true %></td>
+          <td><strong><span style="color: Red;">*</span><%= "First Name" %></strong></td>
+          <td><%= f.text_field :student_firstname %></td>
+          <td><strong><span style="color: Red;">*</span><%= "Last Name"  %></strong></td>
+          <td><%= f.text_field :student_lastname  %></td>
         </tr>
-        <tr>
-        <td><strong><span style="color: Red;">*</span><%= "First Name" %></strong></td>
-        <td><%= f.text_field :student_firstname,required: true %></td>
-        
-        <!-- <td><strong><span style="color: Red;">*</span><%= "Middle Name" %></strong></td>
-        <td><%= f.text_field :student_middlename,required: true %></td><br/> -->
-        </tr>
-        <tr>
-           <td><strong><span style="color: Red;">*</span><%= "Last Name"  %></strong></td>
-           <td><%= f.text_field :student_lastname,required: true %></td>
-           <td><strong><span style="color: Red;">*</span><%= "Email"  %></strong></td>
-           <td><%= f.text_field :student_email,required: true%></td>
-        </tr>
+
         <tr>
           <td><strong><span style="color: Red;">*</span><%= "Telephone"  %></strong></td>
-          <td><%= f.text_field :telephone,required: true %></td>
-          <td><strong><span style="color: Red;">*</span><%= "Gender"  %></strong></td>
-          <td><%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
-        </tr> 
-
+          <td><%= f.text_field :telephone  %></td>
+          <td><strong><span style="color: Red;">*</span><%= "Email"  %></strong></td>
+          <td><%= f.text_field :student_email %></td>
+        </tr>
         <tr>
+
           <td><strong><span style="color: Red;">*</span><%= "Status"  %></strong></td>
-          <td><%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One"} ,:required =>true%></td>
-          <td><strong><span style="color: Red;">*</span><%= "Semester"  %></strong></td>
-          <td><%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => @semester[0].semester,  :include_blank => true) ) %></td>
+          <td><%= f.select :status, [ ["International", "International"],["Permanent Resident/Citizen", "Permanent Resident/Citizen"] ],{:include_blank=>"Select One",:selected => "#{@student.status rescue nil}"} ,:required =>true%></td>
+           
+          <td><strong><span style="color: Red;">*</span><%= "Gender"  %></strong></td>
+          <td><%= f.select :gender, [ ["Male", "Male"],["Female", "Female"] ],{:include_blank=>"Select One",:selected => "#{@student.gender rescue nil}"} ,:required =>true%></td>
         </tr> 
 
         <tr>
-          <td><strong><span style="color: Red;">*</span><%= "Year"  %></strong></td>
-          <td><%if @semester[0].present?%>
-        <%= date_field_tag :year, "", :value => @semester[0].student_year %>
-      <%else%>
-        <%= date_field_tag :year,"",:required => true%>
-      <%end%></td>
+          <td><strong><span style="color: Red;">*</span><%= "Semester"  %></strong></td>
+          <td><%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => "#{@student.semester_registereds.where('student_id = ?', @student.id).first.semester}", :include_blank => true)) %></td>
+          <%#raise @student.semester_registereds.where('student_id = ?', @student.id).first.semester.inspect%>
           <td><strong><span style="color: Red;">*</span><%= "Country"  %></strong></td>
-          <td><%= f.country_select(:country) %></td>
+          <td><%= f.country_select :country, selected: @student.country %></td>
+        </tr> 
+
+        <tr>
+          <td><strong><span style="color: Red;">* </span><%= "Year"  %></strong></td>
+          <td><%= date_field_tag :year, "", :value => @semester[0].student_year %></td>
+          <td><strong><span style="color: Red;">*</span><%= "Resume"  %></strong></td>
+          <%#raise @student.attachment_url.present?.inspect%>
+          <td><%= f.file_field :attachment%>
+            <%if @student.attachment_url.present?%>
+              <%= link_to "#{@student.attachment.file.filename}", @student.attachment_url %>
+            <%end%>
+          </td>
         </tr>  
       </tbody>
     </table>
@@ -77,13 +77,13 @@
        <%#raise @education[0].inspect%>
        <%= text_field_tag :degree_type,"",:value => @education[0][:degree_type] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :degree_type ,"",required: true%>
+       <%= text_field_tag :degree_type %>
     <%end%></td>
         <td><strong><%= label_tag :major %></strong></td>
         <td><%if @education[0].present?%>
        <%= text_field_tag :major,"",:value => @education[0][:major] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :major,"",required: true %>
+       <%= text_field_tag :major %>
     <%end%></td><br/>
         </tr>
         <tr>
@@ -91,13 +91,13 @@
            <td><%if @education[0].present?%>
        <%= text_field_tag :degree_gpa,"" ,:value => @education[0][:degree_gpa] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :degree_gpa,"",required: true%>
+       <%= text_field_tag :degree_gpa %>
     <%end%></td>
            <td><strong><%= label_tag :degree_university  %></strong></td>
            <td><%if @education[0].present?%>
        <%= text_field_tag :degree_university,"",:value => @education[0][:degree_university] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :degree_university,"",required: true%>
+       <%= text_field_tag :degree_university%>
     <%end%></td>
         </tr>
         <tr>
@@ -105,13 +105,13 @@
           <td><%if @education[0].present?%>
        <%= text_field_tag :degree_university_loc,"",:value => @education[0][:degree_university_loc] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :degree_university_loc,"",required: true %>
+       <%= text_field_tag :degree_university_loc  %>
     <%end%></td>
           <td><strong><%= label_tag :certifications  %></strong></td>
           <td><%if @education[0].present?%> 
        <%= text_field_tag :certifications,"",:value => @education[0][:certifications] if @education[0][:position] == 1%>
     <%else%>
-       <%= text_field_tag :certifications,"",required: true%>
+       <%= text_field_tag :certifications %>
     <%end%></td>
 
         </tr>
@@ -120,7 +120,7 @@
           <td><%if @education[0].present?%> 
       <%= text_field_tag :certification_body,"",:value => @education[0][:certification_body] if @education[0][:position] == 1%>
     <%else%>
-      <%= text_field_tag :certification_body,"",required: true%>
+      <%= text_field_tag :certification_body %>
     <%end%></td>
           <td></td>
           <td></td>

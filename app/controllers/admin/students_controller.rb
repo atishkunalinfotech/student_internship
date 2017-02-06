@@ -80,7 +80,7 @@ class Admin::StudentsController < ApplicationController
 
 	private
 		def student_params
-	      params.require(:student).permit(:email,:password,:password_confirmation,:country,:internship_status_id,:studentid,:student_firstname,:student_middlename,:student_lastname,:student_email,:telephone,:gender,:status,:paid_status ,educations_attributes: [:student_id,:degree_type,:major,:degree_gpa,:degree_university,:degree_university_loc,:certifications,:certification_body,:_destroy] )
+	      params.require(:student).permit(:email,:password,:attachment,:password_confirmation,:country,:internship_status_id,:studentid,:student_firstname,:student_middlename,:student_lastname,:student_email,:telephone,:gender,:status,:paid_status ,educations_attributes: [:student_id,:degree_type,:major,:degree_gpa,:degree_university,:degree_university_loc,:certifications,:certification_body,:_destroy] )
 	    end
 
 	    def set_student
