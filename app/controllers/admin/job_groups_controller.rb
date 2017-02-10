@@ -2,7 +2,7 @@ class Admin::JobGroupsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_job_group, only: [:show, :edit, :update, :destroy]
   before_filter :correct_user
-
+  layout "dashboard", only: [ :index ]
   def index
 		@job_groups = JobGroup.order('created_at desc')
 	end

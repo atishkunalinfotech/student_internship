@@ -3,8 +3,13 @@
 <div class="row" style="margin-top:150px;">
 <div class="span12">
  <p>
-   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
- </p>
+          
+          <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li>
+            <li><%= link_to 'Job Groups', admin_job_groups_path %></li>
+            <li>Create Job Groups</li>
+          </ol>
+       </p>
 <h1>New Group Name</h1>
 
 <%= render 'form' %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170205230654) do
+ActiveRecord::Schema.define(version: 20170210084252) do
 
   create_table "admin_cities", force: :cascade do |t|
     t.string   "city_name",  limit: 255
@@ -73,14 +73,17 @@ ActiveRecord::Schema.define(version: 20170205230654) do
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.integer  "job_group_id",     limit: 4
-    t.string   "job_name",         limit: 255
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.text     "description",      limit: 65535
-    t.text     "responsibilities", limit: 65535
-    t.text     "requirements",     limit: 65535
-    t.string   "salary",           limit: 255
+    t.integer  "job_group_id",      limit: 4
+    t.string   "job_name",          limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.text     "description",       limit: 65535
+    t.text     "responsibilities",  limit: 65535
+    t.text     "requirements",      limit: 65535
+    t.string   "salary",            limit: 255
+    t.integer  "company_id",        limit: 4
+    t.string   "status",            limit: 255
+    t.boolean  "publish_unpublish",               default: false
   end
 
   create_table "semester_registereds", force: :cascade do |t|

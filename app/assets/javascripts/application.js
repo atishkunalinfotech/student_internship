@@ -15,9 +15,3 @@
 
 //= require_tree .
 
-// function remove_fields(link) {
-// 	alert("hello");
-// $(link).prev("input[type=hidden]").val("1");
-// $(link).closest("#character").hide();
-// }
-

@@ -9,9 +9,34 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Job Model:</strong>
-  <%= @job.job_model_id %>
+  <strong>Job Group:</strong>
+  <%= @job.job_group.job_model_name %>
 </p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @job.company.company_name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <% if @job.status ==  "1"%>
+    <%= "Open" %>
+  <%else%>
+    <%= "Closed" %>
+  <%end%>
+</p>
+
+<p>
+  <strong>Publish/Unpublished:</strong>
+  <%if @job.publish_unpublish == false %>
+    <%= "Unpublished" %>
+  <%else%>
+    <%= "Published"%>
+  <%end%>
+</p>
+
+
 
 <p>
   <strong>job name:</strong>
