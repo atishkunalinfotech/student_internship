@@ -1,9 +1,17 @@
+
+
 <div class="faq">
 <div class="container">
 <div class="row" style="margin-top:150px;">
 <div class="span12">
  <p>
-   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+ 	<ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li> / 
+            <%= link_to 'Company Index Page', admin_companies_path %> /
+            <li class = "active">Create Company</li>
+            
+          </ol>
+   <%#= link_to_function "Back", "history.back()",:class=> "back-btn" %>
  </p>
 <h1>Create Company Profile</h1>
 <%= render 'form' %>

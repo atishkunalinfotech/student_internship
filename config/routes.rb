@@ -28,8 +28,11 @@ Rails.application.routes.draw do
     get 'publish_unpublish' => 'jobs#publish_unpublish', as: :publish_unpublish
     get 'company_reports' => 'reports#company_reports', as: :company_reports
     get 'student_internship_statuses' => 'internship_statuses#student_internship_statuses', as: :student_internship_statuses
+    get "change_password" => "students#change_password", as: :change_password
+    put "update_password" => "students#update_password", as: :update_password
   end
-  
+  get "change_password" => "students#change_password", as: :change_password
+  put "update_password" => "students#update_password", as: :update_password
   devise_for :students
   resources :students
   resources :job_posts

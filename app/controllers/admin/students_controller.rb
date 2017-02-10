@@ -2,6 +2,7 @@ class Admin::StudentsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_filter :correct_user
+  layout "dashboard", only: [ :index ]
 
     def index
 		@students = Student.order('created_at desc')
@@ -21,14 +22,18 @@ class Admin::StudentsController < ApplicationController
 # 
 	def create
 		@student = Student.new(student_params)
-		#raise @student.inspect
+		password_length = 8
+        password = Devise.friendly_token.first(password_length)
+        @student.password = password
 		@student_present = Student.find(params[:student][:student_id]) rescue nil
 		@internship = InternshipStatus.where('internship_status_name = ?',"Available").first rescue nil
+		
 		if params[:student][:student_profile] == "student_profile"
 			if @student.save
+				AgentMailer.agent_mail(@student.email,@student.password).deliver
 				SemesterRegistered.create(:student_id => @student.id)
 				flash[:notice] = "Successfully created Student login."
-				redirect_to admin_student_profile_path(:student_id => @student.id)
+				redirect_to admin_students_path(:student_id => @student.id)
 		    else
 		    	render :new
 	    		flash[:notice] = "Error creating Student login."
@@ -43,6 +48,24 @@ class Admin::StudentsController < ApplicationController
 	    	redirect_to admin_students_path
 	    end
 	end
+
+	def change_password
+		@student = Student.find(params[:stu_id])
+	end
+
+	def update_password
+	    @student = Student.find(params[:stu_id])
+	    @student.password = student_params[:password]
+	    
+	    if @student.save(validate: false)
+	      flash[:notice] = "Student password successfully updated."
+	      sign_in @student, :bypass => true
+	      redirect_to admin_students_path
+	    else
+	      flash[:notice] = "Error in updating password."
+	      redirect_to admin_change_password_path
+	    end
+    end
 
 	def edit
 		@skill_groups = SkillGroup.all

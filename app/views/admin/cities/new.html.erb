@@ -3,7 +3,13 @@
 <div class="row" style="margin-top:150px;">
 <div class="span12">
  <p>
-   <%= link_to 'Back', admin_cities_path %>
+ 	 <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li> 
+            <li><%= link_to 'City Index Page', admin_cities_path %></li>
+            <li class = "active">New City</li> 
+            
+          </ol>
+   <%#= link_to 'Back', admin_cities_path %>
  </p>
 <h1>New Admin City</h1>
 

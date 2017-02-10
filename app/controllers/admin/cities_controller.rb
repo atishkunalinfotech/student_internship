@@ -2,7 +2,7 @@ class Admin::CitiesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :correct_user
   before_action :set_admin_city, only: [:show, :edit, :update, :destroy]
-
+  layout "dashboard", only: [ :index ]
   # GET /admin/cities
   # GET /admin/cities.json
   def index

@@ -3,10 +3,16 @@
 <div class="row" style="margin-top:150px;">
 <div class="span12">
  <p>
-   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+ 	<ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li> 
+            <li><%= link_to 'Job Index Page', admin_jobs_path %></li>
+            <li class = "active">New Job</li> 
+            
+    </ol>
+   <%#= link_to_function "Back", "history.back()",:class=> "back-btn" %>
  </p>
 
-<h1>New Job Profile</h1>
+<h1>New Job</h1>
 
 <%= render 'form' %>
 </div>

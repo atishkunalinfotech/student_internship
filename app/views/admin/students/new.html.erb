@@ -4,6 +4,12 @@
 <div class="row" style="margin-top:150px;">
 <div class="span12">
  <p>
+  <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li> 
+            <li><%= link_to 'Students Index Page', admin_students_path %></li>
+            <li class = "active">New Student</li> 
+            
+          </ol>
    <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
  </p>
 <div class="form">
@@ -32,15 +38,9 @@
 
   <div class="field">
     <%= f.label :country,:class=>"field-lable" %>
-    <%= f.country_select :country,required: true,:class=>"field-in" %>
+    <%= f.country_select :country,only: (["IN", "CN", "PK"]),:selected => "IN",required: true,:class=>"field-in" %>
   </div>
-  <h3>Please set the password for student</h3>
-  <div><%= t "devise.password",:class=>"field-lable" %><% if @validatable %><i>(<%= @minimum_password_length %> <%= t "devise.characters_minimum"%>)</i><% end %><br />
-  </div>
-    <%= f.password_field :password, autocomplete: "off",:class=>"field-in",:required => true ,:id=>"password1"%>
-  <div><%= t "devise.password_confirmation",:class=>"field-lable" %><br />
-    <%= f.password_field :password_confirmation,autocomplete: "off",:class=>"field-in" ,required: true,:id=>"password2", :oninput=>"check(this)"%>
-  </div>
+  
   <div class="actions">
     <%= f.submit class: "edit-btn", :confirm => "Please check all information before save."%>
   </div>

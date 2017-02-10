@@ -2,6 +2,7 @@ class Admin::CompaniesController < ApplicationController
 	before_filter :authenticate_user!
     before_action :set_company, only: [:show, :edit, :update, :destroy]
     before_filter :correct_user
+    layout "dashboard", only: [ :index ]
     require 'rails_autolink'
 	def index
 		@company = Company.order('created_at desc')

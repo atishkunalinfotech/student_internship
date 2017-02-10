@@ -32,6 +32,24 @@ class StudentsController < ApplicationController
     @student_work_exp1 = StudentWorkExp.where('student_id = ? and wposition = ?', current_student.id,2).first rescue nil
   end
 
+  def change_password
+    @user ||= current_student
+  end
+
+  def update_password
+      @user ||= current_student
+      @user.password = student_params[:password]
+    
+      if @user.save(validate: false)
+        flash[:notice] = "Your password successfully updated."
+        sign_in @user, :bypass => true
+        redirect_to student_dashboard_path
+      else
+        flash[:notice] = "Error in updating password."
+        redirect_to admin_change_password_path
+      end
+    end
+
   private
 
     def student_params

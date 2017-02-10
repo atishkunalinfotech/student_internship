@@ -1,13 +1,24 @@
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">       
+              <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">          
+               <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>         
+               <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
 <div class="faq">
   <div class="container">
     <div class="row" style="margin-top:150px;">
       <div class="span12">
-       <p>
-          <%= link_to 'New Student', new_admin_student_path %>
+        <p>
+          
+          <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li>
+            <li class = "active">Students</li>
+            <li><%= link_to 'New Student', new_admin_student_path %></li>
+          </ol>
        </p>
+       
         <h1>Students</h1>
 
-        <table width="100%" border="0" class="table table-bordered table-striped">
+        <table cellpadding="0" cellspacing="0" border="0" class="dataTable" id="example">
   <thead>
     <tr>
       <th><%= "Student Id" %></th>
@@ -15,39 +26,29 @@
       <th><%= "Last Name" %></th>
       <th><%= "gender" %></th>
       <th><%= "country" %></th>
-      <th><%= "status" %></th>
-      <th><%= "Telephone" %></th>
       <th><%= "Semester" %></th>
       <th><%= "Year" %></th>
       <th><%= "Email" %></th>
-      <th><%= "Download Resume" %></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%="Edit"%></th>
+      <th><%="Delete"%></th>
+      <th><%="Change Password"%></th>
     </tr>
   </thead>
 
   <tbody>
     <% @students.each do |student| %>
       <tr>
-        <td><%= student.studentid rescue nil %></td>
+        <td><%= link_to student.studentid ,admin_student_path(student) %></td>
         <td><%= student.student_firstname rescue nil %></td>
         <td><%= student.student_lastname rescue nil %></td>
         <td><%= student.gender rescue nil %></td>
         <td><%= ISO3166::Country[student.country] rescue nil %></td>
-        <td><%= student.status rescue nil %></td>
-        <td><%= student.telephone rescue nil %></td>
         <td><%= student.semester_registereds.where('student_id = ?', student.id).first.semester rescue nil%></td>
         <td><%= student.semester_registereds.where('student_id = ?', student.id).first.student_year rescue nil %></td>
-        <td><%= student.email rescue nil %></td>
-        <%if student.attachment_url.present?%>
-          <td><%= link_to "Download Resume", student.attachment_url %></td>
-        <%else%>
-          <td><%= "N/A" %></td>
-        <%end%>
-        <td><%= link_to 'Show', admin_student_path(student) %></td>
+        <td><a href="mailto:<%=student.email%>"><%=student.email rescue nil%></td>
         <td><%= link_to 'Edit', edit_admin_student_path(student) %></td>
         <td><%= link_to 'Delete', admin_student_path(student), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Change Password",admin_change_password_path(:stu_id => student.id)%></td>
       </tr>
     <% end %>
   </tbody>
@@ -57,3 +58,11 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+
+     $(document).ready(function() {
+    $('#example').dataTable({"sPaginationType": "full_numbers"});
+});
+    </script>
