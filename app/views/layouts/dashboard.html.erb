@@ -8,6 +8,8 @@
     <!-- Styles -->
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= stylesheet_link_tag "theme", "index", "lib/animate" %>
+     <%= javascript_include_tag "jquery.dataTables.min.js", "jquery-1.7.1.min.js" %>
+               <%= stylesheet_link_tag "jquery.dataTables_themeroller.css", "jquery.dataTables.css"%>
     <style type="text/css">
                .breadcrumb > li + li:before {
                color: #CCCCCC;
@@ -94,8 +96,9 @@
         <!-- Scripts -->
         
         
-        <%= javascript_include_tag "bootstrap.min", "theme", "index-slider" %>
+        <%#= javascript_include_tag "bootstrap.min", "theme", "index-slider" %>
           
        <%= yield :scripts %>
     </body>
     </html>
+  
