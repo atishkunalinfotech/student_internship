@@ -3,7 +3,13 @@
 <div class="row" style="margin-top:150px;">
 <div class="span12">
  <p>
-   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+   <ol class = "breadcrumb">
+    <li><%= link_to 'Dashboard',admin_root_path %></li>
+    <li><%= link_to 'Companies', admin_companies_path %></li>
+    <li class = "active">View Company</li>
+    
+  </ol>
+   <%#= link_to_function "Back", "history.back()",:class=> "back-btn" %>
  </p>
 
 <p id="notice"><%= notice %></p>
