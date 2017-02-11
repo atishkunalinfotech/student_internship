@@ -16,9 +16,11 @@
               <div class="box">
 			    <ul>
 			      <li><%= link_to "Edit profile", edit_student_path(current_student)%></li>
+            <li><%= link_to "Show Profile", student_path(current_student)%></li> 
+            <li><%= link_to "Change Password",change_password_path%></li>  
                   <li><%= link_to "Job Posting", job_posts_path%></li>
-                  <li><%= link_to "Show Profile", student_path(current_student)%></li> 
-                  <li><%= link_to "Change Password",change_password_path%></li>  
+                  
+                  
                     
                 </ul>
                 

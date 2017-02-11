@@ -3,7 +3,13 @@
 <div class="row" style="margin-top:150px;">
 <div class="span12">
  <p>
-   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+  <p>
+
+          <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',student_dashboard_path %></li> 
+            <li class = "active">Student Profile</li> 
+          </ol>
+   <%#= link_to_function "Back", "history.back()",:class=> "back-btn" %>
  </p>
  <h3>PROFILE</h3>
  <table width="100%" border="0" class="table table-bordered table-striped">

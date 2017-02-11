@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   resources :students
   resources :job_posts
   get "job_interest_post" => 'job_posts#job_interest_post', as: :job_interest_post
-
+  get "job_show" => 'job_posts#job_show', as: :job_show
   devise_for :users
   root 'home#index'
   get 'student_dashboard' => 'student_dashboard#index', as: :student_dashboard
