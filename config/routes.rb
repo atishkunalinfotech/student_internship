@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :student_job_interests
     resources :reports
     resources :cities
+    resources :users
     get 'student_profile' => 'students#student_profile', as: :student_profile
     get 'select_student_profile' => 'student_job_interests#select_student_profile', as: :select_student_profile
     get 'reject_student_profile' => 'student_job_interests#reject_student_profile', as: :reject_student_profile
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
     get 'student_internship_statuses' => 'internship_statuses#student_internship_statuses', as: :student_internship_statuses
     get "change_password" => "students#change_password", as: :change_password
     put "update_password" => "students#update_password", as: :update_password
+    get "user_change_password" => "users#user_change_password", as: :user_change_password
+    put "user_update_password" => "users#user_update_password", as: :user_update_password
   end
   get "change_password" => "students#change_password", as: :change_password
   put "update_password" => "students#update_password", as: :update_password

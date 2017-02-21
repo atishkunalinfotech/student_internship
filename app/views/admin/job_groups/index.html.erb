@@ -26,7 +26,10 @@
         <tr>
               <td><%= job_group.job_model_name rescue nil %></td>
               <td><%= link_to 'Edit', edit_admin_job_group_path(job_group) %></td>
-              <td><%= link_to 'Destroy', admin_job_group_path(job_group), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td>
+
+                <%= button_to("Delete",admin_job_group_path(job_group), {:onclick => "return confirm('Are you sure?')", :method => :delete}) %>
+                <%#= link_to 'Destroy', admin_job_group_path(job_group), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

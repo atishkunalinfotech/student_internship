@@ -14,12 +14,14 @@
             </div>
 
             <div class="span6 block">
+
+            <%if current_user.role == "admin"%>
               <div class="box">
 			          <ul>
 			              <h3>Menu 1</h3>
 			              <li><%= link_to "Job Group",admin_job_groups_path%></li>
-                    <!-- <li><%= link_to "Faculty Account"%></li>
-                    <li><%= link_to "Staff Account"%></li> -->
+                    <li><%= link_to "Faculty Account",admin_users_path(:role => "faculty")%></li>
+                    <li><%= link_to "Staff Account",admin_users_path(:role => "staff")%></li>
                     <li><%= link_to "Add City",admin_cities_path%></li>
 					      
 					      <%#= link_to "Internship Status", admin_internship_statuses_path %>
@@ -38,6 +40,11 @@
                 </ul>
                 
               </div>
+            <%elsif current_user.role == "faculty" %>
+                <%= link_to "Faculty change password",admin_user_change_password_path(:user_id => current_user.id)%>
+            <%else%>
+                 <%= link_to "Staff change password",admin_user_change_password_path(:user_id => current_user.id)%>
+            <%end%>
                 
             </div>
 

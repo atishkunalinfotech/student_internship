@@ -36,7 +36,10 @@
 					<td><%= auto_link(company.try(:company_website)) %></td>
 					<td><%= link_to 'Edit', edit_admin_company_path(company) %></td>
 					<td><%= link_to 'Show Company', admin_company_path(company) %></td>
-					<td><%= link_to 'Delete', admin_company_path(company), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					<td>
+                         <%= button_to("Delete",admin_company_path(company), {:onclick => "return confirm('Are you sure?')", :method => :delete}) %>
+
+						<%#= button_to 'Delete', admin_company_path(company), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 				</tr>
 			<% end %>
 		</tbody>

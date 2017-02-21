@@ -42,9 +42,11 @@
         <td><%= student.semester_registereds.where('student_id = ?', student.id).first.semester rescue nil%></td>
         <td><%= student.semester_registereds.where('student_id = ?', student.id).first.student_year rescue nil %></td>
         <td><a href="mailto:<%=student.email%>"><%=student.email rescue nil%></td>
-        <td><%= link_to 'Edit', edit_admin_student_path(student) %></td>
-        <td><%= link_to 'Delete', admin_student_path(student), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to "Change Password",admin_change_password_path(:stu_id => student.id)%></td>
+        <td><%= button_to 'Edit', edit_admin_student_path(student) %></td>
+        <td>
+          <%= button_to("Delete",admin_student_path(student), {:onclick => "return confirm('Are you sure?')", :method => :delete}) %>
+          <%#= button_to 'Delete', admin_student_path(student), method: :delete, confirm: 'Are you sure?'%></td>
+        <td><%= button_to "Change Password",admin_change_password_path(:stu_id => student.id)%></td>
       </tr>
     <% end %>
   </tbody>
@@ -60,5 +62,8 @@
 
      $(document).ready(function() {
     $('#example').dataTable({"sPaginationType": "full_numbers"});
+
+
+   
 });
     </script>

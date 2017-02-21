@@ -1,0 +1,80 @@
+<%#= form_for :user, url: admin_users_path(:user), html: {method: :post} do |f| %>
+<div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+  <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li> 
+            <li><%= link_to 'users Index Page', admin_users_path %></li>
+            <li class = "active">New user</li> 
+            
+          </ol>
+   <%#= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+ </p>
+<div class="form">
+<%= form_for([:admin,@user],:html =>{ :multipart => true,:onsubmit => "return validateEmail(this.form)"}) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name,:class=>"field-lable" %>
+    <%= f.text_field :first_name,required: true,:class=>"field-in" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name,:class=>"field-lable" %>
+    <%= f.text_field :last_name,required: true,:class=>"field-in" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role,:class=>"field-lable" %>
+    <%= f.select :role, [ ["faculty", "faculty"],["staff", "staff"] ],{:include_blank=>"Select One"},:style=>" width: 220px;" ,:required =>true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :email,:class=>"field-lable" %>
+    <%= f.email_field :email,required: true,:class=>"field-in" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password,:class=>"field-lable" %>
+    <%= f.password_field :password, required: true ,:id=>"password1"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation,:class=>"field-lable" %>
+    <%= f.password_field :password_confirmation, required: true ,:id=>"password2"%>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit class: "edit-btn", :confirm => "Please check all information before save."%>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+function check(input) {
+  if (input.value != document.getElementById('password1').value) {
+    input.setCustomValidity('Password should match confirm password.');
+  } else {
+  input.setCustomValidity('');
+ }
+}
+</script>
+
+
+
+

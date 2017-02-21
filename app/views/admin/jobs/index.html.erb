@@ -46,7 +46,9 @@
 			       <td><%= link_to "Unpublish", admin_publish_unpublish_path(:id => job.id, :publish => 0)%></td>
 			    <%end%>
 				<td><%= link_to 'Edit', edit_admin_job_path(job) %></td>
-				<td><%= link_to 'Delete', admin_job_path(job), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<td>
+                   <%= button_to("Delete",admin_job_path(job), {:onclick => "return confirm('Are you sure?')", :method => :delete}) %>
+					<%#= button_to 'Delete', admin_job_path(job), method: :delete,:onclick=>"return validateAll();" %></td>
 			</tr>
 		<% end %>
 	</tbody>
@@ -61,5 +63,11 @@
 
      $(document).ready(function() {
     $('#examplee').dataTable({"sPaginationType": "full_numbers"	});
+
+
+     function validateAll() {
+     alert("Are you sure?");
+     return false;
+  };
 });
     </script>

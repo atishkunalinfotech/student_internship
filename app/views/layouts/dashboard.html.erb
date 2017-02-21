@@ -49,6 +49,12 @@
                       <%if current_user.is? :admin%>
                           <li><%= link_to "Dashboard",admin_root_path %></li>
                           <li><%= link_to "Logout",destroy_user_session_path, method: :delete %></li>
+                      <%elsif current_user.is? :faculty %>
+                          <li><%= link_to "Dashboard",admin_root_path %></li>
+                          <li><%= link_to "Logout",destroy_user_session_path, method: :delete %></li>
+                      <%elsif current_user.is? :staff %>
+                          <li><%= link_to "Dashboard",admin_root_path %></li>
+                          <li><%= link_to "Logout",destroy_user_session_path, method: :delete %></li>
                       <% else %>
                        <li><a href="/" class="active">HOME</a></li>
                        <li><%= link_to "Admin Sign In",new_user_session_path %></li>
@@ -101,7 +107,7 @@
         <!-- Scripts -->
         
         
-        <%#= javascript_include_tag "bootstrap.min", "theme", "index-slider" %>
+        <%= javascript_include_tag "bootstrap.min", "theme", "index-slider"%>
           
        <%= yield :scripts %>
     </body>

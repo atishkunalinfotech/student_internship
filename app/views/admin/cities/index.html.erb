@@ -32,7 +32,10 @@
             <td><%= admin_city.city_name %></td>
             <td><%= link_to 'Show', admin_city %></td>
             <td><%= link_to 'Edit', edit_admin_city_path(admin_city) %></td>
-            <td><%= link_to 'Delete', admin_city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td>
+              <%= button_to("Delete",admin_city, {:onclick => "return confirm('Are you sure?')", :method => :delete}) %>
+              <%#= button_to 'Delete', admin_city,{:onclick => "return confirm('Are you
+sure?')", :method => :delete} %></td>
           </tr>
         <% end %>
       </tbody>
