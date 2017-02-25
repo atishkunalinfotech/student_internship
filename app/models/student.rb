@@ -11,7 +11,7 @@ class Student < ActiveRecord::Base
          has_many :student_job_interests, :dependent => :destroy
 
          accepts_nested_attributes_for :educations, :allow_destroy => true
-         accepts_nested_attributes_for :student_work_exps, :allow_destroy => true
+        # accepts_nested_attributes_for :student_work_exps, :allow_destroy => true
          mount_uploader :attachment, AttachmentUploader
          validates :studentid, presence: true, :uniqueness => true
          

@@ -43,12 +43,12 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   end
 
   def thumbnail_pdf
-    manipulate! do |img|
-      img.format("pdf", 1)
-      img.resize("500x500")
-      img = yield(img) if block_given?
-      img
-    end
+    # manipulate! do |img|
+    #   img.format("pdf", 1)
+    #   img.resize("500x500")
+    #   img = yield(img) if block_given?
+    #   img
+    # end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

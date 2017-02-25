@@ -1,4 +1,4 @@
-  <table width="100%" border="0" class="table table-bordered table-striped">
+<!--   <table width="100%" border="0" class="table table-bordered table-striped">
       <thead></thead>
       <tbody>
         <tr>
@@ -60,5 +60,26 @@
         </tr>
         
       </tbody>
-    </table> 
+    </table> --> 
   
+
+
+
+  <fieldset>
+        <table width="100%" border="0" class="table table-bordered table-striped">
+          <thead></thead>
+          <tbody>
+            <tr>
+              <td><strong><%= f.label :degree_type %></strong></td>
+              <td> <%= f.text_field :degree_type %></td>
+              <td><strong><%= f.label :major %></strong></td>
+              <td><%= f.text_field :major %></td><br/>
+            </tr>
+          </tbody>
+        </table>
+        <%= f.hidden_field :_destroy %>
+        <%= link_to "remove", '#', class: "remove_fields" %>
+      </fieldset> 
+
+
+    

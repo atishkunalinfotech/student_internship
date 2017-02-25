@@ -20,7 +20,7 @@
       <thead>
         <tr>
           <th>City name</th>
-          <th>View</th>
+          <!-- <th>View</th> -->
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -30,7 +30,7 @@
         <% @admin_cities.each do |admin_city| %>
           <tr>
             <td><%= admin_city.city_name %></td>
-            <td><%= link_to 'Show', admin_city %></td>
+            <!-- <td><%#= link_to 'Show', admin_city %></td> -->
             <td><%= link_to 'Edit', edit_admin_city_path(admin_city) %></td>
             <td>
               <%= button_to("Delete",admin_city, {:onclick => "return confirm('Are you sure?')", :method => :delete}) %>

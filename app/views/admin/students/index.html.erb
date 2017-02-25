@@ -42,7 +42,7 @@
         <td><%= student.semester_registereds.where('student_id = ?', student.id).first.semester rescue nil%></td>
         <td><%= student.semester_registereds.where('student_id = ?', student.id).first.student_year rescue nil %></td>
         <td><a href="mailto:<%=student.email%>"><%=student.email rescue nil%></td>
-        <td><%= button_to 'Edit', edit_admin_student_path(student) %></td>
+        <td><%= button_to('Edit', edit_admin_student_path(student),:method => :get) %></td>
         <td>
           <%= button_to("Delete",admin_student_path(student), {:onclick => "return confirm('Are you sure?')", :method => :delete}) %>
           <%#= button_to 'Delete', admin_student_path(student), method: :delete, confirm: 'Are you sure?'%></td>

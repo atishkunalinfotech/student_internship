@@ -30,14 +30,23 @@
   </div>
   <%= f.hidden_field :internship_status_id , :value => @internship.id%>
   <%= f.hidden_field :student_profile , :value => "student_profile"%>
+  <div class="field">
+    <%= f.label :student_first_name %>
+    <%= f.text_field :student_firstname,required: true %>
+  </div>
 
+  
+  <div class="field">
+    <%= f.label :student_last_name  %>
+    <%= f.text_field :student_lastname,required: true %>
+  </div>
   <div class="field">
     <%= f.label :email,:class=>"field-lable" %>
     <%= f.email_field :email,required: true,:class=>"field-in" %>
   </div>
 
   <div class="field">
-    <%= f.label :country,:class=>"field-lable" %>
+    <%= f.label :Student_country,:class=>"field-lable" %>
     <%= f.country_select :country,only: (["IN", "CN", "PK"]),:selected => "IN",required: true,:class=>"field-in" %>
   </div>
   

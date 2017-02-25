@@ -68,16 +68,20 @@ class Admin::StudentsController < ApplicationController
     end
 
 	def edit
+		1.times do
+		    @educations = @student.educations.build
+        end
 		@skill_groups = SkillGroup.all
 		@semester = SemesterRegistered.where('student_id = ?',@student.id) rescue nil
-		@education = Education.where('student_id = ? and position = ?', @student.id,1) rescue nil
-		@education1 = Education.where('student_id = ? and position = ?', @student.id,2) rescue nil
+		# @education = Education.where('student_id = ? and position = ?', @student.id,1) rescue nil
+		# @education1 = Education.where('student_id = ? and position = ?', @student.id,2) rescue nil
 		@student_work_exp = StudentWorkExp.where('student_id = ? and wposition = ?', @student.id,1) rescue nil
 		@student_work_exp1 = StudentWorkExp.where('student_id = ? and wposition = ?', @student.id,2) rescue nil
 	end
 
 	def update
 		@student.update(student_params)
+		#raise @student.inspect
 		Student.update_semester(params,@student.id)
 		Student.update_myskill(params,@student.id)
 	    Student.update_education(params,@student.id)

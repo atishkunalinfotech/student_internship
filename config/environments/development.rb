@@ -50,8 +50,8 @@ Rails.application.configure do
             :port => 587,
             :domain => "imap.sendgrid.com",
             :authentication => :plain,
-            :user_name => "atish123",
-            :password => "qwerty12345678"
+            :user_name => "",
+            :password => ""
   }
 config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
