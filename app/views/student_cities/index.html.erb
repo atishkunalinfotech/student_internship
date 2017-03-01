@@ -1,0 +1,51 @@
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+       <p>
+          
+          <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li>
+            <li class = "active">Student City</li>
+             <li><%= link_to 'Add Student city',new_admin_country_path %></li>
+            
+          </ol>
+       </p>
+        <h1>Student City</h1>
+
+        <table cellpadding="0" cellspacing="0" border="0" class="dataTable" id="example">
+    <thead>
+        <tr>
+            <th>Student city</th>
+            <th>Country</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+      <% @student_cities.each do |student_city| %>
+        <tr>
+          
+              <td><%= student_city.student_city_name %></td>
+              <td><%= student_city.country.country_name %></td>
+              <td><%= link_to 'Edit', edit_student_city_path(student_city) %></td>
+              <td><%= link_to 'Delete', student_city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+           
+              
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+
+ <script type="text/javascript">
+
+     $(document).ready(function() {
+    $('#example').dataTable({"sPaginationType": "full_numbers"});
+});
+    </script>

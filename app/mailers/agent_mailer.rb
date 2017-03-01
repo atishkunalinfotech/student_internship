@@ -8,4 +8,13 @@ class AgentMailer < ActionMailer::Base
          :subject => "Your account details"
     )
   end
+
+
+  def agent_staff_mail(agent,password)
+    @agent = agent
+    @password = password
+    mail(:to => @agent,
+         :subject => "Your account details"
+    )
+  end
 end

@@ -1,0 +1,2 @@
+module StudentCertificationsHelper
+end

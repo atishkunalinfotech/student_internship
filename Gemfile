@@ -32,6 +32,7 @@ gem 'mini_magick'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'rails_autolink'
 gem 'rails_12factor', group: :production
+gem "cocoon"
 # gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 # gem 'jquery-ui-rails'
 # Use ActiveModel has_secure_password

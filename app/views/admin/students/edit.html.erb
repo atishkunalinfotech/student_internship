@@ -1,3 +1,6 @@
+
+
+
 <%#= javascript_include_tag "application" %>
 <div class="faq">
 <div class="container">
@@ -49,7 +52,7 @@
           <td><%= select_tag(:semester, options_for_select([["Fall", "Fall"],["Winter", "Winter"]],:selected => "#{@student.semester_registereds.where('student_id = ?', @student.id).first.semester}", :include_blank => true)) %></td>
           <%#raise @student.semester_registereds.where('student_id = ?', @student.id).first.semester.inspect%>
           <td><strong><span style="color: Red;">*</span><%= "Country"  %></strong></td>
-          <td><%= f.country_select :country, selected: @student.country %></td>
+          <td><%#= f.country_select :country, selected: @student.country %><%= f.collection_select :country_id, Country.order(:country_name), :id, :country_name, include_blank: true %></td>
         </tr> 
 
         <tr>
@@ -65,10 +68,27 @@
         </tr>  
       </tbody>
     </table>
-    <%= f.fields_for :educations do |builder| %>
-      <%= render 'education_fields', f: builder %>
-    <% end %>
-    <%= link_to_add_fields "Add Education", f, :educations %>
+
+
+
+    <h3>Add Degree</h3>
+
+    <div id='student_degrees'>
+      <%= f.fields_for :student_degrees do |student_degree| %>
+        <%= render 'student_degree_fields', f: student_degree %>
+      <% end %>
+      <%= link_to_add_association "Add Degrees", f, :student_degrees %><br>
+    </div>
+    
+    
+    <h3>Add Certificate</h3>
+
+    <div id='student_degrees'>
+      <%= f.fields_for :student_certifications do |builder| %>
+        <%= render 'student_certification_fields', f: builder %>
+      <% end %>
+      <%= link_to_add_association "Add Certificate", f, :student_certifications %>
+    </div>
     <%#= f.hidden_field :student_profile , :value => "student_profile"%>
     <%#= f.hidden_field :student_id , :value => params[:student_id]%>
 
@@ -81,56 +101,7 @@
 
   <% end %>
 
-  <script type="text/javascript">
-      jQuery.noConflict();
-      jQuery(function($){
-        jQuery("#year").datepicker({
-          changeYear: true,
-          showButtonPanel: true,
-          dateFormat: 'yy',
-          beforeShowDay: jQuery.datepicker.nodates,
-          onClose: function(dateText, inst) { 
-              var year = jQuery("#ui-datepicker-div .ui-datepicker-year :selected").val();
-              jQuery(this).datepicker('setDate', new Date(year, 1));
-          }
-      });
-
-      jQuery("#year").focus(function () {
-          jQuery(".ui-datepicker-month").hide();
-          jQuery(".ui-datepicker-calendar").hide();
-          jQuery(".ui-datepicker-current").hide();
-      });
-
-      });
-  </script>
-
-  <script type="text/javascript">
-    jQuery.noConflict();
-    jQuery(function($){
-      jQuery("#dates_start").datepicker({dateFormat: 'dd-mm-yy',changeMonth: true,
-    changeYear: true})
-
-    });
-    jQuery.noConflict();
-    jQuery(function($){
-      jQuery("#date_end").datepicker({dateFormat: 'dd-mm-yy ',changeMonth: true,
-    changeYear: true})
-    });
-</script>
-
-<script type="text/javascript">
-    jQuery.noConflict();
-    jQuery(function($){
-      jQuery("#dates_start1").datepicker({dateFormat: 'dd-mm-yy',changeMonth: true,
-    changeYear: true})
-
-    });
-    jQuery.noConflict();
-    jQuery(function($){
-      jQuery("#date_end1").datepicker({dateFormat: 'dd-mm-yy ',changeMonth: true,
-    changeYear: true})
-    });
-</script>
+  
 <%#else%>
   <!-- <h1>No Student Present</h1> -->
 <%#end%>

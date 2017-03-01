@@ -8,10 +8,11 @@
     <!-- Styles -->
     <%= stylesheet_link_tag "application" %>
     <%= stylesheet_link_tag "theme", "index", "lib/animate" %>
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">       
+
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.12.4.js" ></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">       
                      
-                 
-               <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     <style type="text/css">
                .breadcrumb > li + li:before {
                color: #CCCCCC;
@@ -104,7 +105,7 @@
         <!-- Scripts -->
         
         
-        <%= javascript_include_tag "application","bootstrap.min", "theme", "index-slider"%>
+        <%= javascript_include_tag "bootstrap.min", "theme", "index-slider"%>
           
        <%= yield :scripts %>
     </body>

@@ -1,0 +1,47 @@
+
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+       <p>
+          
+          <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li>
+            <li class = "active">Student Majors</li>
+            <li><%= link_to 'New Student major', new_admin_student_major_path %></li>
+          </ol>
+       </p>
+        <h1>Job Groups</h1>
+
+        <table cellpadding="0" cellspacing="0" border="0" class="dataTable" id="example">
+    <thead>
+        <tr>
+      <th>Major name</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @admin_student_majors.each do |admin_student_major| %>
+      <tr>
+        <td><%= admin_student_major.major_name %></td>
+        <td><%= link_to 'Edit', edit_admin_student_major_path(admin_student_major) %></td>
+        <td><%= link_to 'Destroy', admin_student_major, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <script type="text/javascript">
+
+     $(document).ready(function() {
+    $('#example').dataTable({"sPaginationType": "full_numbers"});
+});
+    </script>

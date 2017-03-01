@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
   
+  devise_for :students
+  devise_scope :student do  
+   get '/students/sign_out' => 'devise/sessions#destroy'     
+  end
+
+  devise_for :users
+  devise_scope :user do  
+   get '/users/sign_out' => 'devise/sessions#destroy'     
+  end
+  
+  resources :student_certifications
+  resources :student_cities
+  namespace :admin do
+    resources :student_majors
+  end
+  resources :student_universities
   namespace :admin do
     resources :cities
   end
@@ -19,6 +35,7 @@ Rails.application.routes.draw do
     resources :reports
     resources :cities
     resources :users
+    resources :countries
     get 'student_profile' => 'students#student_profile', as: :student_profile
     get 'select_student_profile' => 'student_job_interests#select_student_profile', as: :select_student_profile
     get 'reject_student_profile' => 'student_job_interests#reject_student_profile', as: :reject_student_profile
@@ -36,12 +53,12 @@ Rails.application.routes.draw do
   end
   get "change_password" => "students#change_password", as: :change_password
   put "update_password" => "students#update_password", as: :update_password
-  devise_for :students
+  
   resources :students
   resources :job_posts
   get "job_interest_post" => 'job_posts#job_interest_post', as: :job_interest_post
   get "job_show" => 'job_posts#job_show', as: :job_show
-  devise_for :users
+  
   root 'home#index'
   get 'student_dashboard' => 'student_dashboard#index', as: :student_dashboard
   # The priority is based upon order of creation: first created -> highest priority.

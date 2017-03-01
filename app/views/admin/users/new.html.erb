@@ -43,16 +43,6 @@
     <%= f.label :email,:class=>"field-lable" %>
     <%= f.email_field :email,required: true,:class=>"field-in" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password,:class=>"field-lable" %>
-    <%= f.password_field :password, required: true ,:id=>"password1"%>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation,:class=>"field-lable" %>
-    <%= f.password_field :password_confirmation, required: true ,:id=>"password2"%>
-  </div>
   
   <div class="actions">
     <%= f.submit class: "edit-btn", :confirm => "Please check all information before save."%>

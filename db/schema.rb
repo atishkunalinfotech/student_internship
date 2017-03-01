@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221061123) do
+ActiveRecord::Schema.define(version: 20170227160048) do
 
   create_table "admin_cities", force: :cascade do |t|
     t.string   "city_name",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "admin_student_majors", force: :cascade do |t|
+    t.string   "major_name", limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -36,6 +42,13 @@ ActiveRecord::Schema.define(version: 20170221061123) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.string   "province",                limit: 255
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string   "country_name",    limit: 255
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.boolean  "student_country",             default: false
   end
 
   create_table "educations", force: :cascade do |t|
@@ -107,6 +120,38 @@ ActiveRecord::Schema.define(version: 20170221061123) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "student_certifications", force: :cascade do |t|
+    t.string   "certification", limit: 255
+    t.string   "major",         limit: 255
+    t.string   "institution",   limit: 255
+    t.integer  "country_id",    limit: 4
+    t.string   "grade",         limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "student_id",    limit: 4
+  end
+
+  create_table "student_cities", force: :cascade do |t|
+    t.string   "student_city_name", limit: 255
+    t.integer  "country_id",        limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "student_degrees", force: :cascade do |t|
+    t.string   "degree",                limit: 255
+    t.string   "major",                 limit: 255
+    t.integer  "student_university_id", limit: 4
+    t.integer  "country_id",            limit: 4
+    t.string   "college",               limit: 255
+    t.string   "gpa",                   limit: 255
+    t.string   "garduation_year",       limit: 255
+    t.integer  "student_id",            limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "student_city_id",       limit: 4
+  end
+
   create_table "student_job_interests", force: :cascade do |t|
     t.integer  "student_id",            limit: 4
     t.integer  "company_id",            limit: 4
@@ -117,6 +162,13 @@ ActiveRecord::Schema.define(version: 20170221061123) do
     t.boolean  "reject_profile",                    default: false
     t.integer  "is_hire",               limit: 4,   default: 0
     t.string   "paid_status",           limit: 255
+  end
+
+  create_table "student_universities", force: :cascade do |t|
+    t.integer  "country_id",      limit: 4
+    t.string   "university_name", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "student_work_exps", force: :cascade do |t|
@@ -156,6 +208,7 @@ ActiveRecord::Schema.define(version: 20170221061123) do
     t.integer  "internship_status_id",   limit: 4
     t.string   "country",                limit: 255
     t.string   "attachment",             limit: 255
+    t.integer  "country_id",             limit: 4
   end
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree

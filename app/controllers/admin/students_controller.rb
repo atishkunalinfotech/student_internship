@@ -17,7 +17,6 @@ class Admin::StudentsController < ApplicationController
 	def student_profile
 		#@student = Student.new
 		@student = Student.find(params[:student_id])
-		@skill_groups = SkillGroup.all
 	end
 # 
 	def create
@@ -41,9 +40,6 @@ class Admin::StudentsController < ApplicationController
 	    else
 	    	@student_present.update(student_params)
 	    	Student.semester(params,@student_present.id)
-	    	Student.myskill(params,@student_present.id)
-	    	Student.education(params,@student_present.id)
-	    	Student.student_work(params,@student_present.id)
 			flash[:notice] = "Updated successfully."
 	    	redirect_to admin_students_path
 	    end
@@ -68,24 +64,14 @@ class Admin::StudentsController < ApplicationController
     end
 
 	def edit
-		1.times do
-		    @educations = @student.educations.build
-        end
 		@skill_groups = SkillGroup.all
 		@semester = SemesterRegistered.where('student_id = ?',@student.id) rescue nil
-		# @education = Education.where('student_id = ? and position = ?', @student.id,1) rescue nil
-		# @education1 = Education.where('student_id = ? and position = ?', @student.id,2) rescue nil
-		@student_work_exp = StudentWorkExp.where('student_id = ? and wposition = ?', @student.id,1) rescue nil
-		@student_work_exp1 = StudentWorkExp.where('student_id = ? and wposition = ?', @student.id,2) rescue nil
 	end
 
 	def update
 		@student.update(student_params)
 		#raise @student.inspect
 		Student.update_semester(params,@student.id)
-		Student.update_myskill(params,@student.id)
-	    Student.update_education(params,@student.id)
-	    Student.update_student_work(params,@student.id)
 		flash[:notice] = "Updated successfully."
     	redirect_to admin_students_path
 	end
@@ -99,15 +85,14 @@ class Admin::StudentsController < ApplicationController
 	def show
 		@skill_groups = SkillGroup.all
 		@semester = SemesterRegistered.where('student_id = ?',@student.id) rescue nil
-		@education = Education.where('student_id = ? and position = ?', @student.id,1).first rescue nil
-		@education1 = Education.where('student_id = ? and position = ?', @student.id,2).first rescue nil
-		@student_work_exp = StudentWorkExp.where('student_id = ? and wposition = ?', @student.id,1).first rescue nil
-		@student_work_exp1 = StudentWorkExp.where('student_id = ? and wposition = ?', @student.id,2).first rescue nil
 	end
 
 	private
 		def student_params
-	      params.require(:student).permit(:email,:password,:attachment,:password_confirmation,:country,:internship_status_id,:studentid,:student_firstname,:student_middlename,:student_lastname,:student_email,:telephone,:gender,:status,:paid_status ,educations_attributes: [:student_id,:degree_type,:major,:degree_gpa,:degree_university,:degree_university_loc,:certifications,:certification_body,:_destroy] )
+	      params.require(:student).permit(:email,:password,:attachment,:password_confirmation,:country_id,:internship_status_id,:studentid,:student_firstname,:student_middlename,:student_lastname,:student_email,:telephone,:gender,:status,:paid_status ,
+	      	student_degrees_attributes: [:student_id,:degree,:major,:gpa,:student_university_id,:country_id,
+	      		:garduation_year,:college,:student_city_id,:_destroy,:id],
+	      	student_certifications_attributes: [:student_id,:certification,:major,:institution, :country_id ,:grade,:_destroy,:id] )
 	    end
 
 	    def set_student

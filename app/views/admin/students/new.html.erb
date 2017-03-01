@@ -47,7 +47,7 @@
 
   <div class="field">
     <%= f.label :Student_country,:class=>"field-lable" %>
-    <%= f.country_select :country,only: (["IN", "CN", "PK"]),:selected => "IN",required: true,:class=>"field-in" %>
+    <%= f.collection_select :country_id, Country.where('Student_country = ?', true), :id, :country_name, include_blank: "Select Country" %>
   </div>
   
   <div class="actions">

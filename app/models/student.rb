@@ -4,14 +4,16 @@ class Student < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-         has_many :educations, :dependent => :destroy
-         has_many :student_work_exps,:dependent => :destroy
+         has_many :student_degrees, :dependent => :destroy
+         has_many :student_certifications , :dependent => :destroy
          has_many :semester_registereds, :dependent => :destroy
-         has_many :user_skills, :dependent => :destroy
          has_many :student_job_interests, :dependent => :destroy
-
-         accepts_nested_attributes_for :educations, :allow_destroy => true
-        # accepts_nested_attributes_for :student_work_exps, :allow_destroy => true
+         belongs_to :student_university
+         belongs_to :country
+         belongs_to :student_city
+         accepts_nested_attributes_for :student_certifications,reject_if: :all_blank, :allow_destroy => true
+         accepts_nested_attributes_for :student_degrees,reject_if: :all_blank, :allow_destroy => true
+        
          mount_uploader :attachment, AttachmentUploader
          validates :studentid, presence: true, :uniqueness => true
          

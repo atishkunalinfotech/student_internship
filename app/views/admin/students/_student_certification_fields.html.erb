@@ -1,0 +1,29 @@
+<div class='nested-fields'>
+        <table width="100%" border="0" class="table table-bordered table-striped">
+          <thead></thead>
+          <tbody>
+            <tr>
+              <td><strong><%= f.label :certification %></strong></td>
+              <td> <%= f.text_field :certification,required: true%></td>
+              <td><strong><%= f.label :major %></strong></td>
+              <td><%= f.text_field :major %></td><br/>
+            </tr>
+            <tr>
+              <td><strong><%= f.label :institution , "Institution" %></strong></td>
+              <td> <%= f.text_field :institution%></td>
+              <td><strong><%= f.label :country %></strong></td>
+              <td><%= f.collection_select :country_id, Country.order(:country_name), :id, :country_name,{:include_blank => true}  %></td><br/>
+              
+            </tr>
+            <tr>
+              <td><strong><%= f.label :grade %></strong></td>
+              <td><%= f.text_field :grade %></td><br/>
+              <td><strong></strong></td>
+              <td></td><br/>
+            </tr>
+          </tbody>
+        </table>
+        <%= link_to_remove_association "remove",f %>
+        <%#= f.hidden_field :_destroy %>
+        <%#= link_to "remove", '#', class: "remove_fields" %>
+</div> 

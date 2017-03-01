@@ -1,0 +1,38 @@
+
+
+  <div class='nested-fields'>
+        <table width="100%" border="0" class="table table-bordered table-striped">
+          <thead></thead>
+          <tbody>
+            <tr>
+              <td><strong><%= f.label :degree %></strong></td>
+              <td> <%= f.select :degree, [ ["Undergraduate", "Undergraduate"],["Graduate", "Graduate"],["Diploma", "Diploma"] ],{:include_blank=>"Select One"},required: true %></td>
+              <td><strong><%= f.label :major %></strong></td>
+              <td><%= f.collection_select :major, Admin::StudentMajor.order(:major_name), :id, :major_name,{:include_blank => true} %></td><br/>
+            </tr>
+            <tr>
+              <td><strong><%= f.label :country %></strong></td>
+              <td><%= f.collection_select :country_id, Country.order(:country_name), :id, :country_name,{:include_blank => true} %></td><br/>
+              <td><strong><%= f.label :student_university_id , "University" %></strong></td>
+              <td> <%= f.grouped_collection_select :student_university_id, Country.order(:country_name), :student_universities, :country_name, :id, :university_name, {:include_blank => true} %></td>
+            </tr>
+            <tr>
+              <td><strong><%= f.label :college %></strong></td>
+              <td><%= f.text_field :college %></td><br/>
+              <td><strong><%= f.label :gpa , "GPA" %></strong></td>
+              <td> <%= f.text_field :gpa %></td>
+            </tr>
+            <tr>
+              <td><strong><%= f.label :garduation_year %></strong></td>
+              <td><%= f.text_field :garduation_year %></td><br/>
+              <td><strong><%= f.label :student_city_id, "City" %></strong></td>
+              <td><%= f.grouped_collection_select :student_city_id, Country.order(:country_name), :student_cities, :country_name, :id, :student_city_name, {:include_blank => true} %> </td>
+            </tr>
+          </tbody>
+        </table>
+        <%#= f.hidden_field :_destroy %>
+        <%= link_to_remove_association "remove",f %>
+     </div>
+
+
+    

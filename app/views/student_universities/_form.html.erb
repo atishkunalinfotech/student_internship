@@ -1,0 +1,29 @@
+
+
+<%= form_for(@student_university) do |f| %>
+  <% if @student_university.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student_university.errors.count, "error") %> prohibited this student_university from being saved:</h2>
+
+      <ul>
+      <% @student_university.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country_id %><br>
+    <%= f.collection_select :country_id, Country.order(:country_name), :id, :country_name %>
+  </div>
+  <div class="field">
+    <%= f.label :university_name %><br>
+    <%= f.text_field :university_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

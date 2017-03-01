@@ -1,0 +1,17 @@
+<p>Hi <%= @agent rescue nil%>,</p>
+<br>
+
+Welcome to University of Windsor. 
+<br><br>
+
+Please find below your account details.
+<br><br>
+<Strong>Email Address:</Strong> <%= @agent rescue nil%><br>
+<Strong>Temporary Password:</Strong> <%= @password rescue nil%><br>
+<br><br>
+Click on the link below to access your account.
+<br>
+For develpment link 
+<p><a href="http://localhost:3000/users/sign_in" target="_blank">Please Click Here </a></p>
+For Heroku
+<p><a href="https://blooming-caverns-60858.herokuapp.com/users/sign_in">Please Click Here</a></p>

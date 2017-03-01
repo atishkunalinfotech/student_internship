@@ -1,0 +1,21 @@
+<%= form_for(@admin_student_major) do |f| %>
+  <% if @admin_student_major.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_student_major.errors.count, "error") %> prohibited this admin_student_major from being saved:</h2>
+
+      <ul>
+      <% @admin_student_major.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :major_name %><br>
+    <%= f.text_field :major_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

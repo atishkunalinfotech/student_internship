@@ -1,0 +1,25 @@
+<%= form_for(@student_city) do |f| %>
+  <% if @student_city.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student_city.errors.count, "error") %> prohibited this student_city from being saved:</h2>
+
+      <ul>
+      <% @student_city.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country_id %><br>
+    <%= f.collection_select :country_id, Country.order(:country_name), :id, :country_name %>
+  </div>
+  <div class="field">
+    <%= f.label :student_city_name %><br>
+    <%= f.text_field :student_city_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

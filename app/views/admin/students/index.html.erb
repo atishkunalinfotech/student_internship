@@ -38,7 +38,7 @@
         <td><%= student.student_firstname rescue nil %></td>
         <td><%= student.student_lastname rescue nil %></td>
         <td><%= student.gender rescue nil %></td>
-        <td><%= ISO3166::Country[student.country] rescue nil %></td>
+        <td><%= student.country.country_name rescue nil %></td>
         <td><%= student.semester_registereds.where('student_id = ?', student.id).first.semester rescue nil%></td>
         <td><%= student.semester_registereds.where('student_id = ?', student.id).first.student_year rescue nil %></td>
         <td><a href="mailto:<%=student.email%>"><%=student.email rescue nil%></td>

@@ -1,0 +1,44 @@
+<div class="faq">
+<div class="container">
+<div class="row" style="margin-top:150px;">
+<div class="span12">
+ <p>
+          
+          <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li>
+            <li><%#= link_to 'Job Groups', admin_job_groups_path %></li>
+            <li>Add Student Country</li>
+          </ol>
+       </p>
+<%= form_for [:admin,@admin_country] do |f| %>
+  <% if @admin_country.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_country.errors.count, "error") %> prohibited this job group from being saved:</h2>
+
+      <ul>
+      <% @admin_country.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country%><br>
+    <%= f.collection_select :id, Country.order(:country_name), :id, :country_name,{:include_blank => "Select Country"}  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :student_country, "Add Country"%>
+    <%= f.check_box :student_country  %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+<% end %>
+
+</div>
+    </div>
+  </div>
+</div>
+
