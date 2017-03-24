@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
         password = Devise.friendly_token.first(password_length)
         @user.password = password
 			if @user.save
-				AgentMailer.agent_mail(@user.email,@user.password).deliver
+				AgentMailer.agent_mail(@user.email,@user.password).deliver_now
 				flash[:notice] = "Successfully created login."
 				redirect_to admin_users_path(:role => @user.role)
 		    else
