@@ -49,11 +49,11 @@ Rails.application.configure do
             :address => "smtp.sendgrid.net",
             :port => 587,
             :domain => "imap.sendgrid.com",
-            :authentication => :plain,
+            :authentication => :login,
             :user_name => ENV["GMAIL_USERNAME"],
             :password => ENV["GMAIL_PASSWORD"]
   }
 
-  
+
 config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
