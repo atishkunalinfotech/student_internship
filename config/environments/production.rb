@@ -97,9 +97,9 @@ Rails.application.configure do
 
         config.action_mailer.smtp_settings = {
             :enable_starttls_auto => true,
-            :address => "smtp.gmail.com",
+            :address => "smtp.sendgrid.net",
             :port => 587,
-            :domain => "gmail.com",
+            :domain => "imap.sendgrid.com",
             :authentication => :login,
             :user_name => ENV["GMAIL_USERNAME"],
             :password => ENV["GMAIL_PASSWORD"]
