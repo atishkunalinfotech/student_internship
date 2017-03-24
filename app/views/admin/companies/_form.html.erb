@@ -26,7 +26,7 @@
   
   <div class="field">
     <%= f.label :Company_city  %>
-    <%= f.collection_select :city, Admin::City.all,:city_name, :city_name,{:selected => "Windsor"},required: true %>
+    <%= f.collection_select :city, Admin::City.order("city_name asc"),:city_name, :city_name,{:include_blank=>"Select One",:selected => "Windsor"},required: true %>
   </div>
 
   <div class="field">

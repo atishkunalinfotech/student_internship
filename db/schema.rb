@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227160048) do
+ActiveRecord::Schema.define(version: 20170323181024) do
 
   create_table "admin_cities", force: :cascade do |t|
     t.string   "city_name",  limit: 255
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 20170227160048) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "student_id",    limit: 4
+    t.string   "other_major",   limit: 255
   end
 
   create_table "student_cities", force: :cascade do |t|
@@ -150,6 +151,7 @@ ActiveRecord::Schema.define(version: 20170227160048) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "student_city_id",       limit: 4
+    t.string   "other_major",           limit: 255
   end
 
   create_table "student_job_interests", force: :cascade do |t|

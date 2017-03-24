@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :country_id %><br>
+    <%= f.label :country_id %>
     <%= f.collection_select :country_id, Country.order(:country_name), :id, :country_name %>
   </div>
   <div class="field">
-    <%= f.label :student_city_name %><br>
+    <%= f.label :student_city_name %>
     <%= f.text_field :student_city_name %>
   </div>
   <div class="actions">

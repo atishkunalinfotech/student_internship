@@ -30,8 +30,8 @@ class Admin::CitiesController < ApplicationController
 
     respond_to do |format|
       if @admin_city.save
-        format.html { redirect_to @admin_city, notice: 'City was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_city }
+        format.html { redirect_to admin_cities_url, notice: 'City was successfully created.' }
+        format.json { render :show, status: :created, location: admin_cities_url }
       else
         format.html { render :new }
         format.json { render json: @admin_city.errors, status: :unprocessable_entity }
@@ -44,8 +44,8 @@ class Admin::CitiesController < ApplicationController
   def update
     respond_to do |format|
       if @admin_city.update(admin_city_params)
-        format.html { redirect_to @admin_city, notice: 'City was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin_city }
+        format.html { redirect_to admin_cities_url, notice: 'City was successfully updated.' }
+        format.json { render :show, status: :ok, location: admin_cities_url }
       else
         format.html { render :edit }
         format.json { render json: @admin_city.errors, status: :unprocessable_entity }

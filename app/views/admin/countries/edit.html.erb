@@ -3,9 +3,13 @@
 <div class="row" style="margin-top:150px;">
 <div class="span12">
  <p>
-   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+   <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li>
+            <li class = "active">Edit Student Country</li>
+            <li><%= link_to "Student Country",admin_countries_path%></li>
+          </ol>
  </p>
-<h1>Add Country</h1>
+<h1>Edit Student Country</h1>
 
 <%= render 'form' %>
 

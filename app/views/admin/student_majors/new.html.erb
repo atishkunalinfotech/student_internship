@@ -1,5 +1,22 @@
-<h1>New Admin Student Major</h1>
+<div class="faq">
+  <div class="container">
+    <div class="row" style="margin-top:150px;">
+      <div class="span12">
+       <p>
+          
+          <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li>
+            <li><%= link_to 'Student Majors', admin_student_majors_path %></li>
+            <li class = "active">New Student Major</li>
+          </ol>
+       </p>
+
+<h1>New Student Major</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', admin_student_majors_path %>
+</div>
+    </div>
+  </div>
+</div>

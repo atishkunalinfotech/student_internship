@@ -50,10 +50,11 @@ Rails.application.routes.draw do
     put "update_password" => "students#update_password", as: :update_password
     get "user_change_password" => "users#user_change_password", as: :user_change_password
     put "user_update_password" => "users#user_update_password", as: :user_update_password
+    get '/degree/degrees_by_country' => "students#degrees_by_country"
   end
   get "change_password" => "students#change_password", as: :change_password
   put "update_password" => "students#update_password", as: :update_password
-  
+  get '/degree/degrees_by_country' => "students#degrees_by_country"
   resources :students
   resources :job_posts
   get "job_interest_post" => 'job_posts#job_interest_post', as: :job_interest_post

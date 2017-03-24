@@ -54,7 +54,7 @@
             <tr>
               <td><strong><%= f.label :country %></strong></td>
               <td>
-                <%= f.collection_select :country_id, Country.order(:country_name), :id,:country_name,{:include_blank=>"Select Country"},:id =>"my_country",:rel => "/admin/degree/degrees_by_country",  required: true%>
+                <%= f.collection_select :country_id, Country.order(:country_name), :id,:country_name,{:include_blank=>"Select Country"},:id =>"my_country",:rel => "/degree/degrees_by_country",  required: true%>
                 <%#= f.collection_select :country_id, Country.order(:country_name), :id, :country_name,{:include_blank => true} %></td><br/>
               
               <td><strong><%= f.label :student_university_id , "University" %></strong></td>
@@ -89,7 +89,7 @@
   $(document).ready(function() {
     $('#my_country').change(function() {
       $.ajax({
-        url: "<%= admin_degree_degrees_by_country_path %>",
+        url: "<%= degree_degrees_by_country_path %>",
         data: {
           id : $('#my_country').val()
         },

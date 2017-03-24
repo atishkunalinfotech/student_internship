@@ -31,8 +31,8 @@ class Admin::StudentMajorsController < ApplicationController
 
     respond_to do |format|
       if @admin_student_major.save
-        format.html { redirect_to @admin_student_major, notice: 'Student major was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_student_major }
+        format.html { redirect_to admin_student_majors_url, notice: 'Student major was successfully created.' }
+        format.json { render :show, status: :created, location: admin_student_majors_url }
       else
         format.html { render :new }
         format.json { render json: @admin_student_major.errors, status: :unprocessable_entity }

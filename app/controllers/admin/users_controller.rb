@@ -5,14 +5,8 @@ class Admin::UsersController < ApplicationController
   layout "dashboard", only: [ :index ]
 
 
-  def index
-  	   if params[:role] == "faculty"
-		  @users = User.where(:role => "faculty").order('created_at desc')
-	   elsif params[:role] == "staff" 
-	   	  @users = User.where(:role => "staff").order('created_at desc')
-	   else
-	   	  redirect_to admin_root_path
-	   end
+    def index   
+	    @users = User.where( 'role != ? ', "admin").order('created_at desc') rescue nil
 	end
 
 

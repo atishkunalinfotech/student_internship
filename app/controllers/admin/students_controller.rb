@@ -64,13 +64,33 @@ class Admin::StudentsController < ApplicationController
     end
 
 	def edit
-		@skill_groups = SkillGroup.all
+		@degrees = StudentUniversity.order(:university_name)
+	    @cities = StudentCity.order(:student_city_name)
 		@semester = SemesterRegistered.where('student_id = ?',@student.id) rescue nil
 	end
 
+	def degrees_by_country
+		if params[:id].present?
+	      @degrees = Country.find(params[:id]).student_universities.order(:university_name)
+	      @cities = Country.find(params[:id]).student_cities.order(:student_city_name)
+	    else
+	      @degrees = []
+	      @cities = []
+	    end
+	    respond_to do |format|
+	      format.js
+	    end
+	end
+
 	def update
+        #raise params.inspect
 		@student.update(student_params)
-		#raise @student.inspect
+		#town =  params[:txt_review_town_id].to_s
+		#raise params[:student][:student_degrees_attributes][:degree].inspect
+		# if (town.present?)
+  #         town_db = Admin::StudentMajor.find_or_create_by(:major_name=>town)
+  #         #@review.town_id = town_db.id
+  #       end
 		Student.update_semester(params,@student.id)
 		flash[:notice] = "Updated successfully."
     	redirect_to admin_students_path
@@ -91,8 +111,8 @@ class Admin::StudentsController < ApplicationController
 		def student_params
 	      params.require(:student).permit(:email,:password,:attachment,:password_confirmation,:country_id,:internship_status_id,:studentid,:student_firstname,:student_middlename,:student_lastname,:student_email,:telephone,:gender,:status,:paid_status ,
 	      	student_degrees_attributes: [:student_id,:degree,:major,:gpa,:student_university_id,:country_id,
-	      		:garduation_year,:college,:student_city_id,:_destroy,:id],
-	      	student_certifications_attributes: [:student_id,:certification,:major,:institution, :country_id ,:grade,:_destroy,:id] )
+	      		:garduation_year,:college,:student_city_id,:other_major,:_destroy,:id],
+	      	student_certifications_attributes: [:student_id,:certification,:major,:institution, :country_id ,:grade,:other_major,:_destroy,:id] )
 	    end
 
 	    def set_student

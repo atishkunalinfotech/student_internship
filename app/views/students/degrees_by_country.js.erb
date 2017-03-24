@@ -1,0 +1,2 @@
+$("#my_university").html('<%= raw("<option>Select University</option>" +  options_for_select(@degrees.map {|c| [c.university_name, c.id]}).gsub(/\n/, '') ) %>');
+$("#my_city").html('<%= raw("<option>Select City</option>" +  options_for_select(@cities.map {|c| [c.student_city_name, c.id]}).gsub(/\n/, '') ) %>');

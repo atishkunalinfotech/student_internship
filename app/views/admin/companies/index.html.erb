@@ -21,8 +21,8 @@
 				<th><%= "Company Name" %></th>
 				<th><%= "Email" %></th>
 				<th><%= "Company Website" %></th>
-				<th><%= "Edit"%></th>
-				<th><%= "View"%></th>
+				<!-- <th><%#= "Edit"%></th> -->
+				<!-- <th><%#= "View"%></th> -->
 				<th><%= "Delete"%></th>
 			</tr>
 		</thead>
@@ -31,11 +31,11 @@
 
 				<tr>
 					<td><%= company.try(:internship_type) %></td>
-					<td><%= company.try(:company_name) %></td>
+					<td><%= link_to company.try(:company_name),edit_admin_company_path(company) %></td>
 					<td><%= auto_link(company.try(:email)) %></td>
-					<td><%= auto_link(company.try(:company_website)) %></td>
-					<td><%= link_to 'Edit', edit_admin_company_path(company) %></td>
-					<td><%= link_to 'Show Company', admin_company_path(company) %></td>
+					<td><%= link_to company.try(:company_website),"http://#{company.try(:company_website)}", target: :_blank %></td>
+					<!-- <td><%#= link_to 'Edit', edit_admin_company_path(company) %></td> -->
+					<!-- <td><%#= link_to 'Show Company', admin_company_path(company) %></td> -->
 					<td>
                          <%= button_to("Delete",admin_company_path(company), {:onclick => "return confirm('Are you sure?')", :method => :delete}) %>
 

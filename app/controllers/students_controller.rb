@@ -5,12 +5,9 @@ class StudentsController < ApplicationController
 
 
   def edit
-  	@skill_groups = SkillGroup.all
-	@semester = SemesterRegistered.where('student_id = ?',current_student.id) rescue nil
-	@education = Education.where('student_id = ? and position = ?', current_student.id,1) rescue nil
-	@education1 = Education.where('student_id = ? and position = ?', current_student.id,2) rescue nil
-	@student_work_exp = StudentWorkExp.where('student_id = ? and wposition = ?', current_student.id,1) rescue nil
-	@student_work_exp1 = StudentWorkExp.where('student_id = ? and wposition = ?', current_student.id,2) rescue nil
+   @degrees = StudentUniversity.order(:university_name)
+   @cities = StudentCity.order(:student_city_name)
+	  @semester = SemesterRegistered.where('student_id = ?',current_student.id) rescue nil
   end
 
   def update
@@ -36,6 +33,19 @@ class StudentsController < ApplicationController
     @user ||= current_student
   end
 
+  def degrees_by_country
+    if params[:id].present?
+        @degrees = Country.find(params[:id]).student_universities.order(:university_name)
+        @cities = Country.find(params[:id]).student_cities.order(:student_city_name)
+      else
+        @degrees = []
+        @cities = []
+      end
+      respond_to do |format|
+        format.js
+      end
+  end
+
   def update_password
       @user ||= current_student
       @user.password = student_params[:password]
@@ -53,8 +63,11 @@ class StudentsController < ApplicationController
   private
 
     def student_params
-      params.require(:student).permit(:email,:password,:attachment,:password_confirmation,:country,:internship_status_id,:studentid,:student_firstname,:student_middlename,:student_lastname,:student_email,:telephone,:gender,:status,:paid_status ,educations_attributes: [:student_id,:degree_type,:major,:degree_gpa,:degree_university,:degree_university_loc,:certifications,:certification_body,:_destroy] )
-    end
+        params.require(:student).permit(:email,:password,:attachment,:password_confirmation,:country_id,:internship_status_id,:studentid,:student_firstname,:student_middlename,:student_lastname,:student_email,:telephone,:gender,:status,:paid_status ,
+          student_degrees_attributes: [:student_id,:degree,:major,:gpa,:student_university_id,:country_id,
+            :garduation_year,:college,:student_city_id,:other_major,:_destroy,:id],
+          student_certifications_attributes: [:student_id,:certification,:major,:institution, :country_id ,:grade,:other_major,:_destroy,:id] )
+      end
 
     def set_student
       @student = Student.find(current_student.id)

@@ -4,7 +4,12 @@
 <div class="row" style="margin-top:150px;">
 <div class="span12">
  <p>
-   <%= link_to_function "Back", "history.back()",:class=> "back-btn" %>
+   <ol class = "breadcrumb">
+            <li><%= link_to 'Dashboard',admin_root_path %></li> / 
+            <%= link_to 'Companies', admin_companies_path %> /
+            <li class = "active">Edit Company</li>
+            
+          </ol>
  </p>
 <h1>Edit Company Profile</h1>
 
