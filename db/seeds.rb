@@ -6,8 +6,8 @@
 # #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 # #   Mayor.create(name: 'Emanuel', city: cities.first)
     User.create(:email => "admin@uwindsor.ca", :password => "admin123",:role => "admin")
-    InternshipStatus.create(:internship_status_name = "Available")
-    InternshipStatus.create(:internship_status_name = "Hired")
+    InternshipStatus.create(:internship_status_name => "Available")
+    InternshipStatus.create(:internship_status_name => "Hired")
 
 
 ["Afghanistan",
